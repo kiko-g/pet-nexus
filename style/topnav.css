@@ -22,40 +22,66 @@
 }
 
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  color: white;
+  background-color: #1abc9c;
   transition: 0.3s ease-out;
 }
 
 .topnav a.active {
-  background-color: cornflowerblue;
+  background-color: firebrick;
   color: white;
 }
 
+.topnav a.active:hover {
+  background-color: #1abc9c;
+  color: white;
+}
+
+.topnav .heart-container,
 .topnav .search-container {
   float: right;
 }
 
 .topnav input[type=text],
 .topnav .search-container button {
-  font-size: 17px;
-
+  width: 20%;
   float: right;
-  padding: 8px;
-  margin-top: 10px;
   border: none;
+  padding: 8px;
+  font-size: 17px;
+  margin-top: 10px;
   border-radius: 5px 0px 0px 5px;
 }
 
-.topnav .search-container button {
-  border-radius: 0px 5px 5px 0px;
-  margin-right: 10px;
-  background-color: #666;
-  color: white;
-  cursor: pointer;
+.topnav input[type=text] {
+  width: 50%;
 }
 
+.topnav .search-container button {
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: cornflowerblue;
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+}
+
+.topnav .heart-container button {
+  float: right;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: #ff8888;
+  padding: 8px;
+  font-size: 17px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.topnav .heart-container button:hover,
 .topnav .search-container button:hover {
   transition: 0.3s;
-  color: cornflowerblue;
+  color: white;
+  background-color: #1abc9c;
 }
