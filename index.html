@@ -7,50 +7,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/fonts.css">
+  <link rel="stylesheet" href="style/images.css">
+  <link rel="stylesheet" href="style/topnav.css">
+  <link rel="stylesheet" href="style/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <header class="header">
     <h1>Pet Nexus</h1>
-    <p>A <b>petfinder</b> website.</p>
+    <h3>A <b>petfinder</b> website.</h3>
   </header>
 
-  <nav class="navbar">
+  <nav class="topnav">
     <a href="#" class="active">Home</a>
     <a href="#">Link</a>
     <a href="#">Link</a>
-    <a href="#" class="right">Link</a>
+    <a href="#" class="right">Register</a>
+    <a href="#" class="right">Login</a>
+    <div class="search-container">
+      <form action="">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" name="search" placeholder="Search...">
+      </form>
+    </div>
   </nav>
 
   <div class="row">
     <div class="side">
       <h2>Pets</h2>
       <h5>Pets:</h5>
-      <div class="img1">
+      <div class="photo">
         <img src=" img/dog.jpg" alt="dog" style="width: 100%;">
-        <!-- <div class="container">
-          <p>Cinque Terre</p>
-        </div> -->
+        <div class="image-container">
+          <p>The cutest boy in town</p>
+        </div>
       </div>
       <p>Pets pets... Pets!</p>
       <h3>More Pets</h3>
       <p>Doggos are cool.</p>
-      <div class="img1" style="height:60px;">Image</div><br>
-      <div class="img1" style="height:60px;">Image</div><br>
-      <div class="img1" style="height:60px;">Image</div>
+      <div class="photo" style="height:60px;">Image</div><br>
+      <div class="photo" style="height:60px;">Image</div><br>
+      <div class="photo" style="height:60px;">Image</div>
     </div>
     <div class="main">
       <h2>TITLE1 - DOGGOS RULE THE WORLD</h2>
       <h5>Title description, Dec 7, 2017</h5>
-      <div class="img1" style="height:200px;">Image</div>
+      <div class="photo" style="height:200px;">Image</div>
       <p>Some text...</p>
       <p>Who doesn't love doggos???</p>
       <br>
       <h2>TITLE2 - DOGGOS STILL RULE THE WORLD</h2>
       <h5>Title description, Sep 2, 2017</h5>
-      <div class="img1" style="height:200px;">Image</div>
+      <div class="photo" style="height:200px;">Image</div>
       <p>Todays news: dogs go woof</p>
       <p>Woof bark woof bark.</p>
     </div>
