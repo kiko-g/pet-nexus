@@ -6,9 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicons -->
+  <!-- Icons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style/style.css">
@@ -16,7 +18,9 @@
   <link rel="stylesheet" href="style/images.css">
   <link rel="stylesheet" href="style/topnav.css">
   <link rel="stylesheet" href="style/responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="topnav.js"></script>
 </head>
 
 <body>
@@ -25,26 +29,15 @@
     <h3>A <b>petfinder</b> website.</h3>
   </header>
 
-  <nav class="topnav">
-    <a href="#" class="active">Home</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#" class="right">Register</a>
-    <a href="#" class="right">Login</a>
-    <a href="#" class="right">
-      <div class="heart-container">
-        <button type="submit"><i class="fa fa-heart"></i></button>
-      </div>
-    </a>
-    <a href="#" class="right">
-      <div class="search-container">
-        <form action="">
-          <button type="submit"><i class="fa fa-search"></i></button>
-          <input type="text" name="search" placeholder="Search...">
-        </form>
-      </div>
-    </a>
-  </nav>
+  <div class="topnav" id="topnav-bar">
+    <a href="#" class="active"> <i class="fa fa-fw fa-home"> </i> Home </a>
+    <a href="#" class=""> <i class="fas fa-dog"> </i> Breeds </a>
+    <a href="#" class="right"> <i class="fas fa-dog"> </i> Register</a>
+    <a href="#" class="right"> <i class="fas fa-dog"> </i> Login</a>
+    <a href="#" class="a-heart right"> <i class="fa fa-heart"> </i> </a>
+    <a href="#" class="a-search right"> <i class="fa fa-fw fa-search"> </i> </a>
+    <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
+  </div>
 
   <div class="row">
     <div class="side">
@@ -65,7 +58,7 @@
     </div>
     <div class="main">
       <h2>TITLE1 - DOGGOS RULE THE WORLD</h2>
-      <h5>Title description, Dec 7, 2017</h5>
+      <h5>Title description</h5>
       <div class="photo" style="height:200px;">Image</div>
       <p>Some text...</p>
       <p>Who doesn't love doggos???</p>
