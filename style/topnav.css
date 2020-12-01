@@ -24,7 +24,7 @@
 
 .topnav a:hover {
   color: white;
-  background-color: #72c5b4;
+  background-color: #6ea79b;
   transition: 0.3s ease-out;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .topnav a.active:hover {
-  background-color: #72c5b4;
+  background-color: #6ea79b;
   color: white;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .a-heart {
-  background-color: #cf9a9a;
+  background-color: #ee9c9c;
 }
 
 .a-search {
@@ -81,6 +81,7 @@
   }
 
   .topnav.responsive .icon {
+    text-align: right;
     position: absolute;
     right: 0;
     top: 0;

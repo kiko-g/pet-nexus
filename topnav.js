@@ -1,6 +1,6 @@
 function topnavResponsive() {
-  let x = document.getElementById("topnav-bar");
+  let topnavbar = document.getElementById("topnavbar");
 
-  if (x.className === "topnav") x.className += " responsive";
-  else x.className = "topnav";
+  if (topnavbar.className === "topnav") topnavbar.className += " responsive";
+  else topnavbar.className = "topnav";
 }
