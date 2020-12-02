@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Page Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style/style.css">
@@ -25,24 +25,23 @@
   <link rel="stylesheet" href="style/responsive.css">
 
   <!-- Scripts -->
-  <script type="text/javascript" src="topnav.js"></script>
+  <script src="js/topnav.js"></script>
 </head>
 
 <body>
   <header class="header">
     <h1>Pet Nexus</h1>
-    <h3>A <b>petfinder</b> website.</h3>
+    <p>A <b>petfinder</b> website</p>
   </header>
 
-  <!-- <i class="fa fa-user-plus"> </i>  -->
-  <!-- <i class="fa fa-sign-in"> </i> -->
   <div class="topnav" id="topnavbar">
-    <a href="#" class="active"> <i class="fas fa-home"></i> </i> Home </a>
-    <a href="#" class=""> <i class="fas fa-dog"></i> Breeds </a>
+    <a href="#" class="no-border"> <i class="fas fa-home"></i> Home </a>
+    <a href="#" class=""> <i class="fas fa-user"></i> Profile </a>
+    <a href="pets.html" class=""> <i class="fas fa-dog"></i> Breeds </a>
     <a href="#" class="right"> <i class="fas fa-user-plus"></i> Register </a>
     <a href="#" class="right"> <i class="fa fa-sign-in"></i> Login </a>
-    <a href="#" class="a-heart right"> <i class="fa fa-heart"> </i> </a>
-    <a href="#" class="a-search right"> <i class="fa fa-search"> </i> </a>
+    <a href="#" class="a-search right"> <i class="fa fa-search"> </i> Search </a>
+    <a href="#" class="a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
     <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
   </div>
 
@@ -78,9 +77,10 @@
     </div>
   </div>
 
-  <div class="footer">
-    <h2>Footer</h2>
-  </div>
+  <footer>
+    <img src="assets/img/logo.png" alt="" class="footer-icon">
+    <p>&copy; Pet Nexus, LTW 2020</p>
+  </footer>
 </body>
 
 </html>

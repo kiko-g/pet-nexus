@@ -14,15 +14,22 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
 .header {
-  padding: 2em;
-  text-align: center;
+  padding: 8em 2em;
+  text-align: left;
   background: #008877;
+  background-image: url('../assets/img/header.jpg');
+  background-size: cover;
+  background-position: center top;
   color: white;
+}
+
+.header p {
+  margin: 0;
 }
 
 .header h1 {
@@ -31,8 +38,15 @@ h6 {
 }
 
 .header h2,
-.header h3 {
+.header h3,
+.header h4 {
   margin: 0;
+}
+
+.topnav.responsive a {
+  float: none;
+  display: block;
+  text-align: left;
 }
 
 
@@ -63,8 +77,24 @@ h6 {
 }
 
 /* Footer */
-.footer {
-  padding: 20px;
+footer {
+  padding: 1em;
   text-align: center;
   background: #ddd;
+  height: auto;
+  overflow: auto;
 }
+
+footer p {
+  float: left;
+  padding-top: 0.5em;
+  padding-left: 2em;
+}
+
+footer img.footer-icon {
+  width: 80px;
+  display: block;
+  float: left;
+}
+
+/* General helpful classes */
