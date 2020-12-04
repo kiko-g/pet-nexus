@@ -18,16 +18,16 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="style/pets.css">
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/fonts.css">
-  <link rel="stylesheet" href="style/images.css">
-  <link rel="stylesheet" href="style/topnav.css">
-  <link rel="stylesheet" href="style/buttons.css">
-  <link rel="stylesheet" href="style/responsive.css">
+  <link rel="stylesheet" href="/style/pets.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/fonts.css">
+  <link rel="stylesheet" href="/style/images.css">
+  <link rel="stylesheet" href="/style/topnav.css">
+  <link rel="stylesheet" href="/style/buttons.css">
+  <link rel="stylesheet" href="/style/responsive.css">
 
   <!-- Scripts -->
-  <script src="js/topnav.js"></script>
+  <script src="/js/topnav.js"></script>
 </head>
 
 
@@ -38,11 +38,11 @@
   </header>
 
   <div class="topnav" id="topnavbar">
-    <a href="#" class="no-border"> <i class="fas fa-home"></i> Home </a>
-    <a href="pages/profile.php" class=""> <i class="fas fa-user"></i> Profile </a>
-    <a href="pages/pets.php" class=""> <i class="fas fa-dog"></i> Breeds </a>
-    <a href="pages/register.php" class="right"> <i class="fas fa-user-plus"></i> Register </a>
-    <a href="pages/login.php" class="right"> <i class="fa fa-sign-in"></i> Login </a>
+    <a href="/index.php" class="no-border"> <i class="fas fa-home"></i> Home </a>
+    <a href="/pages/profile.php" class=""> <i class="fas fa-user"></i> Profile </a>
+    <a href="/pages/pets.php" class=""> <i class="fas fa-dog"></i> Breeds </a>
+    <a href="/pages/register.php" class="right"> <i class="fas fa-user-plus"></i> Register </a>
+    <a href="/pages/login.php" class="right"> <i class="fa fa-sign-in"></i> Login </a>
     <a href="#" class="a-search right"> <i class="fa fa-search"> </i> Search </a>
     <a href="#" class="a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
     <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>

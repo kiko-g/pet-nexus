@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/style/responsive.css">
 
   <!-- Scripts -->
-  <script src="topnav.js"></script>
+  <script src="/js/topnav.js"></script>
 </head>
 
 

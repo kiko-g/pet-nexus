@@ -22,7 +22,7 @@ h6 {
   padding: 8em 2em;
   text-align: left;
   background: #008877;
-  background-image: url('../assets/img/header.jpg');
+  background-image: url('/assets/img/header.jpg');
   background-size: cover;
   background-position: center top;
   color: white;
@@ -74,11 +74,19 @@ h6 {
   width: 50%;
 }
 
+/* Page section (1 central column) */
+.page {
+  flex: 100%;
+  -ms-flex: 100%;
+  background-color: #008877;
+  padding: 0em 1em;
+}
+
 /* Create 2 columns that sit next to each other */
 /* Left column */
 .side {
-  -ms-flex: 20%;
   flex: 20%;
+  -ms-flex: 20%;
   background-color: #e1e1e1;
   padding: 20px;
   border-bottom: 1px dotted #555;
@@ -86,8 +94,8 @@ h6 {
 
 /* Main column */
 .main {
-  -ms-flex: 80%;
   flex: 80%;
+  -ms-flex: 80%;
   background-color: #f1f1f1;
   padding: 20px;
   border-bottom: 1px dotted #bbb;

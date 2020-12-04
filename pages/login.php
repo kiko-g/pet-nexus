@@ -16,21 +16,21 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="../style/pets.css">
-  <link rel="stylesheet" href="../style/fonts.css">
-  <link rel="stylesheet" href="../style/style.css">
-  <link rel="stylesheet" href="../style/images.css">
-  <link rel="stylesheet" href="../style/topnav.css">
-  <link rel="stylesheet" href="../style/buttons.css">
-  <link rel="stylesheet" href="../style/responsive.css">
+  <link rel="stylesheet" href="/style/pets.css">
+  <link rel="stylesheet" href="/style/fonts.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/images.css">
+  <link rel="stylesheet" href="/style/topnav.css">
+  <link rel="stylesheet" href="/style/buttons.css">
+  <link rel="stylesheet" href="/style/responsive.css">
 
   <!-- Scripts -->
-  <script src="topnav.js"></script>
+  <script src="/js/topnav.js"></script>
 </head>
 
 <body>
   <article class="row">
-    <section>
+    <section class="page">
       <h1>Login</h1>
     </section>
   </article>
