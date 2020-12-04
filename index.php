@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicons -->
-  <!-- <link href="assets/img/dog.jpg" rel="icon"/> -->
-  <link href="assets/img/logo.png" rel="icon"/>
+  <!-- <link href="/assets/img/dog.jpg" rel="icon"/> -->
+  <link href="/assets/img/logo.png" rel="icon"/>
   
 
   <!-- Page Icons -->
@@ -21,9 +21,9 @@
   <link rel="stylesheet" href="style/pets.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/fonts.css">
-  <link rel="stylesheet" href="style/icons.css">
   <link rel="stylesheet" href="style/images.css">
   <link rel="stylesheet" href="style/topnav.css">
+  <link rel="stylesheet" href="style/buttons.css">
   <link rel="stylesheet" href="style/responsive.css">
 
   <!-- Scripts -->
@@ -39,10 +39,10 @@
 
   <div class="topnav" id="topnavbar">
     <a href="#" class="no-border"> <i class="fas fa-home"></i> Home </a>
-    <a href="#" class=""> <i class="fas fa-user"></i> Profile </a>
-    <a href="pets.php" class=""> <i class="fas fa-dog"></i> Breeds </a>
-    <a href="#" class="right"> <i class="fas fa-user-plus"></i> Register </a>
-    <a href="#" class="right"> <i class="fa fa-sign-in"></i> Login </a>
+    <a href="pages/profile.php" class=""> <i class="fas fa-user"></i> Profile </a>
+    <a href="pages/pets.php" class=""> <i class="fas fa-dog"></i> Breeds </a>
+    <a href="pages/register.php" class="right"> <i class="fas fa-user-plus"></i> Register </a>
+    <a href="pages/login.php" class="right"> <i class="fa fa-sign-in"></i> Login </a>
     <a href="#" class="a-search right"> <i class="fa fa-search"> </i> Search </a>
     <a href="#" class="a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
     <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
@@ -51,30 +51,29 @@
   <div class="row">
     <div class="side">
       <h2>Pets</h2>
-      <h5>Pets:</h5>
       <div class="photo">
-        <img src="assets/img/dog.jpg" alt="dog" style="width: 100%;">
+        <img src="/assets/img/dog.jpg" alt="dog" style="width: 100%;">
         <div class="image-container">
           <p>The cutest boy in town</p>
         </div>
       </div>
-      <p>Pets pets... Pets!</p>
+      <p>Pets pets pets!</p>
       <h3>More Pets</h3>
-      <p>Doggos are cool.</p>
+      <p>Dogs are cool.</p>
     </div>
     <div class="main">
-      <h2>TITLE1 - DOGGOS RULE THE WORLD</h2>
+      <h2>TITLE1 - DOGS RULE THE WORLD</h2>
       <h5>Title description</h5>
       <div class="photo">Image</div>
       <p>Some text...</p>
     </div>
   </div>
 
-  <?php require 'pets.php'; ?>
+  <?php require 'pages/pets.php'; ?>
 
   <footer>
-    <img src="assets/img/logo.png" alt="" class="footer-icon">
-    <p>&copy; Pet Nexus, LTW 2020</p>
+    <img src="/assets/img/logo.png" alt="" class="footer-icon">
+    <p>&copy; <strong>Pet Nexus</strong>, LTW 2020</p>
   </footer>
 </body>
 
