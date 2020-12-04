@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/logo.png" rel="apple-touch-icon">
+  <!-- <link href="assets/img/dog.jpg" rel="icon"/> -->
+  <link href="assets/img/logo.png" rel="icon"/>
+  
 
   <!-- Page Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,6 +18,7 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
+  <link rel="stylesheet" href="style/pets.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/fonts.css">
   <link rel="stylesheet" href="style/icons.css">
@@ -28,6 +30,7 @@
   <script src="js/topnav.js"></script>
 </head>
 
+
 <body>
   <header class="header">
     <h1>Pet Nexus</h1>
@@ -37,7 +40,7 @@
   <div class="topnav" id="topnavbar">
     <a href="#" class="no-border"> <i class="fas fa-home"></i> Home </a>
     <a href="#" class=""> <i class="fas fa-user"></i> Profile </a>
-    <a href="pets.html" class=""> <i class="fas fa-dog"></i> Breeds </a>
+    <a href="pets.php" class=""> <i class="fas fa-dog"></i> Breeds </a>
     <a href="#" class="right"> <i class="fas fa-user-plus"></i> Register </a>
     <a href="#" class="right"> <i class="fa fa-sign-in"></i> Login </a>
     <a href="#" class="a-search right"> <i class="fa fa-search"> </i> Search </a>
@@ -58,24 +61,16 @@
       <p>Pets pets... Pets!</p>
       <h3>More Pets</h3>
       <p>Doggos are cool.</p>
-      <div class="photo" style="height:60px;">Image</div><br>
-      <div class="photo" style="height:60px;">Image</div><br>
-      <div class="photo" style="height:60px;">Image</div>
     </div>
     <div class="main">
       <h2>TITLE1 - DOGGOS RULE THE WORLD</h2>
       <h5>Title description</h5>
-      <div class="photo" style="height:200px;">Image</div>
+      <div class="photo">Image</div>
       <p>Some text...</p>
-      <p>Who doesn't love doggos???</p>
-      <br>
-      <h2>TITLE2 - DOGGOS STILL RULE THE WORLD</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="photo" style="height:200px;">Image</div>
-      <p>Todays news: dogs go woof</p>
-      <p>Woof bark woof bark.</p>
     </div>
   </div>
+
+  <?php require 'pets.php'; ?>
 
   <footer>
     <img src="assets/img/logo.png" alt="" class="footer-icon">

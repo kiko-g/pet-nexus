@@ -32,3 +32,30 @@
     border: 1px solid #ccc;
   }
 }
+
+
+@media (min-width:993px) {
+  .col.l1 {
+    width: 8.33333%
+  }
+
+  .col.l2 {
+    width: 16.66666%
+  }
+
+  .col.w25 {
+    width: 24.99999%
+  }
+
+  .col.l4 {
+    width: 33.33333%
+  }
+
+  .col.l5 {
+    width: 41.66666%
+  }
+
+  .col.l6 {
+    width: 49.99999%
+  }
+}
