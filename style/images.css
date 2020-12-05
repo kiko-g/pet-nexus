@@ -1,17 +1,21 @@
 /* Image class */
 .photo {
-  background-color: #2b4857;
-  width: 100%;
-  padding: 1em;
+  margin: 0;
+  padding: 10px;
+  color: white;
+  background-color: teal;
 }
 
 .image-container {
-  /* padding: 0; */
   margin: 0;
 }
 
 .image-container p {
-  margin: 0;
-  margin-bottom: -5px;
-  color: coral;
+  padding: 3px 6px;
+  margin-top: -5px;
+  margin-bottom: -10px;
+}
+
+.w100 {
+  width: 100%;
 }
