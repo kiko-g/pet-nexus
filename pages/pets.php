@@ -1,4 +1,4 @@
-<?php require '../templates/head.html' ?>
+<?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
   <?php require '../templates/navbar.html' ?>
@@ -67,6 +67,6 @@
   </article>
 </body>
 
-<?php require '../templates/footer.html' ?>
+<?php require '../templates/footer.html'; ?>
 
 </html>

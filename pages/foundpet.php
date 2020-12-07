@@ -1,4 +1,4 @@
-<?php require '../templates/head.html'; ?>
+<?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets'); ?>
 <?php require '../templates/navbar.html'; ?>
 <body>
   <article class="row">
