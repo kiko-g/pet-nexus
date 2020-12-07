@@ -20,6 +20,7 @@
   text-decoration: none;
 }
 
+.topnav button:hover,
 .topnav a:hover {
   transition: 0.2s ease-out;
   background-color: #6ea79b;
@@ -81,6 +82,7 @@
     padding: 20px 0px 0px 0px;
   }
 
+  .topnav a:not(:first-child),
   .topnav button:not(:first-child) {
     display: none;
   }
