@@ -2,34 +2,40 @@
   <a href="/index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
   <a href="/pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
   <a href="/pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Breeds </a>
+
+
   <!-- LOGIN -->
   <button onclick="document.getElementById('login-popup').style.display='block'" class="navbar right">
     <i class="fa fa-sign-in"></i> Login
   </button>
   <div id="login-popup" class="overlayLogin">
     <form class="overlayLogin-content animate" action="login.php" method="post">
-      <div class="container">
+      <div class="container top round">
         <span onclick="document.getElementById('login-popup').style.display='none'" class="close"
           title="close overlayLogin">&#10006;</span>
+      </div>
+
+      <div class="container">
         <label for="username"><b>Username</b></label>
         <input type="text" placeholder="Enter username" name="username" required>
-
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter password" name="password" required>
-
         <button type="submit" class="login">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember">
           Remember me
         </label>
       </div>
-      <div class="container bottom">
+
+      <div class="container bottom round">
         <button type="button" onclick="document.getElementById('login-popup').style.display='none'"
-          class="cancel-button">Back</button>
-        <a href="/assets/img/dog.jpg" class="login"> Forgot password?</a>
+          class="cancel-button">Back
+        </button>
+        <a href="/assets/img/dog.jpg" class="loginLink"> Forgot Password</a>
       </div>
     </form>
   </div>
+
 
   <!-- REGISTER -->
   <button onclick="document.getElementById('register-popup').style.display='block'" class="navbar right">
@@ -37,21 +43,30 @@
   </button>
   <div id="register-popup" class="overlayLogin">
     <form class="overlayLogin-content animate" action="register.php" method="post">
-      <div class="container">
+      <div class="container top round">
         <span onclick="document.getElementById('register-popup').style.display='none'" class="close"
-          title="Close Login Overlay"> &#10006;</span>
+          title="close overlayLogin">&#10006;</span>
+      </div>
+
+      <div class="container">
         <label for="username"><b>Username</b></label>
         <input type="text" placeholder="Enter username" name="username" required>
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter password" name="password" required>
         <button type="submit" class="login">Register</button>
       </div>
-      <div class="container bottom">
+
+      <div class="container bottom round">
         <button type="button" onclick="document.getElementById('register-popup').style.display='none'"
           class="cancel-button">Back</button>
       </div>
     </form>
   </div>
+
+
+
+
+
   <a href="#" class=" a-search right"> <i class="fa fa-search"> </i> Search </a>
   <a href="#" class=" a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
   <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
