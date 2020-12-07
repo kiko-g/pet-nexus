@@ -4,10 +4,14 @@
 
 .display-topleft {
   position: absolute;
-  top: 7%;
-  left: 4%;
-  transform: translate(-10%, -10%);
-  -ms-transform: translate(-10%, -10%);
+  top: 3%;
+  left: 3%;
+}
+
+.display-bottomright {
+  position: absolute;
+  bottom: 6%;
+  right: 3%;
 }
 
 .display-middle {
@@ -43,7 +47,18 @@
 }
 
 .container {
-  padding: 0px 20px;
+  padding: 0 20px;
+}
+
+.container.top {
+  width: 100%;
+  float: right;
+}
+
+.container.bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f1f1f1;
 }
 
 .container:after {

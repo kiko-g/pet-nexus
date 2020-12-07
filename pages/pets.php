@@ -1,7 +1,7 @@
 <?php require '../templates/head.html' ?>
-<?php require '../templates/navbar.php' ?>
 
 <body>
+  <?php require '../templates/navbar.html' ?>
   <article class="row"> <!-- row-padding -->
     <section class="side">
     </section>
@@ -14,8 +14,8 @@
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>
-            <div class="display-middle display-hover">
-              <button class="button-cart">Add to cart <i class="fa fa-shopping-cart"></i></button>
+            <div class="display-bottomright display-hover">
+              <button class="button-cart"> <i class="fa fa-shopping-cart"></i></button>
             </div>
           </div>
           <p>Doggo 1<br><b>€29.99</b></p>
@@ -28,8 +28,8 @@
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>          
-            <div class="display-middle display-hover">
-              <button class="button-cart">Add to cart <i class="fa fa-shopping-cart"></i></button>
+            <div class="display-bottomright display-hover">
+              <button class="button-cart"> <i class="fa fa-shopping-cart"></i></button>
             </div>
           </div>
           <p>Doggo 2<br><b>€39.99</b></p>
@@ -42,8 +42,8 @@
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>
-            <div class="display-middle display-hover">
-              <button class="button-cart">Add to cart <i class="fa fa-shopping-cart"></i></button>
+            <div class="display-bottomright display-hover">
+              <button class="button-cart"> <i class="fa fa-shopping-cart"></i></button>
             </div>
           </div>
           <p>Doggo 3<br><b>€49.99</b></p>
@@ -56,8 +56,8 @@
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>
-            <div class="display-middle display-hover">
-              <button class="button-cart">Add to cart <i class="fa fa-shopping-cart"></i></button>
+            <div class="display-bottomright display-hover">
+              <button class="button-cart"> <i class="fa fa-shopping-cart"></i></button>
             </div>
           </div>
           <p>Doggo 4<br><b>€59.99</b></p>
