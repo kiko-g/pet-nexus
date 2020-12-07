@@ -1,4 +1,4 @@
-<?php require 'templates/head.html'; ?>
+<?php require 'templates/head.php'; default_head('Pet Nexus'); ?>
 
 <body>
   <header class="header">

@@ -5,13 +5,12 @@ function default_head($title) { ?>
 <html lang="en-US">
 
 <head>
-  <title> <?=$title?> </title>
+  <title>Pet Nexus</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicons -->
-  <!-- <link href="/assets/img/dog.jpg" rel="icon"/> -->
-  <link href="/assets/img/logo.png" rel="icon" />
+  <link href="../assets/img/logo.png" rel="icon" />
 
 
   <!-- Page Icons -->
@@ -21,17 +20,21 @@ function default_head($title) { ?>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="../style/pets.css">
-  <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="../style/nav.css">
+  <link rel="stylesheet" href="../style/user.css">
   <link rel="stylesheet" href="../style/fonts.css">
-  <link rel="stylesheet" href="../style/footer.css">
-  <link rel="stylesheet" href="../style/images.css">
-  <link rel="stylesheet" href="../style/navbar.css">
-  <link rel="stylesheet" href="../style/buttons.css">
-  <link rel="stylesheet" href="../style/responsive.css">
+  <link rel="stylesheet" href="../style/style.css">
+  <link rel="stylesheet" href="../style/layout.css">
+
+  <link rel="stylesheet" href="style/nav.css">
+  <link rel="stylesheet" href="style/user.css">
+  <link rel="stylesheet" href="style/fonts.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/layout.css">
 
   <!-- Scripts -->
-  <script src="../js/topnav.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="/js/topnav.js"></script>
 </head>
 
 <?php } ?>
