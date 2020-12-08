@@ -6,7 +6,8 @@
     <p>A <b>petfinder</b> website</p>
   </header>
 
-  <?php require '../templates/navbar.html'; ?>
+  <?php require '../includes/session.php'; ?>
+  <?php require '../templates/navbar.php'; ?>
 
   <div class="row">
     <div class="main">  
