@@ -3,23 +3,20 @@
 <body>
 	<?php require '../templates/navbar.html' ?>
 	<header>
-		<div class="profile-container">
+		<section class="profile-container">
 			<div class="profile">
 				<div class="profile-image">
-					<img class="w50" src="../assets/img/logo.png">
+					<img src="../assets/img/logo.png">
 				</div>
 
 				<div class="profile-user-settings">
 					<code class="profile-user-name">petnexus</code>
-					<button class="small-button profile-settings-button" aria-label="profile settings"><i class="fas fa-cog"
-							aria-hidden="true"></i></button>
-						<p><span class="profile-real-name">Pet Nexus Admin</span></p>
+					<button class="profile-settings-button" aria-label="profile settings"><i class="fas fa-edit" aria-hidden="true"></i></button>
+						<p class="profile-real-name">Pet Nexus Admin</p>
 				</div>
 
 			</div>
-			<!-- End of profile section -->
-		</div>
-		<!-- End of container -->
+		</section>
 	</header>
 
 	<main>
@@ -31,10 +28,8 @@
 						class="posts-image" alt="">
 					<div class="posts-item-info">
 						<ul>
-							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-									aria-hidden="true"></i> 15</li>
-							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-									aria-hidden="true"></i> 3</li>
+							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 15</li>
+							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
 						</ul>
 					</div>
 				</div>

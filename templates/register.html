@@ -1,0 +1,24 @@
+<button onclick="document.getElementById('register-popup').style.display='block'" class="navbar right">
+  <i class="fa fa-user-plus"></i> Register
+</button>
+<div id="register-popup" class="overlayLogin">
+  <form class="overlayLogin-content animate" action="register.php" method="post">
+    <div class="container top round">
+      <span onclick="document.getElementById('register-popup').style.display='none'" class="close"
+        title="close overlayLogin">&#10006;</span>
+    </div>
+
+    <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter username" name="username" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter password" name="password" required>
+      <button type="submit" class="login">Register</button>
+    </div>
+
+    <div class="container bottom round">
+      <button type="button" onclick="document.getElementById('register-popup').style.display='none'"
+        class="cancel-button">Back</button>
+    </div>
+  </form>
+</div>
