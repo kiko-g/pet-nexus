@@ -1,4 +1,12 @@
-<?php require '../templates/head.php'; default_head('Pet Nexus'); ?>
+<?php require '../includes/session.php'; ?>
+<?php require '../templates/head.php'; default_head('Pet Nexus');
+  
+  // Verify if user is logged in
+  if (isset($_SESSION['username'])){
+    die(header('Location: ../pages/profile.php'));
+  }
+
+?>
 
 <body>
   <header class="header">
@@ -6,7 +14,6 @@
     <p>A <b>petfinder</b> website</p>
   </header>
 
-  <?php require '../includes/session.php'; ?>
   <?php require '../templates/navbar.php'; ?>
 
   <div class="row">

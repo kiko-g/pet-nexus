@@ -1,7 +1,13 @@
-<?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets'); ?>
+<?php require_once '../includes/session.php'; ?>
+<?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets');
+
+// Verify if user is logged in
+if (!isset($_SESSION['username']))
+	die(header('Location: login.php'));
+?>
 
 <body>
-	<?php require '../templates/navbar.html' ?>
+	<?php require '../templates/navbar.php' ?>
 	<header>
 		<section class="grid-container">
 			<div class="profile">

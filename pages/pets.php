@@ -1,7 +1,8 @@
+<?php require_once '../includes/session.php'; ?>
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
-  <?php require '../templates/navbar.html' ?>
+  <?php require '../templates/navbar.php' ?>
   <article class="row"> <!-- row-padding -->
     <section class="left20">
     </section>

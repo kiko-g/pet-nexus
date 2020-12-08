@@ -1,5 +1,6 @@
+<?php require_once '../includes/session.php'; ?>
 <?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets'); ?>
-<?php require '../templates/navbar.html'; ?>
+<?php require '../templates/navbar.php'; ?>
 <body>
   <article class="row">
     <section class="page">

@@ -1,8 +1,9 @@
 <!-- if not logged in show login popup using require 'login.html' -->
+<?php require_once '../includes/session.php'; ?>
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
-	<?php require '../templates/navbar.html' ?>
+	<?php require '../templates/navbar.php' ?>
 	<section class="grid-container">
 		<div class="posts row-padding">
 			<div class="posts-item" tabindex="0">

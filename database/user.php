@@ -43,11 +43,6 @@
 			return;
 		}
 
-		if(strlen($password) < 8){
-			echo json_encode(['errors' => 'Password must have at least 8 chars']);
-			return;
-		}
-
 		$stmt = $dbc->prepare('SELECT * FROM users WHERE username = ?');
 		$stmt->execute(array($username));
 		$user = $stmt->fetch();

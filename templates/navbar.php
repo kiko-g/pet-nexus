@@ -1,6 +1,8 @@
 <nav class="topnav" id="topnavbar">
   <a href="../index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
-  <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
+  <?php if (isset($_SESSION['username'])) { ?>
+    <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
+  <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
   <a href="../pages/foundpet.php" class="navbar"> <i class="fas fa-child"></i> Found a pet! </a>
 
@@ -13,7 +15,7 @@
     <i class="fa fa-user-plus"></i> Register
   </button>
   <div id="register-popup" class="overlayLogin">
-    <form class="overlayLogin-content animate" action="" method="post">
+    <form class="overlayLogin-content animate" action="../actions/action_register.php" method="post">
         <div id="register-popup-errors" style="background-color:red">
         </div>
       <div class="container">
@@ -37,7 +39,7 @@
   </button>
   <div id="login-popup" class="overlayLogin">
 
-    <form class="overlayLogin-content animate" action="" method="post">
+    <form class="overlayLogin-content animate" action="../actions/action_login.php" method="post">
       <div class="container top round">
         <div id="login-popup-errors" style="background-color:red">
         </div>
@@ -68,13 +70,13 @@
   </div>
 
   <?php } else { ?>
-	  <button onclick="fetch('/actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
+	  <button onclick="fetch('../actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
 	    <i class="fa fa-users-slash"></i> Logout
 	  </button>
 	  <a href="../pages/favorites.php" class=" a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
 
   <?php } ?>
-  <a href="../pages/seatch.php" class=" a-search right"> <i class="fa fa-search"> </i> Search </a>
+  <a href="../pages/search.php" class=" a-search right"> <i class="fa fa-search"> </i> Search </a>
   <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
 </nav>
 
@@ -93,7 +95,7 @@
 				let children = document.querySelectorAll(`#${type} input`);
 				console.dir(children);
 				let action = 'action_'+type.split('-')[0];
-				fetch(`/actions/${action}.php`, {
+				fetch(`../actions/${action}.php`, {
 					method:'POST',
 					headers: {
 						'Accept': 'application/json',
