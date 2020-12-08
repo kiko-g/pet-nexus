@@ -8,6 +8,6 @@
 	$json = file_get_contents('php://input');
 	$data = json_decode($json, true);
 
-	login_user($data['username'], $data['password']);
+	login_user($data['username'], $data['password'], $data['remember']);
 
 ?>

@@ -1,9 +1,30 @@
 <?php
 	
+	require('../database/db_class.php');
+
+	function clear_expired_tokens(){
+		$dbc = Database::instance()->db();
+		$delete = $dbc->prepare('DELETE FROM auth_tokens WHERE expires>CURRENT_TIMESTAMP');
+		$delete->execute();
+	}
+
+	function create_user_cookie($id){
+		$conn = Database::instance()->db();
+
+		$selector = base64_encode(random_bytes(16));
+		$validator = base64_encode(random_bytes(32));
+
+
+		$stmt = $conn->prepare('INSERT INTO auth_tokens(selector, hashed_validator, user_id) VALUES(?,?,?)');
+		$stmt->execute(array($selector, password_hash($validator, PASSWORD_DEFAULT, ['cost' => 12]), $id));
+
+		return $selector . ':' . $validator;
+	}
 
 	function create_user($username, $password){
 
-		global $dbc;
+		$dbc = Database::instance()->db();
+		clear_expired_tokens();
 
 		header('Content-Type: application/json');
 
@@ -31,9 +52,11 @@
 		}
 	}
 
-	function login_user($username, $password){
+	function login_user($username, $password, $remember){
 
-		global $dbc;
+		$dbc = Database::instance()->db();
+
+		clear_expired_tokens();
 
 		header('Content-Type: application/json');
 
@@ -49,6 +72,7 @@
 
 		if($user !== false && password_verify($password, $user['password'])){
 			$_SESSION['username'] = $username;
+			setcookie('auth', create_user_cookie($user['id']), time()+(3600*24*30));
 			echo json_encode(['status' => 'success']);
 			return;
 		}

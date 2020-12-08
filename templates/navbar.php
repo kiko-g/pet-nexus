@@ -101,7 +101,7 @@
 						'Accept': 'application/json',
 						'Content-Type': 'application/json',
 					},
-					body: JSON.stringify({'username': children[0].value, 'password':children[1].value})
+						body: JSON.stringify({'username': children[0].value, 'password':children[1].value, 'remember': children.length == 3 ? (children[2].value == "on") : false })
 				}).then((text) => {
 					return text.json();
 					
