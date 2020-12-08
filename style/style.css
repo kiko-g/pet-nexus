@@ -150,7 +150,6 @@ footer .footer-icons a:active {
 /* Footer left */
 footer .footer-left {
   width: 20%;
-  border-right: 1px solid dimgray;
 }
 
 footer .footer-left img {
@@ -160,7 +159,7 @@ footer .footer-left img {
 /* Footer Center */
 footer .footer-center {
   width: 50%;
-  border-right: 1px solid dimgray;
+  border-right: 1px solid #444;
 }
 
 /* Footer Right */

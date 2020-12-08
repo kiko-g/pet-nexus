@@ -10,7 +10,7 @@
       <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
-            <img src="/assets/img/dog.jpg" class="display-pet">
+            <img src="../assets/img/dog.jpg" class="display-pet">
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>
@@ -24,7 +24,7 @@
       <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
-            <img src="/assets/img/dog.jpg" class="display-pet">
+            <img src="../assets/img/dog.jpg" class="display-pet">
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>          
@@ -38,7 +38,7 @@
       <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
-            <img src="/assets/img/dog.jpg" class="display-pet">
+            <img src="../assets/img/dog.jpg" class="display-pet">
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>
@@ -52,7 +52,7 @@
       <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
-            <img src="/assets/img/dog.jpg" class="display-pet">
+            <img src="../assets/img/dog.jpg" class="display-pet">
             <div class="display-topleft display-hover">
               <button class="button-heart"><i class="fa fa-heart"></i></button>
             </div>

@@ -26,15 +26,9 @@ function default_head($title) { ?>
   <link rel="stylesheet" href="../style/style.css">
   <link rel="stylesheet" href="../style/layout.css">
 
-  <link rel="stylesheet" href="style/nav.css">
-  <link rel="stylesheet" href="style/user.css">
-  <link rel="stylesheet" href="style/fonts.css">
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/layout.css">
-
   <!-- Scripts -->
-  <script src="/js/login.js"></script>
-  <script src="/js/topnav.js"></script>
+  <script src="../js/login.js"></script>
+  <script src="../js/topnav.js"></script>
 </head>
 
 <?php } ?>
