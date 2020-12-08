@@ -1,4 +1,4 @@
-<?php require '../templates/head.html' ?>
+<?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets'); ?>
 
 <body>
 	<?php require '../templates/navbar.html' ?>
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 	</main>
-	<?php require '../templates/footer.html' ?>
+	<?php require '../templates/footer.html'; ?>
 </body>
 
 </html>
