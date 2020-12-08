@@ -14,7 +14,7 @@
 
 /* Create 2 columns that sit next to each other */
 /* Left column */
-.side {
+.left20 {
   flex: 20%;
   -ms-flex: 20%;
   background-color: #e1e1e1;
@@ -22,12 +22,21 @@
   /* border-bottom: 1px dotted #555; */
 }
 
-/* Main column */
-.main {
+/* Right column */
+.right80 {
   flex: 80%;
   -ms-flex: 80%;
   background-color: #f1f1f1;
   padding: 20px;
+  /* border-bottom: 1px dotted #bbb; */
+}
+
+/* Main column */
+.main {
+  flex: 100%;
+  -ms-flex: 100%;
+  background-color: #eee;
+  padding: 20px 0;
   /* border-bottom: 1px dotted #bbb; */
 }
 
@@ -80,7 +89,7 @@
 }
 
 .container {
-  padding: 0 30px 10px 30px;
+  padding: 0 20px 10px 20px;
 }
 
 .container.top {

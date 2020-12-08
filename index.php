@@ -9,11 +9,8 @@
   <?php require 'templates/navbar.html'; ?>
 
   <div class="row">
-    <div class="side">
-    </div>
-
     <div class="main">  
-      <div class="col w25 w50">
+        <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
             <img src="assets/img/dog.jpg" class="display-pet">

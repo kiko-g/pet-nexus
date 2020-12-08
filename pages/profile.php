@@ -3,7 +3,7 @@
 <body>
 	<?php require '../templates/navbar.html' ?>
 	<header>
-		<section class="profile-container">
+		<section class="grid-container">
 			<div class="profile">
 				<div class="profile-image">
 					<img src="../assets/img/logo.png">
@@ -19,8 +19,8 @@
 		</section>
 	</header>
 
-	<main>
-		<div class="profile-container">
+	<section>
+		<div class="grid-container">
 			<h1>Pet Listings</h1>
 			<div class="posts">
 				<div class="posts-item" tabindex="0">
@@ -74,7 +74,7 @@
 				</div>				
 			</div>
 		</div>
-	</main>
+	</section>
 	<?php require '../templates/footer.html'; ?>
 </body>
 

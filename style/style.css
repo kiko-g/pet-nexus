@@ -78,6 +78,11 @@ img.avatar {
   width: 50%;
 }
 
+.w20,
+.col.w20 {
+  width: 20%;
+}
+
 /* HEADER */
 .header {
   padding: 8em 2em;
@@ -115,6 +120,7 @@ footer {
   width: 100%;
   text-align: left;
   padding: 1em;
+  margin-top: 20%;
 }
 
 footer .footer-website-name {

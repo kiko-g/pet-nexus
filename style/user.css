@@ -9,14 +9,14 @@ input[type=password] {
   box-sizing: border-box;
 }
 
-.profile-container {
+.grid-container {
   padding: 1em;
   max-width: auto;
   margin: 0 auto;
   padding: 0 2em;
 }
 
-.profile-container>h1 {
+.grid-container>h1 {
   text-align: center;
   color: darkslategray;
   margin-top: 0px;
@@ -51,19 +51,11 @@ input[type=password] {
   animation: animatezoom 0.6s
 }
 
-@-webkit-keyframes animatezoom {
-  from {
-    -webkit-transform: scale(0)
-  }
 
-  to {
-    -webkit-transform: scale(1)
-  }
-}
 
 @keyframes animatezoom {
   from {
-    transform: scale(0)
+    transform: scale(0.5)
   }
 
   to {

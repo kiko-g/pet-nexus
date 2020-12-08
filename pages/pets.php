@@ -3,10 +3,10 @@
 <body>
   <?php require '../templates/navbar.html' ?>
   <article class="row"> <!-- row-padding -->
-    <section class="side">
+    <section class="left20">
     </section>
 
-    <section class="main">
+    <section class="right80">
       <div class="col w25 w50">
         <div class="container">
           <div class="inside-container">
