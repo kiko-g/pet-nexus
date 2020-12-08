@@ -13,7 +13,7 @@
 
 
 
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['id'])){
 
 		if(isset($_COOKIE['auth'])){
 			restore_session($_COOKIE['auth']);

@@ -44,7 +44,13 @@
 			$stmt = $dbc->prepare('INSERT INTO users(username, password) VALUES (?, ?)');
 			$stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT, $options)));
 
-			$_SESSION['username'] = $username;
+			$stmt_id = $dbc->prepare('SELECT id FROM users WHERE username = ?');
+			$stmt_id->execute(array($username));
+
+			$user_id = $stmt_id->fetch()['id'];
+
+
+			$_SESSION['id'] = $user_id;
 			echo json_encode(['status' => 'success']);
 		}
 		catch(PDOexception $e){
@@ -71,7 +77,7 @@
 		$user = $stmt->fetch();
 
 		if($user !== false && password_verify($password, $user['password'])){
-			$_SESSION['username'] = $username;
+			$_SESSION['id'] = $user['id'];
 
 
 			$orig_path = $_SERVER['PHP_SELF'];
@@ -101,13 +107,13 @@
 			$selector = $elements[0];
 			$validator = $elements[1];
 
-			$stmt = $dbc->prepare('SELECT hashed_validator, username FROM auth_tokens LEFT JOIN users ON users.id=auth_tokens.user_id WHERE expires > CURRENT_TIMESTAMP AND selector = ?');
+			$stmt = $dbc->prepare('SELECT hashed_validator, username, user_id  FROM auth_tokens JOIN users ON users.id=auth_tokens.user_id WHERE expires > CURRENT_TIMESTAMP AND selector = ?');
 			$stmt->execute(array($selector));
 			$auth_token = $stmt->fetch();
 
 
 			if($auth_token !== false && password_verify($validator, $auth_token['hashed_validator'])){
-				$_SESSION['username'] = $auth_token['username'];
+				$_SESSION['id'] = $auth_token['user_id'];
 			}
 			else{
 				$delete = $dbc->prepare('DELETE FROM auth_tokens WHERE selector = ?');
