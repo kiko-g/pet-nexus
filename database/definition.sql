@@ -20,7 +20,8 @@ CREATE TABLE pets (
     pet_name VARCHAR,
     pet_type VARCHAR NOT NULL,
     pet_color VARCHAR,
-    is_adopted INTEGER NOT NULL CHECK (is_adopted = 0 OR is_adopted = 1)
+    is_adopted INTEGER NOT NULL CHECK (is_adopted = 0 OR is_adopted = 1),
+    pet_photo VARCHAR
 );
 
 DROP TABLE IF EXISTS  adopted_pets;
@@ -34,5 +35,20 @@ DROP TABLE IF EXISTS  pets_for_adoption;
 CREATE TABLE pets_for_adoption (
     for_adoption_id INTEGER PRIMARY KEY,
     pet_id INTEGER,
+    user_id VARCHAR NOT NULL REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS  likes;
+CREATE TABLE likes (
+    like_id INTEGER PRIMARY KEY,
+    for_adoption_id INTEGER NOT NULL,
+    user_id VARCHAR NOT NULL REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS  comments;
+CREATE TABLE comments (
+    comments_id INTEGER PRIMARY KEY,
+    for_adoption_id INTEGER NOT NULL,
+    content VARCHAR NOT NULL,
     user_id VARCHAR NOT NULL REFERENCES users(id)
 );
