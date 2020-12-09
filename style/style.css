@@ -88,7 +88,7 @@ img.avatar {
   padding: 8em 2em;
   text-align: left;
   background: #008877;
-  background-image: url('/assets/img/header.jpg');
+  background-image: url('../assets/img/header.jpg');
   width: 100%;
   background-size: cover;
   background-position: center top;

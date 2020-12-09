@@ -51,6 +51,7 @@
 
 
 			$_SESSION['id'] = $user_id;
+			$_SESSION['username'] = $username;
 			echo json_encode(['status' => 'success']);
 		}
 		catch(PDOexception $e){
@@ -78,7 +79,7 @@
 
 		if($user !== false && password_verify($password, $user['password'])){
 			$_SESSION['id'] = $user['id'];
-
+			$_SESSION['username'] = $user['username'];
 
 			$orig_path = $_SERVER['PHP_SELF'];
 			$orig_path_parts = explode('/', $orig_path);

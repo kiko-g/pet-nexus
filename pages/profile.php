@@ -7,6 +7,10 @@ if (!isset($_SESSION['id']))
 ?>
 
 <body>
+	<header class="header">
+    	<h1>Pet Nexus</h1>
+    	<p>A <b>petfinder</b> website</p>
+  	</header>
 	<?php require '../templates/navbar.php' ?>
 	<header>
 		<section class="grid-container">
@@ -16,7 +20,7 @@ if (!isset($_SESSION['id']))
 				</div>
 
 				<div class="profile-user-settings">
-					<code class="profile-user-name">petnexus</code>
+					<code class="profile-user-name"> <?=$_SESSION['username']?> </code>
 					<button class="profile-settings-button" aria-label="profile settings"><i class="fas fa-edit" aria-hidden="true"></i></button>
 						<p class="profile-real-name">Pet Nexus Admin</p>
 				</div>
@@ -29,9 +33,37 @@ if (!isset($_SESSION['id']))
 		<div class="grid-container">
 			<h1>Pet Listings</h1>
 			<div class="posts">
+
+				<?php
+				
+					require_once("../database/connection.php");
+					$stmt = $dbc->prepare("SELECT * FROM pets_for_adoption WHERE id = ?");
+					$stmt->execute(array($_SESSION['id']));
+					$pets = $stmt->fetchAll();
+					foreach ($pets as $pet) { 
+						
+						$stmt1 = $dbc->prepare("SELECT * FROM pets WHERE pet_id = ?");
+						$stmt1->execute(array($pet['pet_id']));
+						$pet_details = $stmt1->fetch();
+						
+						?>
+					
+						<div class="posts-item" tabindex="0">
+							<img src="<?= $pet_details['pet_photo'] ?>"
+							class="posts-image" alt="">
+							<div class="posts-item-info">
+								<ul>
+									<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 15</li>
+									<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
+								</ul>
+							</div>
+						</div> <?php
+					}
+				
+				?>
+
 				<div class="posts-item" tabindex="0">
-					<img src="../assets/img/dog.jpg"
-						class="posts-image" alt="">
+					<img src="../assets/img/dog.jpg" class="posts-image" alt="">
 					<div class="posts-item-info">
 						<ul>
 							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 15</li>

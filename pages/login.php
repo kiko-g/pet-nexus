@@ -1,10 +1,6 @@
 <?php require '../includes/session.php'; ?>
 <?php require '../templates/head.php'; default_head('Pet Nexus');
   
-  // Verify if user is logged in
-  if (isset($_SESSION['id'])){
-    die(header('Location: ../pages/profile.php'));
-  }
 
 ?>
 

@@ -2,6 +2,10 @@
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
+  <header class="header">
+  	<h1>Pet Nexus</h1>
+  	<p>A <b>petfinder</b> website</p>
+  </header>
   <?php require '../templates/navbar.php' ?>
   <article class="row"> <!-- row-padding -->
     <section class="left20">
