@@ -19,34 +19,15 @@
   <button onclick="document.getElementById('register-popup').style.display='block'" class="navbar right">
     <i class="fa fa-user-plus"></i> Register
   </button>
-  <div id="register-popup" class="overlayLogin">
-    <form class="overlayLogin-content animate" action="../actions/action_register.php" method="post">
+<?php
 
+       $fields = new FormCreator('register-popup', '../actions/action_register.php', true);
+       $fields->add_text_input("username", "Username", "text", "Enter username", true);
+       $fields->add_text_input("password", "Password", "password", "Enter password", true);
 
-      <div class="container top round">
-        <div id="register-popup-errors" style="background-color:red">
-        </div>
+       $fields->inline();
 
-        <span onclick="document.getElementById('register-popup').style.display='none'" class="close"
-          title="close overlayLogin">&#10006;</span>
-      </div>
-
-      <div class="container">
-	
-	<?php
-	       $username_field = new FormTextInput("username", "Cona", "text", "Enter username", true);
-	       echo $username_field->to_str();
-	?>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter password" name="password" required>
-        <button type="submit" class="login">Register</button>
-      </div>
-      <div class="container bottom">
-        <button type="button" onclick="document.getElementById('register-popup').style.display='none'"
-          class="cancel-button">Back</button>
-      </div>
-    </form>
-  </div>
+?>
   <!-- LOGIN -->
   <button onclick="document.getElementById('login-popup').style.display='block'" class="navbar right">
     <i class="fa fa-sign-in"></i> Login
@@ -142,8 +123,6 @@
 
 
 	
-	registerListener('login-popup');
-	registerListener('register-popup');
 
 
 </script>
