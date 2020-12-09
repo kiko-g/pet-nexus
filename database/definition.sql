@@ -20,6 +20,7 @@ CREATE TABLE pets (
     pet_name VARCHAR,
     pet_type VARCHAR NOT NULL,
     pet_color VARCHAR,
+    pet_description VARCHAR,
     is_adopted INTEGER NOT NULL CHECK (is_adopted = 0 OR is_adopted = 1),
     pet_photo VARCHAR
 );

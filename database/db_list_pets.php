@@ -6,7 +6,7 @@
    */
   function getUserAdoptedPets($username) {
     
-    global $dbc;
+    $dbc = Database::instance()->db();
     $stmt = $dbc->prepare('SELECT * FROM adopted_pets WHERE username = ?');
     $stmt->execute(array($username));
     return $stmt->fetchAll(); 
@@ -17,7 +17,7 @@
    */
   function getUserPetsForAdoption($username) {
     
-    global $dbc;
+    $dbc = Database::instance()->db();
     $stmt = $dbc->prepare('SELECT * FROM pets_for_adoption WHERE username = ?');
     $stmt->execute(array($username));
     return $stmt->fetchAll(); 
@@ -28,7 +28,7 @@
    */
   function insertFoundPet($pet_name, $pet_type, $pet_color, $pet_description, $pet_photo) {
     
-    global $dbc;
+    $dbc = Database::instance()->db();
 
     $stmt1 = $dbc->prepare('INSERT INTO pets VALUES(NULL, ?, ?, ?, ?, 0, ?)');
     $stmt1->execute(array($pet_name, $pet_type, $pet_color, $pet_description, $pet_photo));

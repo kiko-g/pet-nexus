@@ -1,7 +1,6 @@
 <?php
 
 	include_once('../includes/session.php');
-	include_once('../database/connection.php');
     include_once('../database/db_list_pets.php');
     
     if (!isset($_POST['submit']))

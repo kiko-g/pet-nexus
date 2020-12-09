@@ -36,8 +36,9 @@ if (!isset($_SESSION['id']))
 
 				<?php
 				
-					require_once("../database/connection.php");
-					$stmt = $dbc->prepare("SELECT * FROM pets_for_adoption WHERE id = ?");
+					require_once("../database/db_class.php");
+					$dbc = Database::instance()->db();
+					$stmt = $dbc->prepare("SELECT * FROM pets_for_adoption WHERE user_id = ?");
 					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
 					foreach ($pets as $pet) { 
