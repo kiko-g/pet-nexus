@@ -17,8 +17,8 @@
 
 
 
-    function add_text_input($name, $label = "Label", $type = "text", $placeholder="", $required = true, $value = NULL, $pattern = NULL){
-	    array_push($this->elements, new FormTextInput($name, $label, $type, $placeholder, $required, $value, $pattern));
+    function add_input($name, $label = "Label", $type = "text", $placeholder="", $required = true, $value = NULL, $pattern = NULL){
+	    array_push($this->elements, new FormInput($name, $label, $type, $placeholder, $required, $value, $pattern));
     }
 
 
@@ -101,7 +101,6 @@
 				}
 
 			}
-			console.dir(body);
 
 			let errorzone = document.getElementById('<?= $this->id ?>-errors');
 			errorzone.innerHTML = '';
@@ -151,7 +150,7 @@
 	  abstract function to_str();
   }
 
-  class FormTextInput extends FormElement{
+  class FormInput extends FormElement{
     
     private $name = NULL;
     private $label = NULL;
@@ -176,11 +175,25 @@
 
 
     function to_str(){
+	    if($this->type !== "checkbox"){
+
 ?>
 	<label for="<?= $this->name ?>"><b><?= $this->label ?></b></label>
+	<?php } ?>
 	<input type="<?= $this->type ?>" placeholder="<?= $this->placeholder ?>" name="<?= $this->name ?>" 
 	<?php echo (!is_null($this->value) ? 'value="'.$this->value.'" ' : ''); ?> <?php echo ($this->required ? 'required' : ''); ?> >
-<?php
+
+	<?php
+	    if($this->type == "checkbox"){
+?>
+		<label for="<?= $this->name ?>"><b><?= $this->label ?></b></label>
+
+		
+
+		<?php
+	    }
+
+
     }
 
 

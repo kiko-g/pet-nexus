@@ -21,48 +21,25 @@
   </button>
 <?php
 
-       $fields = new FormCreator('register-popup', '../actions/action_register.php', true);
-       $fields->add_text_input("username", "Username", "text", "Enter username", true);
-       $fields->add_text_input("password", "Password", "password", "Enter password", true);
+       $register_form = new FormCreator('register-popup', '../actions/action_register.php', true);
+       $register_form->add_input("username", "Username", "text", "Enter username", true);
+       $register_form->add_input("password", "Password", "password", "Enter password", true);
 
-       $fields->inline();
+       $register_form->inline();
 
 ?>
   <!-- LOGIN -->
   <button onclick="document.getElementById('login-popup').style.display='block'" class="navbar right">
     <i class="fa fa-sign-in"></i> Login
   </button>
-  <div id="login-popup" class="overlayLogin">
+	<?php
+	       $login_form = new FormCreator('login-popup', '../actions/action_login.php', true);
+	       $login_form->add_input("username", "Username", "text", "Enter username", true);
+	       $login_form->add_input("password", "Password", "password", "Enter password", true);
+	       $login_form->add_input("remember", "Remember Me", "checkbox", NULL, false);
+	       $login_form->inline();
 
-    <form class="overlayLogin-content animate" action="../actions/action_login.php" method="post">
-      <div class="container top round">
-        <div id="login-popup-errors" style="background-color:red">
-        </div>
-
-        <span onclick="document.getElementById('login-popup').style.display='none'" class="close"
-          title="close overlayLogin">&#10006;</span>
-      </div>
-
-      <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter username" name="username" required>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter password" name="password" required>
-        <button type="submit" class="login">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember">
-          Remember me
-        </label>
-      </div>
-
-      <div class="container bottom round">
-        <button type="button" onclick="document.getElementById('login-popup').style.display='none'"
-          class="cancel-button">Back
-        </button>
-        <a href="../assets/img/dog.jpg" class="loginLink"> Forgot Password</a>
-      </div>
-    </form>
-  </div>
+	?>
 
   <?php } else { ?>
 	  <button onclick="fetch('../actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
