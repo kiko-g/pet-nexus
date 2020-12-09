@@ -1,3 +1,7 @@
+<?php
+
+	include_once('../includes/form_creator.php');
+?>
 <nav class="topnav" id="topnavbar">
   <a href="../index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
   <?php if (isset($_SESSION['id'])) { ?>
@@ -5,6 +9,7 @@
   <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
   <a href="../pages/foundpet.php" class="navbar"> <i class="fas fa-child"></i> Found a pet! </a>
+  <div style="display:none" id="csrf_token"> <?= $_SESSION['csrf'] ?> </div>
 
   <?php 
        if(!isset($_SESSION['id'])){
@@ -16,13 +21,22 @@
   </button>
   <div id="register-popup" class="overlayLogin">
     <form class="overlayLogin-content animate" action="../actions/action_register.php" method="post">
+
+
+      <div class="container top round">
         <div id="register-popup-errors" style="background-color:red">
         </div>
-      <div class="container">
+
         <span onclick="document.getElementById('register-popup').style.display='none'" class="close"
-          title="Close Login Overlay"> &#10006;</span>
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter username" name="username" required>
+          title="close overlayLogin">&#10006;</span>
+      </div>
+
+      <div class="container">
+	
+	<?php
+	       $username_field = new FormTextInput("username", "Cona", "text", "Enter username", true);
+	       echo $username_field->to_str();
+	?>
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter password" name="password" required>
         <button type="submit" class="login">Register</button>
