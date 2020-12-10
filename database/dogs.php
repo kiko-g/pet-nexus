@@ -24,23 +24,15 @@
   }
 
   /**
-   * Inserts a new found pet for adoption into the database.
+   * Inserts a new pet for adoption into the database.
    */
-  function insertFoundPet($pet_name, $pet_type, $pet_color, $pet_description, $pet_photo) {
+  function insert_pet($form, $file_name) {
     
+	error_log($file_name);
     $dbc = Database::instance()->db();
 
-    $stmt1 = $dbc->prepare('INSERT INTO pets VALUES(NULL, ?, ?, ?, ?, 0, ?)');
-    $stmt1->execute(array($pet_name, $pet_type, $pet_color, $pet_description, $pet_photo));
+    $stmt1 = $dbc->prepare('INSERT INTO dogs(user_id, listing_name, listing_description, listing_picture) VALUES(?, ?, ?, ?)');
+    $stmt1->execute(array($_SESSION['id'], $form['listing_name'], $form['listing_description'], $file_name));
 
-    $stmt2 = $dbc->prepare("SELECT * FROM pets WHERE pet_photo = ?");
-    $stmt2->execute(array($pet_photo));
-    $pet = $stmt2->fetch();
-    $pet_id = $pet['pet_id'];
-
-    $stmt3 = $dbc->prepare('INSERT INTO pets_for_adoption VALUES(NULL, ?, ?)');
-    $stmt3->execute(array($pet_id, $_SESSION['id']));
-    
-    
   }
   

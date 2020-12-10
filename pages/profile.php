@@ -57,14 +57,11 @@ $username = $stmt->fetch()['username'];
 
 				<?php
 				
-					$stmt = $dbc->prepare("SELECT pets_for_adoption.* FROM pets_for_adoption JOIN users ON pets_for_adoption.user_id=id WHERE users.username = ?");
-					$stmt->execute(array($username));
+					$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
+					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
+					error_log(print_r($pets, true));
 					foreach ($pets as $pet) { 
-						
-						$stmt1 = $dbc->prepare("SELECT * FROM pets WHERE pet_id = ?");
-						$stmt1->execute(array($pet['pet_id']));
-						$pet_details = $stmt1->fetch();
 						
 						?>
 					

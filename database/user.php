@@ -139,15 +139,12 @@
 		$elements = explode(':', $cookie);
 
 		if(count($elements) == 2){
-
 			$dbc = Database::instance()->db();
 			$selector = $elements[0];
 			$delete = $dbc->prepare('DELETE FROM auth_tokens WHERE selector = ?');
 			$delete->execute(array($selector));
 			setcookie('auth', '', 0);
 		}
-
-
 	}
 
 	function change_user_creds($data){

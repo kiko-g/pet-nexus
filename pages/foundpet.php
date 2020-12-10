@@ -18,15 +18,30 @@ if (!isset($_SESSION['id']))
   </article>
 
 
+<div class="container" style="background-color:red">
+	
+<?php
+	foreach($_SESSION['errors'] as $error){
+?>
+	<?= $error ?><br>
+<?php
+	}
+	unset($_SESSION['errors']);
+
+?>
+
+
+</div>
+
 	<?php
 		$submit = new FormCreator('new-pet', '../actions/action_insert_pet.php', true, false, false, 'multipart/form-data');
 		
-		$submit->add_input('pet_name', 'Pet\'s Name', 'text', 'Name', true, NULL, NULL);
-		$submit->add_input('pet_description', 'Description', 'text', 'Description', true, NULL, NULL);
-		$submit->add_input('pet_color', 'Color', 'text', 'Color', true, NULL, NULL);
-		$submit->add_select('pet_type', 'Pet\'s Type', array('dog' => 'Dog', 'cat' => 'Cat'));
-		$submit->add_input('file', 'Pet\'s Photo', 'file', NULL, true, NULL, NULL);
+		$submit->add_input('listing_name', 'Listing Name', 'text', 'Name', true, $_SESSION['listing_name'], NULL);
+		$submit->add_input('listing_description', 'Description', 'text', 'Description', true, $_SESSION['listing_description'], NULL);
+		$submit->add_input('listing_picture', 'Pet\'s Photo', 'file', NULL, true, NULL, NULL);
 		$submit->inline();
+		unset($_SESSION['listing_name']);
+		unset($_SESSION['listing_description']);
 
 	?>
 

@@ -1,53 +1,57 @@
 <?php
 
 	include_once('../includes/session.php');
-    include_once('../database/db_list_pets.php');
+	include_once('../database/dogs.php');
     
-    if (!isset($_POST['submit']))
-        die(header('Location: foundpet.php'));
+    error_log(print_r($_FILES, true));
+    error_log(print_r($_POST, true));
 
-    $pet_photo = '../assets/img/no_image.png';
+    function generate_random_name($file_ext){
+	return '../assets/user/' . bin2hex(openssl_random_pseudo_bytes(32)) . '.' . $file_ext;
+    }
 
-    if (isset($_FILES['file'])) {
-        $file = $_FILES['file'];
-    
-        $fileName = $file['name'];
-        $fileTmpName = $file['tmp_name'];
-        $fileSize = $file['size'];
-        $fileError = $file['error'];
-        $fileType = $file['type'];
+    function generate_filename($file_ext){
+	    $res = generate_random_name($file_ext);
+
+	    while(file_exists($res)){
+		    $res = generate_random_name($file_ext);
+	    }
+	    return $res;
+    }
+
+    if (isset($_FILES['listing_picture'])) {
+        $file = $_FILES['listing_picture'];
   
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+
+        $file_name_parts = explode('.', $file['name']);
+        $file_ext = strtolower(end($file_name_parts));
     
         $allowed = array('jpg', 'jpeg', 'png');
     
-        if(in_array($fileActualExt, $allowed)) {
-          if ($fileError === 0){
-            if ($fileSize < 500000){
-              $fileName = uniqid('', true) . "." . $fileActualExt;
-              $fileDestination = '../assets/img/' . $fileName;
-              move_uploaded_file($fileTmpName, $fileDestination);
+        if(in_array($file_ext, $allowed)) {
+            if ($file['size'] < 500000){
+              $dog_photo = generate_filename($file_ext);
+              move_uploaded_file($file['tmp_name'], $dog_photo);
   
-              global $pet_photo;
-              $pet_photo = $fileDestination;
-            } else {
-    
+		insert_pet($_POST, $dog_photo);
+		header('Location: ../pages/profile.php');
+		return;
             }
-          } else {
-    
-            }
-        } else {
- 
+	    else{
+		$_SESSION['errors'] = array('File size is too big');
+	    }
         }
+	else{
+		$_SESSION['errors'] = array('Wrong extension');
+	}
     }
+    else{
+		$_SESSION['errors'] = array('Forgot to put picture');
+    }
+    	
+    	
+    	$_SESSION['listing_name'] = $_POST['listing_name'];
+    	$_SESSION['listing_description'] = $_POST['listing_description'];
+	header('Location: ../pages/foundpet.php');
 
-    $pet_name = ($_POST['pet_name'] == "") ? 'No Name' : $_POST['pet_name'];
-    $pet_type = $_POST['pet_type'];
-    $pet_color = ($_POST['pet_color'] == "") ? 'Unknown Color' : $_POST['pet_color'];
-    $pet_description = ($_POST['pet_description'] == "") ? 'No additional details' : $_POST['pet_description'];
-
-    insertFoundPet($pet_name, $pet_type, $pet_color, $pet_description, $pet_photo);
-
-    header('Location: ../pages/profile.php');
 ?>
