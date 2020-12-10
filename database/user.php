@@ -51,7 +51,6 @@
 
 
 			$_SESSION['id'] = $user_id;
-			$_SESSION['username'] = $username;
 			echo json_encode(['status' => 'success']);
 		}
 		catch(PDOexception $e){
@@ -79,7 +78,6 @@
 
 		if($user !== false && password_verify($password, $user['password'])){
 			$_SESSION['id'] = $user['id'];
-			$_SESSION['username'] = $user['username'];
 
 			$orig_path = $_SERVER['PHP_SELF'];
 			$orig_path_parts = explode('/', $orig_path);
@@ -148,6 +146,65 @@
 			$delete->execute(array($selector));
 			setcookie('auth', '', 0);
 		}
+
+
+	}
+
+	function change_user_creds($data){
+
+		header('Content-Type: application/json');
+		if ( !preg_match ("/^[a-zA-Z0-9]+$/", $data['username'])) {
+			echo json_encode(['errors' => 'Username is using invalid characters']);
+			return;
+		}
+
+		$new_password_len = strlen($data['new_password']);
+		if($new_password_len > 0 && $new_password_len < 8){
+			echo json_encode(['errors' => 'Password must have at least 8 chars']);
+			return;
+		}
+
+		$dbc = Database::instance()->db();
+		$stmt = $dbc->prepare('SELECT username, password, id FROM users WHERE id = ?');
+		$stmt->execute(array($_SESSION['id']));
+		$user = $stmt->fetch();
+
+		if($user !== false && password_verify($data['old_password'], $user['password'])){
+
+			$dbc->beginTransaction();
+
+
+			try{
+
+				$stmt = NULL;
+
+				if($new_password_len == 0){
+					$stmt = $dbc->prepare('UPDATE users SET username = ? WHERE id = ?');
+					$stmt->execute(array($data['username'], $_SESSION['id']));
+				}
+				else{
+					$stmt = $dbc->prepare('UPDATE users SET username = ? , password = ? WHERE id = ?');
+					$stmt->execute(array($data['username'], password_hash($data['new_password'], PASSWORD_DEFAULT, ['cost' => 12]), $_SESSION['id']));
+				}
+
+
+				$dbc->commit();
+
+
+			}
+			catch(PDOexception $e){
+				$dbc->rollback();
+				echo json_encode(['errors' => 'You goofed']);
+				return;
+			}
+
+
+
+
+			echo json_encode(['status' => 'success']);
+			return;
+		}
+		echo json_encode(['errors' => 'Old password is invalid']);
 
 
 	}

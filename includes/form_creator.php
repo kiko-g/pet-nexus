@@ -188,8 +188,6 @@
 	    $this->required = $required;
 	    $this->pattern = $pattern;
 	    $this->value = $value;
-	    error_log($value);
-	    error_log($this->value);
     }
 
 

@@ -2,8 +2,19 @@
 <?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets');
 
 // Verify if user is logged in
-if (!isset($_SESSION['id']))
+if (!isset($_SESSION['id'])){
 	die(header('Location: login.php'));
+}
+
+
+
+require_once("../database/db_class.php");
+$dbc = Database::instance()->db();
+$stmt = $dbc->prepare('SELECT username FROM users WHERE id = ?');
+$stmt->execute(array($_SESSION['id']));
+
+$username = $stmt->fetch()['username'];
+
 ?>
 
 <body>
@@ -20,10 +31,20 @@ if (!isset($_SESSION['id']))
 				</div>
 
 				<div class="profile-user-settings">
-					<code class="profile-user-name"> <?=$_SESSION['username']?> </code>
-					<button class="profile-settings-button" aria-label="profile settings"><i class="fas fa-edit" aria-hidden="true"></i></button>
+					<code class="profile-user-name"> <?=$username?> </code>
+					<button onclick="document.getElementById('change-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings"><i class="fas fa-edit" aria-hidden="true"></i></button>
 						<p class="profile-real-name">Pet Nexus Admin</p>
 				</div>
+				
+				<?php
+					
+				   $change_form = new FormCreator('change-popup', '../actions/action_change_creds.php', true);
+				   $change_form->add_input("username", "Username", "text", "Enter username", true, $username);
+				   $change_form->add_input("old_password", "Old assword", "password", "Enter old password", true);
+				   $change_form->add_input("new_password", "New password", "password", "Enter new password", false);
+				   $change_form->inline();
+				?>
+			
 
 			</div>
 		</section>
@@ -36,10 +57,8 @@ if (!isset($_SESSION['id']))
 
 				<?php
 				
-					require_once("../database/db_class.php");
-					$dbc = Database::instance()->db();
-					$stmt = $dbc->prepare("SELECT * FROM pets_for_adoption WHERE user_id = ?");
-					$stmt->execute(array($_SESSION['id']));
+					$stmt = $dbc->prepare("SELECT pets_for_adoption.* FROM pets_for_adoption JOIN users ON pets_for_adoption.user_id=id WHERE users.username = ?");
+					$stmt->execute(array($username));
 					$pets = $stmt->fetchAll();
 					foreach ($pets as $pet) { 
 						
