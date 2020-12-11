@@ -2,6 +2,7 @@
 	session_start();
 	include_once('../database/user.php');
 
+
 	function generate_random_token() {
 		return bin2hex(openssl_random_pseudo_bytes(32));
 	}
@@ -21,5 +22,11 @@
 
 	}
 
+	function read_session_or_null($name){
+		if(isset($_SESSION[$name]))
+			return $_SESSION[$name];
+
+		return NULL;
+	}
 
 ?>

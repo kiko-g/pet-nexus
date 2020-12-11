@@ -41,8 +41,8 @@ if (!isset($_SESSION['id']))
 	<?php
 		$submit = new FormCreator('new-pet', '../actions/action_insert_pet.php', true, false, false, 'multipart/form-data');
 		
-		$submit->add_input('listing_name', 'Listing Name', 'text', 'Name', true, $_SESSION['listing_name'], NULL);
-		$submit->add_input('listing_description', 'Description', 'text', 'Description', true, $_SESSION['listing_description'], NULL);
+		$submit->add_input('listing_name', 'Listing Name', 'text', 'Name', true, read_session_or_null('listing_name'), NULL);
+		$submit->add_input('listing_description', 'Description', 'text', 'Description', true, read_session_or_null('listing_description'), NULL);
 		$submit->add_input('listing_picture', 'Pet\'s Photo', 'file', NULL, true, NULL, NULL);
 		$submit->inline();
 		unset($_SESSION['listing_name']);
