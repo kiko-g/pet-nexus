@@ -8,7 +8,9 @@
     <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
   <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
+  <?php if (isset($_SESSION['id'])) { ?>
   <a href="../pages/foundpet.php" class="navbar"> <i class="fas fa-child"></i> Found a pet! </a>
+  <?php } ?>
   <div style="display:none" id="csrf_token"> <?= $_SESSION['csrf'] ?> </div>
 
   <?php 
