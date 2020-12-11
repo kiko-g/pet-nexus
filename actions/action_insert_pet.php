@@ -50,8 +50,12 @@
     }
     	
     	
-    	$_SESSION['listing_name'] = $_POST['listing_name'];
-    	$_SESSION['listing_description'] = $_POST['listing_description'];
+    	set_from_post_in_session('listing_name');
+    	set_from_post_in_session('listing_description');
+    	set_from_post_in_session('breed_id');
+    	set_from_post_in_session('color_id');
+    	set_from_post_in_session('age_id');
+    	set_from_post_in_session('gender_id');
 	header('Location: ../pages/foundpet.php');
 
 ?>

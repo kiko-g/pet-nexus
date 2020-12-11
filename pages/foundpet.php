@@ -39,14 +39,25 @@ if (!isset($_SESSION['id']))
 </div>
 
 	<?php
+		require_once '../database/dogs.php';
+		get_breeds();
 		$submit = new FormCreator('new-pet', '../actions/action_insert_pet.php', true, false, false, 'multipart/form-data');
 		
 		$submit->add_input('listing_name', 'Listing Name', 'text', 'Name', true, read_session_or_null('listing_name'), NULL);
 		$submit->add_input('listing_description', 'Description', 'text', 'Description', true, read_session_or_null('listing_description'), NULL);
+		$submit->add_select('breed_id', 'Breed', get_breeds(), read_session_or_null('breed_id'));
+		$submit->add_select('color_id', 'Color', get_colors(), read_session_or_null('color_id'));
+		$submit->add_select('age_id', 'Age', get_ages(), read_session_or_null('age_id'));
+		$submit->add_select('gender_id', 'Gender', get_genders(), read_session_or_null('gender_id'));
+
 		$submit->add_input('listing_picture', 'Pet\'s Photo', 'file', NULL, true, NULL, NULL);
 		$submit->inline();
-		unset($_SESSION['listing_name']);
-		unset($_SESSION['listing_description']);
+
+		foreach($_SESSION as $key => $value){
+			if($key !== 'id')
+				unset($_SESSION[$key]);
+
+		}
 
 	?>
 

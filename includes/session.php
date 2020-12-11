@@ -29,4 +29,9 @@
 		return NULL;
 	}
 
+
+	function set_from_post_in_session($name){
+    	$_SESSION[$name] = $_POST[$name];
+	}
+
 ?>

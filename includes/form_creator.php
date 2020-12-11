@@ -25,8 +25,8 @@
 	    array_push($this->elements, new FormInput($name, $label, $type, $placeholder, $required, $value, $pattern));
     }
 
-    function add_select($name, $label, $options){
-	    array_push($this->elements, new FormSelect($name, $label, $options));
+    function add_select($name, $label, $options, $selected=NULL){
+	    array_push($this->elements, new FormSelect($name, $label, $options, $selected));
     }
 
 
@@ -227,10 +227,12 @@
 	private $name = NULL;
 	private $label = NULL;
 	private $options = NULL;
-	function __construct($name, $label, $options) {
+	private $selected = NULL;
+	function __construct($name, $label, $options, $selected) {
 		$this->name = $name;
 		$this->label = $label;
 		$this->options = $options;
+		$this->selected = $selected;
 	}
 
 
@@ -241,12 +243,12 @@
 ?>
 		
 		<label for="<?=$item_id?>"><?= $this->label ?></label>
-		<select id="<?=$item_id?>" name="<?= $this->name ?>">
+		<select id="<?=$item_id?>" name="<?= $this->name ?>" >
 <?php
 
 		foreach($this->options as $key => $value){
 ?>
-			<option value="<?= $key ?>"> <?= $value ?> </option>
+			<option value="<?= $key ?>"  <?= ( (!is_null($this->selected) && $key == $this->selected)  ? 'selected' : '')?> > <?= $value ?> </option>
 
 <?php
 		}
