@@ -18,6 +18,10 @@ if (!isset($_SESSION['id']))
   </article>
 
 
+<?php
+	if(isset($_SESSION['errors'])){
+?>
+
 <div class="container" style="background-color:red">
 	
 <?php
@@ -28,6 +32,7 @@ if (!isset($_SESSION['id']))
 	}
 	unset($_SESSION['errors']);
 
+	}
 ?>
 
 

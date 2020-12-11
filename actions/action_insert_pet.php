@@ -29,7 +29,7 @@
         $allowed = array('jpg', 'jpeg', 'png');
     
         if(in_array($file_ext, $allowed)) {
-            if ($file['size'] < 500000){
+            if ($file['size'] < 10000000){
               $dog_photo = generate_filename($file_ext);
               move_uploaded_file($file['tmp_name'], $dog_photo);
   

@@ -61,72 +61,28 @@ $username = $stmt->fetch()['username'];
 					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
 					error_log(print_r($pets, true));
-					foreach ($pets as $pet) { 
+					foreach ($pets as $index => $entry) { 
 						
 						?>
 					
-						<div class="posts-item" tabindex="0">
-							<img src="<?= $pet_details['pet_photo'] ?>"
-							class="posts-image" alt="">
-							<div class="posts-item-info">
-								<ul>
-									<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 15</li>
-									<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
-								</ul>
+		
+						<div class="col w25 w50">
+							<div class="container">
+								<div class="inside-container">
+								<img src="<?= $entry['listing_picture']?>" class="display-pet">
+									<div class="display-topleft display-hover">
+										<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+									</div>
+									<div class="display-bottomright display-hover">
+										<button class="button-cart"> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<p><?= $entry['listing_name']?><br></p>
 							</div>
-						</div> <?php
-					}
-				
-				?>
+						</div>
+					<?php } ?>
 
-				<div class="posts-item" tabindex="0">
-					<img src="../assets/img/dog.jpg" class="posts-image" alt="">
-					<div class="posts-item-info">
-						<ul>
-							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 15</li>
-							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
-						</ul>
-					</div>
-				</div>
 
-				<div class="posts-item" tabindex="0">
-					<img src="../assets/img/dog2.jpg"
-						class="posts-image" alt="">
-					<div class="posts-item-info">
-						<ul>
-							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-									aria-hidden="true"></i> 18</li>
-							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-									aria-hidden="true"></i> 2</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="posts-item" tabindex="0">
-					<img src="../assets/img/header.jpg"
-						class="posts-image" alt="">
-					<div class="posts-item-info">
-						<ul>
-							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-									aria-hidden="true"></i> 18</li>
-							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-									aria-hidden="true"></i> 2</li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="posts-item" tabindex="0">
-					<img src="../assets/img/header2.jpg"
-						class="posts-image" alt="">
-					<div class="posts-item-info">
-						<ul>
-							<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-									aria-hidden="true"></i> 18</li>
-							<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-									aria-hidden="true"></i> 2</li>
-						</ul>
-					</div>
-				</div>				
 			</div>
 		</div>
 	</section>
