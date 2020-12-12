@@ -9,17 +9,27 @@ input[type=password] {
   box-sizing: border-box;
 }
 
-.grid-container {
+.grid-gallery {
   padding: 1em;
   max-width: auto;
   margin: 0 auto;
   padding: 0 2em;
+  background-color: #eee;
 }
 
-.grid-container>h1 {
-  text-align: center;
-  color: darkslategray;
-  margin-top: 0px;
+.posts.row-padding>h1,
+.grid-gallery>h1 {
+  text-align: left;
+  color: teal;
+  margin: 0 0 1em 0;
+  padding-top: 1em;
+  background-color: #eee;
+  font-size: xx-large;
+}
+
+.posts.row-padding>h1.pink,
+.grid-gallery>h1.pink {
+  color: #ffaaaa;
 }
 
 /* The overlayLogin (background) */
@@ -140,12 +150,46 @@ input[type=password] {
   padding-bottom: 3em;
 }
 
+.fav-button {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5em;
+  border-radius: 0 0 10px 0;
+}
+
+.photo-stats {
+  color: whitesmoke;
+  background-color: #00000088;
+
+  display: block;
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
 .posts-item {
   position: relative;
   flex: 1 0 22em;
   margin: 1em;
-  color: #fff;
-  cursor: pointer;
+}
+
+.posts-container {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  position: relative;
+}
+
+.posts-inside-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
 }
 
 .posts-item:hover .post-hover-info {
@@ -158,6 +202,7 @@ input[type=password] {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   color: whitesmoke;
+  text-decoration: none;
 }
 
 .post-hover-info {
@@ -167,19 +212,7 @@ input[type=password] {
 .post-hover-info li {
   display: inline-block;
   font-size: 1.7em;
-  font-weight: 600;
-}
-
-.posts-item-likes {
-  margin-right: 2.2em;
-}
-
-.posts-item-type {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  font-size: 2.5em;
-  text-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 .posts-image {
@@ -238,7 +271,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
   }
 
   .posts {
-    grid-gap: 1em;
+    grid-gap: 2em;
   }
 
   .profile-image,
@@ -286,4 +319,19 @@ Remove or comment-out the code block below to see how the browser will fall-back
       text-align: center;
     }
   }
+}
+
+.fa.fa-question-circle.blue {
+  color: cornflowerblue;
+  background-color: white;
+  border-radius: 20px;
+  margin-left: 1em;
+  margin-right: 0;
+  font-weight: 900;
+}
+
+.fa.fa-heart.pink {
+  color: #ffaaaa;
+  background-color: transparent;
+  border-radius: 20px;
 }

@@ -31,7 +31,7 @@
 }
 
 .row-padding {
-  padding: 1em;
+  padding: 2em;
 }
 
 .row:after,
@@ -53,29 +53,42 @@
   width: 100%;
 }
 
-.w25,
-.col.w25 {
+.responsive-img,
+.col.responsive-img {
   width: 25%;
 }
 
-.w50,
-.col.w50 {
-  width: 50%;
-}
+@media screen and (min-width:0px) and (max-width:750px) {
 
-@media screen and (max-width:1200px) {
-
-  .w25,
-  .col.w25 {
-    width: 65%;
-  }
-
-  .w50,
-  .col.w50 {
-    width: 80%;
+  .responsive-img,
+  .col.responsive-img {
+    width: 100%;
   }
 }
 
+@media screen and (min-width:751px) and (max-width:800px) {
+
+  .responsive-img,
+  .col.responsive-img {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:801px) and (max-width:3000px) {
+
+  .responsive-img,
+  .col.responsive-img {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width:3001px) and (max-width:8000px) {
+
+  .responsive-img,
+  .col.responsive-img {
+    width: 12.5%;
+  }
+}
 
 
 
@@ -139,6 +152,8 @@
   -ms-flex: 20%;
   background-color: #e1e1e1;
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
   /* border-bottom: 1px dotted #555; */
 }
 
@@ -146,7 +161,7 @@
 .right80 {
   flex: 80%;
   -ms-flex: 80%;
-  background-color: #f1f1f1;
+  background-color: #eee;
   padding: 20px;
   /* border-bottom: 1px dotted #bbb; */
 }
@@ -164,16 +179,21 @@
   width: 100%;
 }
 
+.post-hover-info.display-topleft,
 .display-topleft {
   position: absolute;
   top: 1%;
   left: 3%;
 }
 
+.posts-inside-container.display-bottomright,
+.post-hover-info.display-bottomright,
 .display-bottomright {
-  position: absolute;
-  bottom: 6%;
-  right: 3%;
+  border-radius: 5px;
+  background-color: #00000088;
+  color: white;
+  padding: 0 0.3em;
+
 }
 
 .display-middle {
@@ -188,30 +208,41 @@
   display: block;
 }
 
-.inside-container:hover span.display-hover {
-  display: inline-block;
-}
-
 .inside-container {
   position: relative;
 }
 
-.inside-container:hover .display-hover {
+.inside-container:hover .display-hover,
+.posts-inside-container:hover .display-hover {
   display: block;
 }
 
-.inside-container:hover span.display-hover {
-  display: inline-block;
-}
-
+.display-topleft-hover,
 .display-hover {
   display: none;
 }
 
+.display-topleft-hover:hover {
+  display: block;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 3;
+}
+
+.display-bottomright-hover {
+  display: block;
+  position: absolute;
+  right: 20%;
+  bottom: 20%;
+  z-index: 3;
+}
+
+
+
 .container {
   padding: 0 20px 10px 20px;
   object-fit: cover;
-
 }
 
 .container.top {

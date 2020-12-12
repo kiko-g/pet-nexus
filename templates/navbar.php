@@ -50,6 +50,6 @@
 	  <a href="../pages/favorites.php" class="navbar favorites right"> <i class="fa fa-heart"> </i> Favorites </a>
 
   <?php } ?>
-  <a href="../pages/search.php" class="navbar search right"> <i class="fa fa-search"> </i> Search </a>
+  <a href="../pages/pets.php" class="navbar search right"> <i class="fa fa-search"> </i> Search </a>
   <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
 </nav>

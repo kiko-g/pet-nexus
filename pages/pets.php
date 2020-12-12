@@ -6,15 +6,15 @@
   <?php require '../templates/navbar.php' ?>
   <article class="row"> <!-- row-padding -->
     <section class="left20">
-      <div class="coloredButtons">
-        <label for="coloredButtons">Colors</label>
+      <div class="colorsFilter">
+        <label for="colorsFilter">Colors</label>
         <button class="colorButton black"></button>
         <button class="colorButton white"></button>
         <button class="colorButton brown"></button>
         <button class="colorButton gray"></button>
         <button class="colorButton cream"></button>
       </div>
-      <div>
+      <div class="sizeFilter">
         <label for="dog_size">Size</label>
         <select name="Dog Size dropdown" id="dog_size">
           <option value="none"></option>
@@ -24,7 +24,7 @@
           <option value="big">Big</option>
         </select>
       </div>
-      <div>
+      <div class="ageFilter">
         <label for="dog_age">Age</label>
         <select name="Dog Size dropdown" id="dog_size">
           <option value="none"></option>
@@ -36,37 +36,43 @@
       </div>      
     </section>
 
-    <section class="right80">
+    <section class="right80">      
       <form>
         <input type="search" placeholder="Search">
       </form>
-      <?php
+      <div class="grid-gallery">
+        <h1 class="pink">My Listed Pets</h1>
+        <div class="posts">      
+          <?php
+            require_once("../database/db_class.php");
+            $dbc = Database::instance()->db();
 
-      require_once("../database/db_class.php");
-      $dbc = Database::instance()->db();
-
-      $stmt = $dbc->prepare("SELECT * FROM dogs");
-      $stmt->execute();
-      $pets = $stmt->fetchAll();
-      error_log(print_r($pets, true));
-      foreach ($pets as $index => $entry) { ?>
-      
-      <div class="col w25 w50">
-        <div class="container">
-          <div class="inside-container">
-            <img src="<?=$entry['listing_picture']?>" class="display-pet">
-            <div class="display-topleft display-hover">
-              <button class="button-heart"><i class="fa fa-heart"></i></button>
+            $stmt = $dbc->prepare("SELECT * FROM dogs");
+            $stmt->execute();
+            $pets = $stmt->fetchAll();
+            error_log(print_r($pets, true));
+            foreach ($pets as $index => $entry) { ?>
+            
+            <div class="posts-item">
+              <div class="posts-container">
+                <div class="posts-inside-container">
+                  <img src="<?= $entry['listing_picture']?>" class="posts-image">
+                  <div class="fav-button">
+                    <button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                  </div>
+                  <div class="photo-stats">
+                    <i class="fa fa-heart pink" aria-hidden="true"></i> 32
+                    <i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
+                  </div>
+                </div>
+                <a href="item.php">
+                  <p><?= $entry['listing_name']?><br>29.99€</p>
+                </a>
+              </div>
             </div>
-            <div class="display-bottomright display-hover">
-              <button class="button-cart"> <i class="fa fa-shopping-cart"></i></button>
-            </div>
-          </div>
-          <p><?=$entry['listing_name']?><br><b>€29.99</b></p>
+          <?php }  ?>
         </div>
-      </div>
-      <?php }  ?>
-
+      </section>
     </section>
   </article>
 </body>

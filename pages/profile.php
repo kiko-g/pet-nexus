@@ -21,7 +21,7 @@ $username = $stmt->fetch()['username'];
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<header>
-		<section class="grid-container">
+		<section class="grid-gallery">
 			<div class="profile">
 				<div class="profile-image">
 					<img src="../assets/img/logo.png">
@@ -50,38 +50,38 @@ $username = $stmt->fetch()['username'];
 	</header>
 
 	<section>
-		<div class="grid-container">
-			<h1>Pet Listings</h1>
+		<section class="grid-gallery">
 			<div class="posts">
+				<h1 class="pink">My Listed Pets</h1>
 				<?php
 					$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
 					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
+					$i = 0;
 					error_log(print_r($pets, true));
-					foreach ($pets as $index => $entry) { 
-						
-						?>
-					
-		
-						<div class="col w25 w50">
-							<div class="container">
-								<div class="inside-container">
-								<img src="<?= $entry['listing_picture']?>" class="display-pet">
-									<div class="display-topleft display-hover">
-										<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
-									</div>
-									<!-- <div class="display-bottomright display-hover">
-										<button class="button-cart"> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-									</div> -->
-								</div>
-								<p><?= $entry['listing_name']?><br></p>
+					foreach ($pets as $index => $entry) { $i++;
+				?>
+
+				<div class="posts-item">
+					<div class="posts-container">
+						<div class="posts-inside-container">
+							<img src="<?= $entry['listing_picture']?>" class="posts-image">
+							<div class="fav-button">
+								<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+							</div>
+							<div class="photo-stats">
+								<i class="fa fa-heart pink" aria-hidden="true"></i> <?=32+$i ?>
+								<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
 							</div>
 						</div>
-					<?php } ?>
-
-
+						<a href="item.php">
+							<p><?= $entry['listing_name']?><br>29.99€</p>
+						</a>
+					</div>
+				</div>
+				<?php } ?>
 			</div>
-		</div>
+		</section>
 	</section>
 	<?php require '../templates/footer.html'; ?>
 </body>

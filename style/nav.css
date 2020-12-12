@@ -1,5 +1,5 @@
 /* NAVIGATION BAR AND BUTTONS */
-.coloredButtons {
+.colorsFilter {
   padding: 0em;
 }
 
@@ -44,6 +44,7 @@
 }
 
 
+
 input {
   outline: none;
 }
@@ -61,8 +62,9 @@ input[type=search] {
   background-size: 12%;
   border: solid 1px #ccc;
   padding: 0.5em 2em;
-  margin: 1em 1em 2em 1.1em;
-  width: 80px;
+  margin: 2em 2em 0 0;
+  width: 120px;
+  float: right;
 
   border-radius: 10px;
 
@@ -73,10 +75,12 @@ input[type=search] {
 input[type=search]:focus {
   background: #ededed;
   padding: 0.5em;
-  width: 400px;
+  width: 300px;
   color: white;
   background-color: rgb(102, 125, 167);
 }
+
+
 
 
 

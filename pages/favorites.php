@@ -5,55 +5,45 @@
 <body>
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
-	<section class="grid-container">
-		<div class="posts row-padding">
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/dog.jpg" class="posts-image" alt="">
-				<a href="item.php" class="post-hover-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 15</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-question-circle"
-								aria-hidden="true"></i> 3</li>
-					</ul>
-				</a>
+	<section class="grid-gallery">
+		<h1 class="pink">Favorites</h1>
+
+		<div class="posts">
+			<div class="posts-item">
+				<div class="posts-container">
+					<div class="posts-inside-container">
+						<img src="../assets/img/dog.jpg" class="posts-image">
+						<div class="fav-button">
+							<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+						</div>
+						<div class="photo-stats">
+							<i class="fa fa-heart pink" aria-hidden="true"></i> 32
+							<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
+						</div>
+					</div>
+					<a href="item.php">
+						<p>DOGGO<br>29.99€</p>
+					</a>
+				</div>
 			</div>
 
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/dog2.jpg" class="posts-image" alt="">
-				<a href="item.php" class="post-hover-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-question-circle"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</a>
-			</div>
-
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/header.jpg" class="posts-image" alt="">
-				<a href="item.php" class="post-hover-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-question-circle"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</a>
-			</div>
-
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/header2.jpg" class="posts-image" alt="">
-				<a href="item.php" class="post-hover-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-question-circle"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</a>
-			</div>
+			<div class="posts-item">
+				<div class="posts-container">
+					<div class="posts-inside-container">
+						<img src="../assets/img/dog2.jpg" class="posts-image">
+						<div class="fav-button">
+							<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+						</div>
+						<div class="photo-stats">
+							<i class="fa fa-heart pink" aria-hidden="true"></i> 32
+							<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
+						</div>
+					</div>
+					<a href="item.php">
+						<p>DOGGO<br>29.99€</p>
+					</a>
+				</div>
+			</div>			
 		</div>
 	</section>
 </body>
