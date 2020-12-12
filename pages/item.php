@@ -3,62 +3,31 @@
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
-	<header class="header">
-    <h1>Pet Nexus</h1>
-    <p>A <b>petfinder</b> website</p>
-  </header>
+	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
-	<section class="grid-container">
-		<div class="posts row-padding">
-			<div class="posts-item" tabindex="0">
-				<a href="item.php">
-					<img src="../assets/img/dog.jpg" class="posts-image" alt="">
-				</a>
-				<div class="posts-item-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 15</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-								aria-hidden="true"></i> 3</li>
-					</ul>
-				</div>
-			</div>
 
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/dog2.jpg" class="posts-image" alt="">
-				<div class="posts-item-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</div>
+	<section class="row">
+		<div class="left15">
+			<p>esquerda</p>
+		</div>
+	
+		<div class="main70">
+      <div class="container">
+        <div class="inside-container">
+          <img src="../assets/img/dog.jpg" class="display-pet">
+          <div class="display-topleft display-hover">
+            <button class="button-heart"><i class="fa fa-heart"></i></button>
+          </div>
+        </div>
+        <p>Doggo 1<br><b>€29.99</b></p>
+      </div>			
+			<div class="display-topleft display-hover">
+				<button class="button-heart"><i class="fa fa-heart"></i></button>
 			</div>
-
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/header.jpg" class="posts-image" alt="">
-				<div class="posts-item-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="posts-item" tabindex="0">
-				<img src="../assets/img/header2.jpg" class="posts-image" alt="">
-				<div class="posts-item-info">
-					<ul>
-						<li class="posts-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart"
-								aria-hidden="true"></i> 18</li>
-						<li class="posts-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment"
-								aria-hidden="true"></i> 2</li>
-					</ul>
-				</div>
-			</div>
+		</div>
+	
+		<div class="right15">
+			<p>direita</p>
 		</div>
 	</section>
 </body>

@@ -6,10 +6,7 @@ if (!isset($_SESSION['id']))
 ?>
 
 <body>
-  <header class="header">
-    <h1>Pet Nexus</h1>
-    <p>A <b>petfinder</b> website</p>
-  </header>
+	<?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php'; ?>
   <article class="row">
     <section class="page">

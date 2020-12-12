@@ -1,4 +1,85 @@
 /* NAVIGATION BAR AND BUTTONS */
+.coloredButtons {
+  padding: 0em;
+}
+
+.colorButton {
+  padding: 1em;
+  margin: 0 0.2em 1em 0;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.colorButton:hover {
+  opacity: 70%;
+  border: 1px solid #ccc;
+}
+
+.colorButton.red {
+  background-color: red;
+}
+
+.colorButton.green {
+  background-color: green;
+}
+
+.colorButton.brown {
+  background-color: brown;
+}
+
+.colorButton.gray {
+  background-color: gray;
+}
+
+.colorButton.cream {
+  background-color: wheat;
+}
+
+.colorButton.black {
+  background-color: black;
+}
+
+.colorButton.white {
+  background-color: white;
+}
+
+
+input {
+  outline: none;
+}
+
+input[type=search] {
+  box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+
+
+input[type=search] {
+  background: #ededed url(../assets/img/icon/search-icon.png) no-repeat 9px center;
+  background-size: 12%;
+  border: solid 1px #ccc;
+  padding: 0.5em 2em;
+  margin: 1em 1em 2em 1.1em;
+  width: 80px;
+
+  border-radius: 10px;
+
+  transition: all .5s;
+  border: 1px solid rgb(102, 125, 167);
+}
+
+input[type=search]:focus {
+  background: #ededed;
+  padding: 0.5em;
+  width: 400px;
+  color: white;
+  background-color: rgb(102, 125, 167);
+}
+
+
+
 /* Sticky topnav - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the topnav will inherit default position */
 .topnav {
   overflow: hidden;
@@ -8,17 +89,56 @@
   top: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  z-index: 2;
+  z-index: 1;
 }
 
-.topnav a,
-.topnav button {
+.topnav a {
   float: left;
   display: block;
   color: white;
   text-align: center;
   padding: 8px 12px;
   text-decoration: none;
+}
+
+.topnav button {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.topnav .navbar {
+  margin: 0;
+  border-radius: 0px;
+  background-color: #333;
+  padding: 8px 12px;
+  opacity: 100%;
+  text-decoration: none;
+  text-align: left;
+}
+
+.topnav .navbar.search,
+.topnav .navbar.favorites {
+  margin: 0;
+  border-radius: 0px;
+  background-color: rgb(102, 125, 167);
+  padding: 8px 12px;
+  opacity: 100%;
+  text-decoration: none;
+}
+
+.topnav .navbar.favorites {
+  background-color: #ee9c9c;
+}
+
+.topnav .navbar:hover,
+.topnav .navbar.favorites:hover {
+  opacity: 100%;
+  padding: 8px 12px;
+  background-color: #6ea79b;
 }
 
 .topnav button:hover,
@@ -78,9 +198,7 @@
 }
 
 .topnav .cancel-button:hover,
-.topnav .cancel-button:focus,
-.cancel-button:hover,
-.cancel-button:focus {
+.cancel-button:hover {
   opacity: 90%;
   background-color: #b3362d;
 }
@@ -95,18 +213,9 @@
   padding-top: 10px;
 }
 
-.close:hover,
-.close:focus {
+.close:hover {
   color: red;
   cursor: pointer;
-}
-
-.a-heart {
-  background-color: #ee9c9c;
-}
-
-.a-search {
-  background-color: rgb(102, 125, 167);
 }
 
 .topnav .icon {
@@ -154,7 +263,6 @@
     float: none;
     display: block;
     text-align: left;
-    border-bottom: 1px solid #666;
     border: none;
   }
 }
@@ -176,7 +284,6 @@
     float: none;
     display: block;
     text-align: left;
-    border-bottom: 1px solid #666;
     border: none;
   }
 }
@@ -221,10 +328,6 @@ button:hover {
   transition: 0.2s ease-out;
 }
 
-button.navbar:hover {
-  opacity: 100%;
-}
-
 button.right {
   float: right;
 }
@@ -248,8 +351,7 @@ button.right {
   text-decoration: none;
 }
 
-.button-cart:hover,
-.button-cart:focus {
+.button-cart:hover {
   opacity: 100%;
 
   color: #1b57b1;
@@ -268,25 +370,24 @@ button.right {
   padding: 0;
   border-radius: 3px;
 
-  opacity: 80%;
-  color: #ffcdcd;
+  opacity: 100%;
+  color: #ffaaaa;
   background-color: transparent;
 
-  font-size: large;
+  font-size: x-large;
   text-align: center;
   text-decoration: none;
 }
 
 .button-heart:active,
 .button-cart:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
 
-.button-heart:hover,
-.button-heart:focus {
+.button-heart:hover {
   opacity: 100%;
 
-  color: #ff4b4b;
+  color: #ff5555;
   background-color: transparent;
   transition: 200ms ease-out;
 }

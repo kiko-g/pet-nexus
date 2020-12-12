@@ -1,4 +1,124 @@
 /* LAYOUT */
+/* Left column */
+.left15 {
+  flex: 15%;
+  -ms-flex: 15%;
+  background-color: #eee;
+  padding: 20px;
+}
+
+/* Right column */
+.right15 {
+  flex: 15%;
+  -ms-flex: 15%;
+  background-color: #eee;
+  padding: 20px;
+}
+
+/* Right column */
+.main70 {
+  flex: 70%;
+  -ms-flex: 70%;
+  background-color: whitesmoke;
+  padding: 5em;
+}
+
+.row {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-padding {
+  padding: 1em;
+}
+
+.row:after,
+.row:before {
+  float: left;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+.col,
+.row:after,
+.row:before {
+  float: left;
+  width: 100%;
+}
+
+.w25,
+.col.w25 {
+  width: 25%;
+}
+
+.w50,
+.col.w50 {
+  width: 50%;
+}
+
+@media screen and (max-width:1200px) {
+
+  .w25,
+  .col.w25 {
+    width: 65%;
+  }
+
+  .w50,
+  .col.w50 {
+    width: 80%;
+  }
+}
+
+
+
+
+
+
+
+
+/* RESPONSIVE TOPNAV */
+.topnav.responsive a {
+  float: none;
+  display: block;
+  text-align: left;
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .topnav .search-container {
+    float: none;
+  }
+
+  .topnav a,
+  .topnav input[type=text],
+  .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+
+
+
 /* Page section (1 central column) */
 .page {
   flex: 100%;
@@ -46,7 +166,7 @@
 
 .display-topleft {
   position: absolute;
-  top: 3%;
+  top: 1%;
   left: 3%;
 }
 
@@ -90,6 +210,8 @@
 
 .container {
   padding: 0 20px 10px 20px;
+  object-fit: cover;
+
 }
 
 .container.top {
@@ -105,7 +227,6 @@
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #ddd;
-  /* border-top: 1px solid darkslategray; */
 }
 
 .container.bottom.round {

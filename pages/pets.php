@@ -2,17 +2,44 @@
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
-  <header class="header">
-  	<h1>Pet Nexus</h1>
-  	<p>A <b>petfinder</b> website</p>
-  </header>
+  <?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php' ?>
   <article class="row"> <!-- row-padding -->
     <section class="left20">
+      <div class="coloredButtons">
+        <label for="coloredButtons">Colors</label>
+        <button class="colorButton black"></button>
+        <button class="colorButton white"></button>
+        <button class="colorButton brown"></button>
+        <button class="colorButton gray"></button>
+        <button class="colorButton cream"></button>
+      </div>
+      <div>
+        <label for="dog_size">Size</label>
+        <select name="Dog Size dropdown" id="dog_size">
+          <option value="none"></option>
+          <option value="tiny">Tiny</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="big">Big</option>
+        </select>
+      </div>
+      <div>
+        <label for="dog_age">Age</label>
+        <select name="Dog Size dropdown" id="dog_size">
+          <option value="none"></option>
+          <option value="newborn">Newborn</option>
+          <option value="puppy">Puppy</option>
+          <option value="medium">Medium</option>
+          <option value="big">Mature</option>
+        </select>
+      </div>      
     </section>
 
     <section class="right80">
-
+      <form>
+        <input type="search" placeholder="Search">
+      </form>
       <?php
 
       require_once("../database/db_class.php");

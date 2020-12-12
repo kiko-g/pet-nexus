@@ -1,1 +1,3 @@
 .prettierignore
+user
+database.db

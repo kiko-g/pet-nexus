@@ -74,7 +74,7 @@
 
 	if($this->popup){
 ?>
-      <div class="container bottom">
+      <div class="container bottom round">
         <button type="button" onclick="document.getElementById('<?= $this->id ?>').style.display='none'"
           class="cancel-button">Back</button>
       </div>

@@ -18,10 +18,7 @@ $username = $stmt->fetch()['username'];
 ?>
 
 <body>
-	<header class="header">
-    	<h1>Pet Nexus</h1>
-    	<p>A <b>petfinder</b> website</p>
-  	</header>
+	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<header>
 		<section class="grid-container">
@@ -30,17 +27,19 @@ $username = $stmt->fetch()['username'];
 					<img src="../assets/img/logo.png">
 				</div>
 
-				<div class="profile-user-settings">
+				<div class="profile-header">
 					<code class="profile-user-name"> <?=$username?> </code>
-					<button onclick="document.getElementById('change-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings"><i class="fas fa-edit" aria-hidden="true"></i></button>
-						<p class="profile-real-name">Pet Nexus Admin</p>
+					<button onclick="document.getElementById('change-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
+						<i class="fas fa-edit" aria-hidden="true"></i>
+					</button>
+					<p class="profile-real-name">Pet Nexus Admin</p>
 				</div>
 				
 				<?php
 					
 				   $change_form = new FormCreator('change-popup', '../actions/action_change_creds.php', true);
 				   $change_form->add_input("username", "Username", "text", "Enter username", true, $username);
-				   $change_form->add_input("old_password", "Old assword", "password", "Enter old password", true);
+				   $change_form->add_input("old_password", "Old password", "password", "Enter old password", true);
 				   $change_form->add_input("new_password", "New password", "password", "Enter new password", false);
 				   $change_form->inline();
 				?>
@@ -54,9 +53,7 @@ $username = $stmt->fetch()['username'];
 		<div class="grid-container">
 			<h1>Pet Listings</h1>
 			<div class="posts">
-
 				<?php
-				
 					$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
 					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
@@ -73,9 +70,9 @@ $username = $stmt->fetch()['username'];
 									<div class="display-topleft display-hover">
 										<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
 									</div>
-									<div class="display-bottomright display-hover">
+									<!-- <div class="display-bottomright display-hover">
 										<button class="button-cart"> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-									</div>
+									</div> -->
 								</div>
 								<p><?= $entry['listing_name']?><br></p>
 							</div>

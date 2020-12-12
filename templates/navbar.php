@@ -18,7 +18,7 @@
 
 	?>
   <!-- REGISTER -->
-  <button onclick="document.getElementById('register-popup').style.display='block'" class="navbar right">
+  <button onclick="displayRegisterPopup()" class="navbar right">
     <i class="fa fa-user-plus"></i> Register
   </button>
 <?php
@@ -31,7 +31,7 @@
 
 ?>
   <!-- LOGIN -->
-  <button onclick="document.getElementById('login-popup').style.display='block'" class="navbar right">
+  <button onclick="displayLoginPopup()" class="navbar right">
     <i class="fa fa-sign-in"></i> Login
   </button>
 	<?php
@@ -47,9 +47,9 @@
 	  <button onclick="fetch('../actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
 	    <i class="fa fa-users-slash"></i> Logout
 	  </button>
-	  <a href="../pages/favorites.php" class=" a-heart right"> <i class="fa fa-heart"> </i> Favorites </a>
+	  <a href="../pages/favorites.php" class="navbar favorites right"> <i class="fa fa-heart"> </i> Favorites </a>
 
   <?php } ?>
-  <a href="../pages/search.php" class=" a-search right"> <i class="fa fa-search"> </i> Search </a>
+  <a href="../pages/search.php" class="navbar search right"> <i class="fa fa-search"> </i> Search </a>
   <a href="javascript:void(0);" class="icon" onclick="topnavResponsive()"><i class="fa fa-bars"></i></a>
 </nav>

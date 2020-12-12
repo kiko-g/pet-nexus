@@ -7,3 +7,11 @@ window.onclick = function (event) {
     overlayLogin.style.display = "none";
   }
 }
+
+function displayLoginPopup() {
+  document.getElementById('login-popup').style.display = 'block';
+}
+
+function displayRegisterPopup() {
+  document.getElementById('register-popup').style.display = 'block';
+}
