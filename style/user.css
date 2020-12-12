@@ -111,13 +111,10 @@ input[type=password] {
 }
 
 .profile-settings-button {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: center;
   border-radius: 20%;
   width: auto;
 
+  display: inline;
   cursor: pointer;
   font-size: 2em;
   color: darkslategray;
@@ -254,7 +251,6 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
   @media (max-width: 40em) {
     .profile {
-      grid-template-columns: auto 1fr;
       grid-row-gap: 1.5em;
     }
 
@@ -268,15 +264,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
       grid-gap: 1em;
       margin: 0;
     }
-
-    .profile-settings-button {
-      margin: 0;
-    }
   }
 
-  @media (min-width: 100px) {
+  @media (max-width: 100px) {
     .profile {
-      grid-template-columns: auto 1fr;
       grid-row-gap: 1.5em;
     }
 
@@ -285,26 +276,13 @@ Remove or comment-out the code block below to see how the browser will fall-back
     }
 
     .profile-user-settings {
-      display: grid;
-      grid-template-columns: auto 1fr;
-    }
-
-    .profile-settings-button {
-      width: auto;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      padding: 5px;
-      margin-left: 1em;
-
-      text-align: center;
-    }
-
-    .profile-user-settings {
       margin: 0;
     }
 
     .profile-settings-button {
-      margin-left: 0px;
+      width: auto;
+      padding: 1em;
+      text-align: center;
     }
   }
 }
