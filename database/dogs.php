@@ -92,7 +92,40 @@
     return $stmt->fetch();
   }
 
+  function update_dog($data){
+
+		header('Content-Type: application/json');
+		$dbc = Database::instance()->db();
+		$stmt = $dbc->prepare('UPDATE dogs SET 
+			listing_name = ?,
+			listing_description = ?,
+			breed_id = ?,
+			color_id = ?,
+			age_id = ?,
+			gender_id = ?
+		       	WHERE id = ? AND user_id = ?');
+		try{
+			$stmt->execute(array(
+				$data['listing_name'],
+				$data['listing_description'],
+				$data['breed_id'],
+				$data['color_id'],
+				$data['age_id'],
+				$data['gender_id'],
+				$data['dog_id'],
+				$_SESSION['id']
+			)
+			);
 
 
+			echo json_encode(['status' => 'success']);
+		}
+		catch(PDOexception $e){
+			error_log($e);
+			echo json_encode(['errors' => 'There was an error updating the listing']);
+		}
 
+  }
+
+?>
   

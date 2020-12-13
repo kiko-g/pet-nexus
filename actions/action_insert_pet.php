@@ -3,18 +3,6 @@
 	include_once('../includes/session.php');
 	include_once('../database/dogs.php');
     
-    function generate_random_name($file_ext){
-	return '../assets/user/' . bin2hex(openssl_random_pseudo_bytes(32)) . '.' . $file_ext;
-    }
-
-    function generate_filename($file_ext){
-	    $res = generate_random_name($file_ext);
-
-	    while(file_exists($res)){
-		    $res = generate_random_name($file_ext);
-	    }
-	    return $res;
-    }
 
     if (isset($_FILES['listing_picture'])) {
         $file = $_FILES['listing_picture'];

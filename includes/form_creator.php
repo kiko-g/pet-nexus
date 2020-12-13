@@ -115,6 +115,11 @@
 						break;
 					case 'label':
 						break;
+					case 'br':
+						break;
+					case 'select':
+						body[child.name] = child.value;
+						break;
 					default:
 						console.log('need to implement ' + child.nodeName);
 						break;

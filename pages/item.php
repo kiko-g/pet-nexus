@@ -25,6 +25,30 @@
 		<div class="main70">
       <div class="container">
       <p><h2><?= $dog_data['listing_name'] ?></h2></p>
+	<?php
+
+		if($_SESSION['id'] == $dog_data['user_id']){
+	?>
+	<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
+						<i class="fas fa-edit" aria-hidden="true"></i>
+				</button>	
+	
+	
+	<?php 
+		
+		$edit_listing = new FormCreator('edit-listing-popup', '../actions/action_edit_listing.php', true);
+		$edit_listing->add_input("listing_name", "Listing Name", "text", "New listing name", true, $dog_data['listing_name']);
+		$edit_listing->add_input("listing_description", "Listing description", "text", "New listing description", true, $dog_data['listing_description']);
+		$edit_listing->add_select('breed_id', 'Breed', get_breeds(), $dog_data['breed_id']);
+		$edit_listing->add_select('color_id', 'Color', get_colors(), $dog_data['color_id']);
+		$edit_listing->add_select('age_id', 'Age', get_ages(), $dog_data['age_id']);
+		$edit_listing->add_select('gender_id', 'Gender', get_genders(), $dog_data['gender_id']);
+		$edit_listing->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+		$edit_listing->inline();
+		
+		
+		} 
+?>
         <div class="inside-container">
 		<img src="<?= $dog_data['listing_picture'] ?>" class="display-pet">
           <div class="display-topleft display-hover">
@@ -36,6 +60,7 @@
 	<p>
 	<h3>Dog details</h3>
 	
+	<strong>Breed: </strong> <?= $dog_data['breed_name'] ?><br>
 	<strong>Color: </strong> <?= $dog_data['color_name'] ?><br>
 	<strong>Age: </strong> <?= $dog_data['age_name'] ?><br>
 	<strong>Gender: </strong> <?= $dog_data['gender_name'] ?><br>
