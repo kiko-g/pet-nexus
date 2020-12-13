@@ -77,6 +77,23 @@
   }
 
 
+  function get_dog($id){
+
+    $dbc = Database::instance()->db();
+
+    $stmt = $dbc->prepare('SELECT dogs.*, color_name, breed_name, age_name, gender_name
+	    FROM dogs 
+	    JOIN dog_colors ON color_id=dog_colors.id 
+	    JOIN dog_breeds ON breed_id=dog_breeds.id 
+	    JOIN dog_ages ON age_id=dog_ages.id 
+	    JOIN dog_genders ON gender_id=dog_genders.id 
+
+		WHERE dogs.id = ?');
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+  }
+
+
 
 
   
