@@ -55,6 +55,13 @@
             <button class="button-heart"><i class="fa fa-heart"></i></button>
           </div>
         </div>
+	<?php
+		if($_SESSION['id'] == $dog_data['user_id']){
+	?>
+		<a href="../pages/picture_change.php?id=<?=$dog_data['id']?>">Change Picture</a>
+	<?php
+		}
+	?>
 	<p><h3>Description</h3></p>
 	<p><?= $dog_data['listing_description'] ?></p>
 	<p>

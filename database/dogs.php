@@ -41,6 +41,16 @@
   }
 
 
+  function db_res_id_to_array($db_res, $component_name){
+
+	$res = array();
+	foreach($db_res as $entry){
+		$res[$entry['id']] = $entry[$component_name];
+	}
+	return $res;
+
+  }
+
   function get_component($component_name, $table_name){
 
     $dbc = Database::instance()->db();
@@ -50,15 +60,9 @@
     $stmt->execute();
     $db_res = $stmt->fetchAll();
 
-    $res = array();
-    foreach($db_res as $entry){
-	    $res[$entry['id']] = $entry[$component_name];
-    }
-
-
-    return $res;
-
+    return db_res_id_to_array($db_res, $component_name);
   }
+
   function get_breeds(){
 	  return get_component('breed_name', 'dog_breeds');
   }
@@ -125,6 +129,22 @@
 			echo json_encode(['errors' => 'There was an error updating the listing']);
 		}
 
+  }
+
+  function get_dogs_of_user(){
+
+	$dbc = Database::instance()->db();
+	$stmt = $dbc->prepare('SELECT id, listing_name, listing_picture FROM dogs WHERE user_id = ?');
+	$stmt->execute(array($_SESSION['id']));
+
+	return $stmt->fetchAll();
+  }
+
+  function update_picture($data, $file_name){
+	
+	$dbc = Database::instance()->db();
+	$stmt = $dbc->prepare('UPDATE dogs SET listing_picture = ? WHERE id = ? AND user_id = ?');
+	$stmt->execute(array($file_name, $data['listing_id'], $_SESSION['id']));
   }
 
 ?>

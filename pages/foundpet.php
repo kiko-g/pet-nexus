@@ -37,7 +37,6 @@ if (!isset($_SESSION['id']))
 
 	<?php
 		require_once '../database/dogs.php';
-		get_breeds();
 		$submit = new FormCreator('new-pet', '../actions/action_insert_pet.php', true, false, false, 'multipart/form-data');
 		
 		$submit->add_input('listing_name', 'Listing Name', 'text', 'Name', true, read_session_or_null('listing_name'), NULL);
