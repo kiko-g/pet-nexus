@@ -56,7 +56,6 @@
     }
 
 
-    error_log(print_r($res,true));
     return $res;
 
   }

@@ -50,7 +50,6 @@
             $stmt = $dbc->prepare("SELECT * FROM dogs");
             $stmt->execute();
             $pets = $stmt->fetchAll();
-            error_log(print_r($pets, true));
             foreach ($pets as $index => $entry) { ?>
             
             <div class="posts-item">
@@ -65,8 +64,8 @@
                     <i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
                   </div>
                 </div>
-                <a href="item.php">
-                  <p><?= $entry['listing_name']?><br>29.99€</p>
+		<a href="item.php?id=<?= $entry['id'] ?>">
+                  <p><?= $entry['listing_name']?></p>
                 </a>
               </div>
             </div>

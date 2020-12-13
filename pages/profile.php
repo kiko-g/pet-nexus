@@ -58,7 +58,6 @@ $username = $stmt->fetch()['username'];
 					$stmt->execute(array($_SESSION['id']));
 					$pets = $stmt->fetchAll();
 					$i = 0;
-					error_log(print_r($pets, true));
 					foreach ($pets as $index => $entry) { $i++;
 				?>
 
@@ -74,8 +73,8 @@ $username = $stmt->fetch()['username'];
 								<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
 							</div>
 						</div>
-						<a href="item.php">
-							<p><?= $entry['listing_name']?><br>29.99€</p>
+						<a href="item.php?id=<?= $entry['id'] ?>">
+							<p><?= $entry['listing_name']?></p>
 						</a>
 					</div>
 				</div>
