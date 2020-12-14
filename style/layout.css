@@ -1,5 +1,4 @@
-/* LAYOUT */
-/* Left column */
+/* Columns 15-70-15 */
 .left15 {
   flex: 15%;
   -ms-flex: 15%;
@@ -7,7 +6,6 @@
   padding: 20px;
 }
 
-/* Right column */
 .right15 {
   flex: 15%;
   -ms-flex: 15%;
@@ -15,7 +13,6 @@
   padding: 20px;
 }
 
-/* Right column */
 .main70 {
   flex: 70%;
   -ms-flex: 70%;
@@ -23,6 +20,72 @@
   padding: 5em;
 }
 
+/* Columns 20-80 */
+.left20 {
+  flex: 20%;
+  -ms-flex: 20%;
+  background-color: #e1e1e1;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.right80 {
+  flex: 80%;
+  -ms-flex: 80%;
+  background-color: #eee;
+  padding: 20px;
+}
+
+/* Column 100 */
+.main {
+  flex: 100%;
+  -ms-flex: 100%;
+  background-color: #eee;
+  padding: 20px 0;
+}
+
+
+
+/* Containers */
+.container {
+  padding: 0 20px 10px 20px;
+  object-fit: cover;
+}
+
+.container.top {
+  width: 100%;
+  float: right;
+}
+
+.container.top.round {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.container.bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #ddd;
+}
+
+.container.bottom.round {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.container:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container p {
+  margin: 0 0 1em 0;
+  font-size: smaller;
+}
+
+
+
+/* Row */
 .row {
   display: -ms-flexbox;
   -ms-flex-wrap: wrap;
@@ -46,86 +109,282 @@
   }
 }
 
-.col,
-.row:after,
-.row:before {
-  float: left;
+
+
+/* Login and Register overlay */
+.overlayLogin {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.responsive-img,
-.col.responsive-img {
-  width: 25%;
+.overlayLogin-content {
+  background-color: whitesmoke;
+  margin: 5% auto 15% auto;
+  width: 50%;
+  border: none;
+  border-radius: 5px;
 }
 
-@media screen and (min-width:0px) and (max-width:750px) {
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
 
-  .responsive-img,
-  .col.responsive-img {
-    width: 100%;
+@keyframes animatezoom {
+  from {
+    transform: scale(0.5)
   }
-}
 
-@media screen and (min-width:751px) and (max-width:800px) {
-
-  .responsive-img,
-  .col.responsive-img {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:801px) and (max-width:3000px) {
-
-  .responsive-img,
-  .col.responsive-img {
-    width: 25%;
-  }
-}
-
-@media screen and (min-width:3001px) and (max-width:8000px) {
-
-  .responsive-img,
-  .col.responsive-img {
-    width: 12.5%;
+  to {
+    transform: scale(1)
   }
 }
 
 
 
+/* Gallery */
+.grid-gallery {
+  padding: 1em;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 0 2em;
+  background-color: #eee;
+}
 
-
-
-
-/* RESPONSIVE TOPNAV */
-.topnav.responsive a {
-  float: none;
-  display: block;
+.posts.row-padding>h1,
+.grid-gallery>h1 {
   text-align: left;
+  color: teal;
+  margin: 0 0 1em 0;
+  padding-top: 1em;
+  background-color: #eee;
+  font-size: xx-large;
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
+.posts.row-padding>h1.pink,
+.grid-gallery>h1.pink {
+  color: #ffaaaa;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1em -1em;
+  padding-bottom: 3em;
+}
+
+.fav-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.15em 0.5em 0.5em 0.4em;
+  border-radius: 0 0 10px 0;
+}
+
+.photo-stats {
+  color: whitesmoke;
+  background-color: #00000088;
+
+  display: block;
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+}
+
+.posts-item {
+  position: relative;
+  flex: 1 0 10em;
+  margin: 1em;
+}
+
+.posts-container {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  position: relative;
+}
+
+.posts-inside-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.posts-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+/* Profile Section */
+.profile {
+  padding: 1em 0;
+}
+
+.profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.profile-image {
+  float: left;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+.profile-image img {
+  border-radius: 50%;
+  width: 150px;
+}
+
+.profile-header {
+  margin-top: 1.1em;
+}
+
+.profile-user-name {
+  display: inline-block;
+  font-size: 3.2em;
+  font-weight: 300;
+  margin: 0;
+}
+
+.profile-settings-button {
+  border-radius: 10%;
+  width: auto;
+
+  display: inline;
+  cursor: pointer;
+  font-size: 2em;
+  margin: 0;
+  padding: 0.1em 0.3em;
+  color: teal;
+  background-color: transparent;
+}
+
+.profile-real-name {
+  font-weight: 600;
+}
+
+.profile-real-name {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Media Query */
+@media screen and (max-width: 35em) {
+  .profile {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 0;
+  }
+
+  .profile::after {
+    display: none;
+  }
+
+  .profile-image,
+  .profile-header {
     float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
+    width: auto;
+  }
+
+  .profile-header {
+    flex-basis: calc(100% - 10.7em);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+  }
+
+  .profile-user-name {
+    font-size: 2.2em;
+  }
+}
+
+/*
+The following code will only run if your browser supports CSS grid.
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
+*/
+
+@supports (display: grid) {
+  .profile {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: repeat(3, auto);
+    grid-column-gap: 3em;
+    align-items: center;
+  }
+
+  .profile-image {
+    grid-row: 1 / -1;
+  }
+
+  .posts {
+    grid-gap: 2em;
+  }
+
+  .profile-image,
+  .profile-header,
+  .posts-item,
+  .posts {
+    width: auto;
+    max-width: 100%;
     margin: 0;
-    padding: 14px;
   }
 
-  .topnav .search-container {
-    float: none;
+  @media (max-width: 40em) {
+    .profile {
+      grid-row-gap: 1.5em;
+    }
+
+    .profile-image {
+      grid-row: 1 / 2;
+    }
+
+    .profile-header {
+      display: grid;
+      grid-template-columns: auto 5fr;
+      grid-gap: 1em;
+      margin: 0;
+    }
   }
 
-  .topnav a,
-  .topnav input[type=text],
-  .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    padding: 14px;
+  @media (max-width: 100px) {
+    .profile {
+      grid-row-gap: 1.5em;
+    }
+
+    .profile-image {
+      grid-row: 1 / 2;
+    }
+
+    .profile-header {
+      margin: 0;
+    }
+
+    .profile-settings-button {
+      width: auto;
+      padding: 1em;
+      text-align: center;
+    }
   }
 }
 
@@ -145,55 +404,14 @@
 }
 
 
-/* Create 2 columns that sit next to each other */
-/* Left column */
-.left20 {
-  flex: 20%;
-  -ms-flex: 20%;
-  background-color: #e1e1e1;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  /* border-bottom: 1px dotted #555; */
-}
-
-/* Right column */
-.right80 {
-  flex: 80%;
-  -ms-flex: 80%;
-  background-color: #eee;
-  padding: 20px;
-  /* border-bottom: 1px dotted #bbb; */
-}
-
-/* Main column */
-.main {
-  flex: 100%;
-  -ms-flex: 100%;
-  background-color: #eee;
-  padding: 20px 0;
-  /* border-bottom: 1px dotted #bbb; */
-}
-
 .display-pet {
   width: 100%;
 }
 
-.post-hover-info.display-topleft,
 .display-topleft {
   position: absolute;
   top: 1%;
   left: 3%;
-}
-
-.posts-inside-container.display-bottomright,
-.post-hover-info.display-bottomright,
-.display-bottomright {
-  border-radius: 5px;
-  background-color: #00000088;
-  color: white;
-  padding: 0 0.3em;
-
 }
 
 .display-middle {
@@ -236,41 +454,4 @@
   right: 20%;
   bottom: 20%;
   z-index: 3;
-}
-
-
-
-.container {
-  padding: 0 20px 10px 20px;
-  object-fit: cover;
-}
-
-.container.top {
-  width: 100%;
-  float: right;
-}
-
-.container.top.round {
-  border-radius: 0px 0px 5px 5px;
-}
-
-.container.bottom {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #ddd;
-}
-
-.container.bottom.round {
-  border-radius: 0px 0px 5px 5px;
-}
-
-.container:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.container p {
-  margin: 0 0 1em 0;
-  font-size: smaller;
 }

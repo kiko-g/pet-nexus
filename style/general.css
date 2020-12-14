@@ -1,0 +1,402 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+
+/* Header */
+header {
+  background-color: #eee;
+}
+
+.header {
+  padding: 8em 2em;
+  text-align: left;
+  background: #008877;
+  background-image: url('../assets/img/header.jpg');
+  width: 100%;
+  background-size: cover;
+  background-position: center top;
+  color: white;
+}
+
+.header p {
+  margin: 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.header h2,
+.header h3,
+.header h4 {
+  margin: 0;
+}
+
+
+/* Anchors */
+a {
+  color: teal;
+  text-decoration: none;
+  opacity: 100%;
+}
+
+a:hover {
+  text-decoration: underline;
+  opacity: 80%;
+}
+
+a.post-caption {
+  width: 100%;
+}
+
+a p {
+  margin: 0;
+  padding: 0;
+  padding: 0.2em;
+}
+
+
+
+/* Input */
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 0 0 20px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+}
+
+input[type=search] {
+  box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+
+
+input[type=search] {
+  background: #ededed url(../assets/img/icon/search-icon.png) no-repeat 9px center;
+  background-size: 12%;
+  border: solid 1px #ccc;
+  padding: 0.5em 2em;
+  margin: 2em 2em 0 0;
+  width: 120px;
+  float: right;
+
+  border-radius: 10px;
+
+  transition: all .5s;
+  border: 1px solid rgb(102, 125, 167);
+}
+
+input[type=search]:focus {
+  background: #ededed;
+  padding: 0.5em;
+  width: 300px;
+  color: white;
+  background-color: rgb(102, 125, 167);
+}
+
+label {
+  display: inline-block;
+}
+
+select {
+  appearance: none;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+}
+
+
+
+
+/* Buttons */
+button {
+  margin: 0.2em;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+
+  opacity: 100%;
+  color: white;
+  background-color: teal;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+
+button:hover {
+  opacity: 90%;
+  transition: 0.2s ease-out;
+  transform: scale(1);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+button:disabled {
+  background-color: blue;
+}
+
+button.right {
+  float: right;
+}
+
+.button-heart {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+
+  opacity: 100%;
+  color: #ffaaaa;
+  background-color: transparent;
+
+  font-size: x-large;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button-heart:active {
+  transform: scale(0.9);
+}
+
+.button-heart:hover {
+  opacity: 100%;
+
+  color: #ff5555;
+  background-color: transparent;
+  transition: 200ms ease-out;
+}
+
+.fa.fa-question-circle.blue {
+  color: cornflowerblue;
+  background-color: white;
+  border-radius: 20px;
+  margin-left: 1em;
+  margin-right: 0;
+  font-weight: 900;
+}
+
+.fa.fa-heart.pink {
+  color: #ff8888;
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+.fa.fa-heart.pink.big,
+.fa.fa-heart-o.pink.big {
+  color: #ff6666;
+  background-color: transparent;
+  font-size: x-large;
+}
+
+.fa.fa-heart.pink.big {
+  color: #ff5555;
+}
+
+.fa.fa-heart.pink.big:hover,
+.fa.fa-heart-o.pink.big:hover {
+  color: #ff4444;
+}
+
+/* Cancel button */
+.cancel-button {
+  float: left;
+  width: auto;
+  background-color: #f44336;
+  border-radius: 3px;
+}
+
+.topnav .cancel-button:hover,
+.cancel-button:hover {
+  opacity: 90%;
+  background-color: #b3362d;
+}
+
+
+/* Close Button (x) */
+.close {
+  float: right;
+  color: #000;
+  font-size: medium;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.close:hover {
+  color: red;
+  cursor: pointer;
+}
+
+
+
+/* Filters sections and buttons */
+.colorsFilter {
+  padding: 0em;
+}
+
+.colorButton {
+  padding: 1em;
+  margin: 0 0.2em 1em 0;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.colorButton:hover {
+  opacity: 70%;
+  border: 1px solid #ccc;
+}
+
+.colorButton.red {
+  background-color: red;
+}
+
+.colorButton.green {
+  background-color: green;
+}
+
+.colorButton.brown {
+  background-color: brown;
+}
+
+.colorButton.gray {
+  background-color: gray;
+}
+
+.colorButton.cream {
+  background-color: wheat;
+}
+
+.colorButton.black {
+  background-color: black;
+}
+
+.colorButton.white {
+  background-color: white;
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #333;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 1em;
+}
+
+footer .footer-website-name {
+  color: #fff;
+  font-size: smaller;
+  font-family: 'Open Sans';
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+footer .footer-icons a {
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Open Sans';
+
+  opacity: 90%;
+  color: #ffffff;
+  font-size: 70%;
+  text-align: left;
+
+  width: 8cm;
+  text-decoration: none;
+}
+
+footer .footer-icons a:hover {
+  color: rgb(0, 182, 182);
+}
+
+footer .footer-icons a:active {
+  transform: scale(0.99);
+}
+
+footer .footer-left {
+  width: 20%;
+}
+
+footer .footer-left img {
+  width: 60px;
+}
+
+footer .footer-center {
+  width: 50%;
+  border-right: 1px solid #444;
+}
+
+footer .footer-right {
+  padding-left: 1em;
+  width: 30%;
+}
+
+footer .footer-icons i {
+  padding: 0 5px;
+}
+
+@media (max-height:800px) {
+  footer {
+    position: static;
+  }
+}
+
+@media (max-width: 880px) {
+
+  footer .footer-left,
+  footer .footer-center,
+  footer .footer-right {
+    width: 100%;
+    display: block;
+  }
+
+  footer .footer-left {
+    padding-bottom: 1em;
+    border: none;
+    border-bottom: 1px dashed dimgray;
+  }
+
+  footer .footer-left img {
+    width: 100px;
+  }
+
+  footer .footer-right {
+    padding-left: 0;
+    margin-top: 1em;
+  }
+}
