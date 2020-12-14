@@ -7,43 +7,39 @@
 	<?php require '../templates/navbar.php' ?>
 	<section class="grid-gallery">
 		<h1 class="pink">Favorites</h1>
+		<div class="posts">      
+			<?php
+				require_once("../database/db_class.php");
+				$dbc = Database::instance()->db();
 
-		<div class="posts">
-			<div class="posts-item">
-				<div class="posts-container">
-					<div class="posts-inside-container">
-						<img src="../assets/img/dog.jpg" class="posts-image">
-						<div class="fav-button">
-							<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
+				$stmt = $dbc->prepare("SELECT * FROM dogs");
+				$stmt->execute();
+				$pets = $stmt->fetchAll();
+				$i = 0;
+				foreach ($pets as $index => $entry) { 
+					$i++;
+			?>
+				
+				<div class="posts-item">
+					<div class="posts-container">
+						<div class="posts-inside-container">
+							<img src="<?= $entry['listing_picture']?>" class="posts-image">
+							<div class="fav-button">
+								<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
+									<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
+								</button>
+							</div>
+							<div class="photo-stats">
+								<i class="fa fa-heart pink" aria-hidden="true"></i> 32
+								<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
+							</div>
 						</div>
-						<div class="photo-stats">
-							<i class="fa fa-heart pink" aria-hidden="true"></i> 32
-							<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
-						</div>
+						<a href="item.php?id=<?= $entry['id'] ?>">
+							<p><?= $entry['listing_name']?></p>
+						</a>
 					</div>
-					<a href="item.php">
-						<p>DOGGO<br>29.99€</p>
-					</a>
 				</div>
-			</div>
-
-			<div class="posts-item">
-				<div class="posts-container">
-					<div class="posts-inside-container">
-						<img src="../assets/img/dog2.jpg" class="posts-image">
-						<div class="fav-button">
-							<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
-						</div>
-						<div class="photo-stats">
-							<i class="fa fa-heart pink" aria-hidden="true"></i> 32
-							<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
-						</div>
-					</div>
-					<a href="item.php">
-						<p>DOGGO<br>29.99€</p>
-					</a>
-				</div>
-			</div>			
+			<?php }  ?>
 		</div>
 	</section>
 </body>

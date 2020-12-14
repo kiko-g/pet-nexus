@@ -49,38 +49,38 @@ $username = $stmt->fetch()['username'];
 		</section>
 	</header>
 
-	<section>
-		<section class="grid-gallery">
-			<div class="posts">
-				<h1 class="pink">My Listed Pets</h1>
-				<?php
-					$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
-					$stmt->execute(array($_SESSION['id']));
-					$pets = $stmt->fetchAll();
-					$i = 0;
-					foreach ($pets as $index => $entry) { $i++;
-				?>
+	<section class="grid-gallery">
+		<h1>My Listed Pets</h1>
+		<div class="posts">
+			<?php
+				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
+				$stmt->execute(array($_SESSION['id']));
+				$pets = $stmt->fetchAll();
+				$i = 0;
+				foreach ($pets as $index => $entry) { $i++;
+			?>
 
-				<div class="posts-item">
-					<div class="posts-container">
-						<div class="posts-inside-container">
-							<img src="<?= $entry['listing_picture']?>" class="posts-image">
-							<div class="fav-button">
-								<button class="button-heart"><i class="fa fa-heart" aria-hidden="true"></i></button>
-							</div>
-							<div class="photo-stats">
-								<i class="fa fa-heart pink" aria-hidden="true"></i> <?=32+$i ?>
-								<i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
-							</div>
+			<div class="posts-item hover">
+				<div class="posts-container">
+					<div class="posts-inside-container">
+						<img src="<?= $entry['listing_picture']?>" class="posts-image">
+						<div class="fav-button">
+							<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
+								<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
+							</button>
 						</div>
-						<a href="item.php?id=<?= $entry['id'] ?>">
-							<p><?= $entry['listing_name']?></p>
-						</a>
+						<div class="photo-stats">
+							<i class="fa fa-heart pink" aria-hidden="true"></i> <?=12*$i ?>
+							<i class="fa fa-question-circle blue" aria-hidden="true"></i> <?=1+$i ?>
+						</div>
 					</div>
 				</div>
-				<?php } ?>
+				<a class="post-caption" href="item.php?id=<?= $entry['id'] ?>">
+					<p><?= $entry['listing_name']?></p>
+				</a>
 			</div>
-		</section>
+			<?php } ?>
+		</div>
 	</section>
 	<?php require '../templates/footer.html'; ?>
 </body>

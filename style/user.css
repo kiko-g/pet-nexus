@@ -174,7 +174,7 @@ input[type=password] {
 
 .posts-item {
   position: relative;
-  flex: 1 0 22em;
+  flex: 1 0 10em;
   margin: 1em;
 }
 
@@ -331,7 +331,30 @@ Remove or comment-out the code block below to see how the browser will fall-back
 }
 
 .fa.fa-heart.pink {
-  color: #ffaaaa;
+  color: #ff8888;
   background-color: transparent;
   border-radius: 20px;
+}
+
+.fa.fa-heart.pink.big,
+.fa.fa-heart-o.pink.big {
+  color: #ff8888;
+  background-color: transparent;
+  font-size: x-large;
+}
+
+.fa.fa-heart.pink.big:hover,
+.fa.fa-heart-o.pink.big:hover {
+  color: #ff6666;
+}
+
+
+a.post-caption {
+  width: 100%;
+}
+
+a p {
+  margin: 0;
+  padding: 0;
+  padding: 0.2em;
 }
