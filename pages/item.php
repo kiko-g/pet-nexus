@@ -19,7 +19,6 @@
 
 	<section class="row">
 		<div class="left15">
-			<p>esquerda</p>
 		</div>
 	
 		<div class="main70">
@@ -29,9 +28,9 @@
 
 		if($_SESSION['id'] == $dog_data['user_id']){
 	?>
-	<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
-						<i class="fas fa-edit" aria-hidden="true"></i>
-				</button>	
+			<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
+					<i class="fas fa-edit" aria-hidden="true"></i>
+			</button>	
 	
 	
 	<?php 
@@ -49,12 +48,12 @@
 		
 		} 
 ?>
-        <div class="inside-container">
-		<img src="<?= $dog_data['listing_picture'] ?>" class="display-pet">
-          <div class="display-topleft display-hover">
-            <button class="button-heart"><i class="fa fa-heart"></i></button>
-          </div>
-        </div>
+		<div class="inside-container">
+			<img src="<?= $dog_data['listing_picture'] ?>" class="display-pet" alt="">
+			<div class="display-topleft display-hover">
+				<button class="button-heart"><i class="fa fa-heart"></i></button>
+			</div>
+		</div>
 	<?php
 		if($_SESSION['id'] == $dog_data['user_id']){
 	?>
@@ -65,14 +64,13 @@
 	<p><h3>Description</h3></p>
 	<p><?= $dog_data['listing_description'] ?></p>
 	<p>
-	<h3>Dog details</h3>
-	
-	<strong>Breed: </strong> <?= $dog_data['breed_name'] ?><br>
-	<strong>Color: </strong> <?= $dog_data['color_name'] ?><br>
-	<strong>Age: </strong> <?= $dog_data['age_name'] ?><br>
-	<strong>Gender: </strong> <?= $dog_data['gender_name'] ?><br>
+		<h3>Dog details</h3>
+		<strong>Breed: </strong> <?= $dog_data['breed_name'] ?><br>
+		<strong>Color: </strong> <?= $dog_data['color_name'] ?><br>
+		<strong>Age: </strong> <?= $dog_data['age_name'] ?><br>
+		<strong>Gender: </strong> <?= $dog_data['gender_name'] ?><br>
 	</p>
-      </div>			
+      </div>
 			<div class="display-topleft display-hover">
 				<button class="button-heart"><i class="fa fa-heart"></i></button>
 			</div>
@@ -82,8 +80,9 @@
 			<p>direita</p>
 		</div>
 	</section>
+	<?php require '../templates/footer.html'; ?>
+
 </body>
 
-<?php require '../templates/footer.html'; ?>
 
 </html>

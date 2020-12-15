@@ -23,11 +23,8 @@
 /* Columns 20-80 */
 .left20 {
   flex: 20%;
-  -ms-flex: 20%;
+  padding: 2em;
   background-color: #e1e1e1;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .right80 {
@@ -58,16 +55,13 @@
   float: right;
 }
 
-.container.top.round {
-  border-radius: 0px 0px 5px 5px;
-}
-
 .container.bottom {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #ddd;
 }
 
+.container.top.round,
 .container.bottom.round {
   border-radius: 0px 0px 5px 5px;
 }
@@ -87,10 +81,10 @@
 
 /* Row */
 .row {
-  display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
   display: flex;
   flex-wrap: wrap;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
 }
 
 .row-padding {
@@ -159,8 +153,8 @@
   background-color: #eee;
 }
 
-.posts.row-padding>h1,
-.grid-gallery>h1 {
+.posts.row-padding>h2,
+.grid-gallery>h2 {
   text-align: left;
   color: teal;
   margin: 0 0 1em 0;
@@ -169,8 +163,8 @@
   font-size: xx-large;
 }
 
-.posts.row-padding>h1.pink,
-.grid-gallery>h1.pink {
+.posts.row-padding>h2.pink,
+.grid-gallery>h2.pink {
   color: #ffaaaa;
 }
 
@@ -191,15 +185,15 @@
 
 .photo-stats {
   color: whitesmoke;
-  background-color: #00000088;
+  background-color: #00000066;
 
   display: block;
   border-radius: 10px;
-  padding: 0.2em 0.5em;
+  padding: 0.1em 0.4em;
 
   position: absolute;
-  right: 0.5em;
-  bottom: 0.5em;
+  right: 0.3em;
+  bottom: 0.3em;
 }
 
 .posts-item {
@@ -399,7 +393,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
   padding: 0em 1em;
 }
 
-.page h1 {
+.page h2 {
   color: whitesmoke;
 }
 

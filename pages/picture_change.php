@@ -51,7 +51,7 @@ if (!isset($_SESSION['id']))
 		$pictures = db_res_id_to_array($dogs, 'listing_picture');
 	?>
 		<div class="container">
-			<img id="picture-showcase" style="display:none" src="" class="display-pet">
+			<img id="picture-showcase" style="display:none" src="" class="display-pet" alt="">
 		</div>
 	<?php
 		$submit = new FormCreator('picture-change', '../actions/action_update_picture.php', true, false, false,'multipart/form-data');
@@ -68,18 +68,12 @@ if (!isset($_SESSION['id']))
 
 
 		let images = {
-			
-		<?php
-			foreach($pictures as $key => $value)
-				echo '\''.$key . '\' : \'' . $value . '\',
-				';
-
-
-		?>
-			
-			
-
-		};
+			<?php
+				foreach($pictures as $key => $value)
+					echo '\''.$key . '\' : \'' . $value . '\', ';
+			?>
+		}; 
+		// erro?
 
 <?php
 

@@ -8,32 +8,22 @@ if (!isset($_SESSION['id']))
 <body>
 	<?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php'; ?>
-  <article class="row">
+  <div class="row">
     <section class="page">
-      <h1>I have a pet for adoption</h1>
+      <h2>I have a pet for adoption</h2>
     </section>
-  </article>
+  </div>
 
-
-<?php
-	if(isset($_SESSION['errors'])){
-?>
-
-<div class="container" style="background-color:red">
-	
-<?php
-	foreach($_SESSION['errors'] as $error){
-?>
-	<?= $error ?><br>
-<?php
-	}
-	unset($_SESSION['errors']);
-
-	}
-?>
-
-
-</div>
+	<?php if(isset($_SESSION['errors'])){ ?>
+	<div class="container" style="background-color:red">
+		
+		<?php foreach($_SESSION['errors'] as $error){ ?>
+		<?= $error ?>
+		<br>
+		<?php }
+			unset($_SESSION['errors']);
+		}
+	?>
 
 	<?php
 		require_once '../database/dogs.php';
@@ -58,6 +48,7 @@ if (!isset($_SESSION['id']))
 	?>
 
 
-  <?php require '../templates/footer.html'; ?>
+	<?php require '../templates/footer.html'; ?>
+	
 </body>
 </html>

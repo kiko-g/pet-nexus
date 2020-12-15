@@ -9,10 +9,7 @@
   <?php require '../templates/navbar.php'; ?>
 
   <section class="row">
-    <section class="main"> 
-      <p>
-        Não sei
-      </p>   
+    <section class="main">
     </section>
   </section>
 

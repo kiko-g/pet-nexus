@@ -21,10 +21,10 @@ $username = $stmt->fetch()['username'];
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<header>
-		<section class="grid-gallery">
+		<div class="grid-gallery">
 			<div class="profile">
 				<div class="profile-image">
-					<img src="../assets/img/logo.png">
+					<img src="../assets/img/logo.png" alt="profile-img">
 				</div>
 
 				<div class="profile-header">
@@ -46,24 +46,25 @@ $username = $stmt->fetch()['username'];
 			
 
 			</div>
-		</section>
+		</div>
 	</header>
 
-	<section class="grid-gallery">
-		<h1>My Listed Pets</h1>
+	<article class="grid-gallery">
+		<h2>My Listed Pets</h2>
 		<div class="posts">
 			<?php
 				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
 				$stmt->execute(array($_SESSION['id']));
 				$pets = $stmt->fetchAll();
 				$i = 0;
-				foreach ($pets as $index => $entry) { $i++;
+				foreach ($pets as $index => $entry) { 
+					$i++;
 			?>
 
 			<div class="posts-item hover">
 				<div class="posts-container">
 					<div class="posts-inside-container">
-						<img src="<?= $entry['listing_picture']?>" class="posts-image">
+						<img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
 						<div class="fav-button">
 							<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
 								<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
@@ -81,7 +82,7 @@ $username = $stmt->fetch()['username'];
 			</div>
 			<?php } ?>
 		</div>
-	</section>
+	</article>
 	<?php require '../templates/footer.html'; ?>
 </body>
 

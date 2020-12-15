@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-size: 18px;
+  font-size: large;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -41,7 +41,7 @@ header {
 
 .header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: xx-large;
 }
 
 .header h2,
@@ -122,7 +122,8 @@ input[type=search]:focus {
 }
 
 label {
-  display: inline-block;
+  display: block;
+  margin-top: 0.5em;
 }
 
 select {
@@ -204,7 +205,7 @@ button.right {
   color: cornflowerblue;
   background-color: white;
   border-radius: 20px;
-  margin-left: 1em;
+  margin-left: 0.5em;
   margin-right: 0;
   font-weight: 900;
 }
@@ -262,7 +263,7 @@ button.right {
 
 
 
-/* Filters sections and buttons */
+/* Filters section */
 .colorsFilter {
   padding: 0em;
 }

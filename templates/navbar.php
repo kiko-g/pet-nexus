@@ -1,11 +1,8 @@
-<?php
-
-	include_once('../includes/form_creator.php');
-?>
+<?php include_once('../includes/form_creator.php'); ?>
 <nav class="topnav" id="topnavbar">
   <a href="../index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
   <?php if (isset($_SESSION['id'])) { ?>
-    <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
+  <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
   <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
   <?php if (isset($_SESSION['id'])) { ?>
@@ -13,37 +10,32 @@
   <?php } ?>
   <div style="display:none" id="csrf_token"> <?= $_SESSION['csrf'] ?> </div>
 
-  <?php 
-       if(!isset($_SESSION['id'])){
-
-	?>
+  <?php if(!isset($_SESSION['id'])){ ?>
   <!-- REGISTER -->
   <button onclick="displayRegisterPopup()" class="navbar right">
     <i class="fa fa-user-plus"></i> Register
   </button>
-<?php
+  <?php
+    $register_form = new FormCreator('register-popup', '../actions/action_register.php', true);
+    $register_form->add_input("username", "Username", "text", "Enter username", true);
+    $register_form->add_input("password", "Password", "password", "Enter password", true);
 
-       $register_form = new FormCreator('register-popup', '../actions/action_register.php', true);
-       $register_form->add_input("username", "Username", "text", "Enter username", true);
-       $register_form->add_input("password", "Password", "password", "Enter password", true);
-
-       $register_form->inline();
-
-?>
+    $register_form->inline();
+  ?>
   <!-- LOGIN -->
   <button onclick="displayLoginPopup()" class="navbar right">
     <i class="fa fa-sign-in"></i> Login
   </button>
 	<?php
-	       $login_form = new FormCreator('login-popup', '../actions/action_login.php', true);
-	       $login_form->add_input("username", "Username", "text", "Enter username", true);
-	       $login_form->add_input("password", "Password", "password", "Enter password", true);
-	       $login_form->add_input("remember", "Remember Me", "checkbox", NULL, false);
-	       $login_form->inline();
-
+    $login_form = new FormCreator('login-popup', '../actions/action_login.php', true);
+    $login_form->add_input("username", "Username", "text", "Enter username", true);
+    $login_form->add_input("password", "Password", "password", "Enter password", true);
+    $login_form->add_input("remember", "Remember Me", "checkbox", NULL, false);
+    $login_form->inline();
 	?>
 
-  <?php } else { ?>
+  <?php } 
+  else { ?>
 	  <button onclick="fetch('../actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
 	    <i class="fa fa-users-slash"></i> Logout
 	  </button>

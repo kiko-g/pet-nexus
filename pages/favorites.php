@@ -6,7 +6,7 @@
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<section class="grid-gallery">
-		<h1 class="pink">Favorites</h1>
+		<h2 class="pink">Favorites</h2>
 		<div class="posts">      
 			<?php
 				require_once("../database/db_class.php");
@@ -23,7 +23,7 @@
 				<div class="posts-item">
 					<div class="posts-container">
 						<div class="posts-inside-container">
-							<img src="<?= $entry['listing_picture']?>" class="posts-image">
+							<img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
 							<div class="fav-button">
 								<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
 									<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
@@ -42,8 +42,8 @@
 			<?php }  ?>
 		</div>
 	</section>
+	<?php require '../templates/footer.html'; ?>
+	
 </body>
-
-<?php require '../templates/footer.html'; ?>
 
 </html>

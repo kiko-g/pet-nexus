@@ -5,9 +5,9 @@
   <?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php' ?>
   <article class="row"> <!-- row-padding -->
-    <section class="left20">
+    <div class="left20">
       <div class="colorsFilter">
-        <label for="colorsFilter">Colors</label>
+        <label>Colors</label>
         <button class="colorButton black"></button>
         <button class="colorButton white"></button>
         <button class="colorButton brown"></button>
@@ -16,8 +16,8 @@
       </div>
       <div class="sizeFilter">
         <label for="dog_size">Size</label>
-        <select name="Dog Size dropdown" id="dog_size">
-          <option value="none"></option>
+        <select id="dog_size" name="Dog Size">
+          <option disabled selected value> Size </option>
           <option value="tiny">Tiny</option>
           <option value="small">Small</option>
           <option value="medium">Medium</option>
@@ -26,22 +26,23 @@
       </div>
       <div class="ageFilter">
         <label for="dog_age">Age</label>
-        <select name="Dog Size dropdown" id="dog_size">
-          <option value="none"></option>
+        <select id="dog_age" name="Dog Age">
+          <option disabled selected value> Age </option>
           <option value="newborn">Newborn</option>
           <option value="puppy">Puppy</option>
           <option value="medium">Medium</option>
-          <option value="big">Mature</option>
+          <option value="big">Big</option>
+          <option value="huge">Huge</option>
         </select>
       </div>      
-    </section>
+    </div>
 
-    <section class="right80">      
+    <div class="right80">      
       <form>
         <input type="search" placeholder="Search">
       </form>
       <div class="grid-gallery">
-        <h1>Pets for adoption</h1>
+        <h2>Pets for adoption</h2>
         <div class="posts">      
           <?php
             require_once("../database/db_class.php");
@@ -58,7 +59,7 @@
             <div class="posts-item">
               <div class="posts-container">
                 <div class="posts-inside-container">
-                  <img src="<?= $entry['listing_picture']?>" class="posts-image">
+                  <img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
                   <div class="fav-button">
                     <button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
                       <i class="fa fa-heart-o pink big" aria-hidden="true"></i>
@@ -76,11 +77,11 @@
             </div>
           <?php }  ?>
         </div>
-      </section>
-    </section>
+      </div>
+    </div>
   </article>
-</body>
+  <?php require '../templates/footer.html'; ?>
 
-<?php require '../templates/footer.html'; ?>
+</body>
 
 </html>
