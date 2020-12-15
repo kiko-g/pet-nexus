@@ -153,7 +153,7 @@
 
 		});
 	}
-	document.getElementById('<?=$this->id ?>').children[0].addEventListener('submit', < ? = $handler_function ? > );
+	document.getElementById('<?=$this->id ?>').children[0].addEventListener('submit', <?= $handler_function ?> );
 </script>
 
 <?php
