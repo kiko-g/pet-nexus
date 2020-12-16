@@ -70,8 +70,7 @@
             $dbc = Database::instance()->db();
 
             $stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ? WHERE dogs.listing_name LIKE ?');
-	    $var = $_GET['q'];
-	    error_log($var);
+	    $var = isset($_GET['q']) ? $_GET['q'] : '';
             $stmt->execute(array($_SESSION['id'], "%$var%"));
             $pets = $stmt->fetchAll();
             $i = 0;
