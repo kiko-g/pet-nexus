@@ -18,6 +18,15 @@ h6 {
   font-weight: 600;
 }
 
+h2 {
+  text-align: center;
+  color: teal;
+  margin: 0 0 0.2em 0;
+  padding-top: 1em;
+  background-color: inherit;
+  font-size: xx-large;
+}
+
 
 /* Header */
 header {
@@ -252,14 +261,16 @@ button.right {
 
 /* Filters section */
 label {
-  display: block;
   margin-top: 0.5em;
-  margin-bottom: -0.5em;
 
   color: #555;
-  font-weight: 100;
-  font-size: medium;
-  font-family: 'Bungee', sans-serif;
+  font-weight: 900;
+  font-size: large;
+  font-family: 'Open Sans', sans-serif;
+}
+
+label.block {
+  display: block;
 }
 
 select {

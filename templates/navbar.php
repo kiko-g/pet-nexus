@@ -3,6 +3,7 @@
   <a href="../index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
   <?php if (isset($_SESSION['id'])) { ?>
   <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
+  <a href="../pages/proposals.php" class="navbar"> <i class="fa fa-paper-plane"></i></i> Proposals </a>
   <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
   <?php if (isset($_SESSION['id'])) { ?>

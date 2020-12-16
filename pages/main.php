@@ -9,7 +9,7 @@
     <div class="main70 nopad">
       <div class="grid-gallery">
         <h2>Popular pets</h2>
-        <div class="posts">
+        <div class="posts centered">
           <?php
             require_once("../database/db_class.php");
             $dbc = Database::instance()->db();

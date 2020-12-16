@@ -7,7 +7,7 @@
   <article class="row"> <!-- row-padding -->
     <div class="left20">
       <div class="colorsFilter">
-        <label>Colors</label>
+        <label class="block">Colors</label>
         <button class="colorButton black"></button>
         <button class="colorButton white"></button>
         <button class="colorButton brown"></button>
@@ -15,7 +15,7 @@
         <button class="colorButton cream"></button>
       </div>
       <div class="breedFilter">
-        <label for="dog_breed">Breed</label>
+        <label class="block" for="dog_breed">Breed</label>
         <select id="dog_breed" name="Dog Breed">
           <option selected="true" value="any" class="dropdownAny" > Any </option>
           <option value="newborn">Newborn</option>
@@ -26,7 +26,7 @@
         </select>
       </div>
       <div class="genderFilter">
-        <label for="dog_gender">Gender</label>
+        <label class="block" for="dog_gender">Gender</label>
         <select id="dog_gender" name="Dog Gender">
           <option selected="true" value="any" class="dropdownAny" > Any </option>
           <option value="newborn">Male</option>
@@ -35,18 +35,17 @@
         </select>
       </div>
       <div class="sizeFilter">
-        <label for="dog_size">Size</label>
+        <label class="block" for="dog_size">Size</label>
         <select id="dog_size" name="Dog Size">
           <option selected="true" value="any" class="dropdownAny" > Any </option>
           <option value="tiny">Tiny</option>
           <option value="small">Small</option>
           <option value="medium">Medium</option>
           <option value="big">Big</option>
-          <i class="fa fa-cog" style="float: right;"></i>
         </select>
       </div>
       <div class="ageFilter">
-        <label for="dog_age">Age</label>
+        <label class="block" for="dog_age">Age</label>
         <select id="dog_age" name="Dog Age">
           <option selected="true" value="any" class="dropdownAny" > Any </option>
           <option value="newborn">Newborn</option>

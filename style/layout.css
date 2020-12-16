@@ -20,6 +20,13 @@
   padding: 5em;
 }
 
+.main70.lesspad {
+  flex: 70%;
+  -ms-flex: 70%;
+  background-color: whitesmoke;
+  padding: 2em;
+}
+
 .main70.nopad {
   flex: 70%;
   -ms-flex: 70%;
@@ -160,16 +167,6 @@
   background-color: #eee;
 }
 
-.posts.row-padding>h2,
-.grid-gallery>h2 {
-  text-align: left;
-  color: teal;
-  margin: 0 0 0.2em 0;
-  padding-top: 1em;
-  background-color: #eee;
-  font-size: xx-large;
-}
-
 .posts.row-padding>h2.pink,
 .grid-gallery>h2.pink {
   color: #ffaaaa;
@@ -181,6 +178,15 @@
   margin: -1em -1em;
   padding-bottom: 2em;
 }
+
+.posts.centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2em;
+  margin: 0;
+}
+
 
 .fav-button {
   position: absolute;
@@ -229,6 +235,51 @@
   object-fit: cover;
 }
 
+
+
+/* Proposals */
+.proposals {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+
+.proposal-item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-between;
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+
+.proposal-item>img {
+  width: 30%;
+  padding: 0;
+  display: flex;
+}
+
+.proposal-item>a {
+  display: flex;
+  padding: 0 1em;
+  margin: auto auto 0 0;
+  font-size: large;
+  align-self: flex-start;
+}
+
+.proposal-item>button {
+  width: 80px;
+  padding: 2em 0;
+  align-self: center;
+}
+
+.proposal-item>button.yes {
+  background-color: rgb(82, 163, 82);
+}
+
+.proposal-item>button.no {
+  background-color: #f44336;
+}
 
 
 
@@ -324,10 +375,7 @@
   }
 }
 
-/*
-The following code will only run if your browser supports CSS grid.
-Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
-*/
+
 
 @supports (display: grid) {
   .profile {

@@ -49,39 +49,22 @@ $username = $stmt->fetch()['username'];
 		</div>
 	</header>
 
-	<article class="grid-gallery">
-		<h2>My Listed Pets</h2>
-		<div class="posts">
-			<?php
-				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
-				$stmt->execute(array($_SESSION['id']));
-				$pets = $stmt->fetchAll();
-				$i = 0;
-				foreach ($pets as $index => $entry) { 
-					$i++;
-			?>
+	<article class="row">
+    <div class="left15"></div>
+    
+    <div class="main70 lesspad">
+      <h2>My Proposals</h2>
+      <div class="proposals">
+				<div class="proposal-item">
+					<img src="../assets/img/dog2.jpg" alt="">
+					<a href="item.php?id=1">Doggo1</a>
+					<button class="yes">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
+					<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
 
-			<div class="posts-item hover">
-				<div class="posts-container">
-					<div class="posts-inside-container">
-						<img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
-						<div class="fav-button">
-							<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
-								<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
-							</button>
-						</div>
-						<div class="photo-stats">
-							<i class="fa fa-heart pink" aria-hidden="true"></i> <?=12*$i ?>
-							<i class="fa fa-question-circle blue" aria-hidden="true"></i> <?=1+$i ?>
-						</div>
-					</div>
-				</div>
-				<a class="post-caption" href="item.php?id=<?= $entry['id'] ?>">
-					<p><?= $entry['listing_name']?></p>
-				</a>
-			</div>
-			<?php } ?>
-		</div>
+    <div class="right15"></div>
 	</article>
 	<?php require '../templates/footer.html'; ?>
 </body>
