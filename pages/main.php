@@ -27,7 +27,7 @@
                 <div class="posts-inside-container">
                   <img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
                   <div class="fav-button">
-                    <button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
+                    <button class="button-heart" onclick="fill(this)">
                       <i class="fa fa-heart-o pink big" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -47,9 +47,7 @@
     </div>
     <div class="right15"></div>
   </article>
-
   <?php require '../templates/footer.html'; ?>
-  
 </body>
 
 </html>

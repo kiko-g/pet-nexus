@@ -147,5 +147,26 @@
 	$stmt->execute(array($file_name, $data['listing_id'], $_SESSION['id']));
   }
 
+  function heart_pet($data){
+	  $dbc = Database::instance()->db();
+	  $stmt = $dbc->prepare('INSERT INTO favorites(user_id, dog_id) VALUES (?, ?)'); 
+	  try{
+		  $stmt->execute(array($_SESSION['id'], $data['pet_id']));
+	  }
+	  catch(PDOException $e){}
+  }
+
+  function unheart_pet($data){
+
+	  $dbc = Database::instance()->db();
+	  $stmt = $dbc->prepare('DELETE FROM favorites WHERE user_id = ? AND dog_id = ?'); 
+	  try{
+		  $stmt->execute(array($_SESSION['id'], $data['pet_id']));
+	  }
+	  catch(PDOException $e){}
+
+  }
+
+
 ?>
   
