@@ -49,8 +49,8 @@ $username = $stmt->fetch()['username'];
 		</div>
 	</header>
 
+	<h2>My Listed Pets</h2>
 	<article class="grid-gallery">
-		<h2>My Listed Pets</h2>
 		<div class="posts">
 			<?php
 				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");

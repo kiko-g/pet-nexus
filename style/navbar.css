@@ -145,12 +145,16 @@
   }
 }
 
-
 @media screen and (max-width: 800px) {
 
   .topnav a.login {
     width: 100%;
     padding: 20px 0px 0px 0px;
+  }
+
+  .topnav a:not(:first-child),
+  .topnav button:not(:first-child) {
+    display: none;
   }
 
   /* commented #1 */

@@ -2,14 +2,14 @@
 .left15 {
   flex: 15%;
   -ms-flex: 15%;
-  background-color: #eee;
+  background-color: #ddd;
   padding: 20px;
 }
 
 .right15 {
   flex: 15%;
   -ms-flex: 15%;
-  background-color: #eee;
+  background-color: #ddd;
   padding: 20px;
 }
 
@@ -20,10 +20,17 @@
   padding: 5em;
 }
 
+.main70.nopad {
+  flex: 70%;
+  -ms-flex: 70%;
+  background-color: whitesmoke;
+  padding: 0;
+}
+
 /* Columns 20-80 */
 .left20 {
   flex: 20%;
-  padding: 2em;
+  padding: 1em 2em;
   background-color: #e1e1e1;
 }
 
@@ -157,7 +164,7 @@
 .grid-gallery>h2 {
   text-align: left;
   color: teal;
-  margin: 0 0 1em 0;
+  margin: 0 0 0.2em 0;
   padding-top: 1em;
   background-color: #eee;
   font-size: xx-large;
@@ -172,7 +179,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: -1em -1em;
-  padding-bottom: 3em;
+  padding-bottom: 2em;
 }
 
 .fav-button {
@@ -198,7 +205,7 @@
 
 .posts-item {
   position: relative;
-  flex: 1 0 10em;
+  flex: 0 1 18em;
   margin: 1em;
 }
 
@@ -281,7 +288,11 @@
   padding: 0;
 }
 
-
+@media screen and (max-width: 230px) {
+  .photo-stats {
+    display: none;
+  }
+}
 
 /* Media Query */
 @media screen and (max-width: 35em) {

@@ -34,31 +34,30 @@
 	    $form_class = $this->popup ? 'overlayLogin' : '';
 ?>
 
-<div id="<?= $this->id ?>" class="<?= $form_class ?>">
-	<form class="overlayLogin-content animate" action="<?= $this->action ?>" method="post"
-		<?= (is_null($this->enctype) ? '' : 'enctype="'.$this->enctype.'"');?>>
+	<div id="<?= $this->id ?>" class="<?= $form_class ?>">
+	<form class="overlayLogin-content animate" action="<?= $this->action ?>" method="post" <?= (is_null($this->enctype) ? '' : 'enctype="'.$this->enctype.'"');?>>
 
 
-		<div class="container top round">
-			<?php
+      <div class="container top round">
+	<?php
 		if($this->error_zone) {
 	?>
-			<div id="<?= $this->id ?>-errors" style="background-color:red">
-			</div>
-			<?php } ?>
+	<div id="<?= $this->id ?>-errors" style="background-color:red">
+        </div>
+	<?php } ?>
 
-			<?php
+<?php
 
 	if($this->popup){
 ?>
-			<span onclick="document.getElementById('<?= $this->id ?>').style.display='none'" class="close"
-				title="close overlayLogin">&#10006;</span>
-			<?php } ?>
-		</div>
+        <span onclick="document.getElementById('<?= $this->id ?>').style.display='none'" class="close"
+          title="close overlayLogin">&#10006;</span>
+<?php } ?>
+      </div>
 
-		<div class="container">
-
-			<?php
+      <div class="container">
+	
+	<?php
 	
 	    foreach($this->elements as $index => $entry){
 		    echo $entry->to_str(bin2hex($this->id));
@@ -67,21 +66,21 @@
 
 
 	?>
-			<input name="csrf" type="hidden" style="display:none" value="<?= $_SESSION['csrf'] ?>">
-			<button style="background-color:teal" type="submit" class="login">Submit</button>
-		</div>
+	<input name="csrf" type="hidden" style="display:none" value="<?= $_SESSION['csrf'] ?>">
+        <button style="background-color:teal" type="submit" class="login">Submit</button>
+      </div>
 
-		<?php
+<?php
 
 	if($this->popup){
 ?>
-		<div class="container bottom round">
-			<button type="button" onclick="document.getElementById('<?= $this->id ?>').style.display='none'"
-				class="cancel-button">Back</button>
-		</div>
-		<?php } ?>
-	</form>
-</div>
+      <div class="container bottom round">
+        <button type="button" onclick="document.getElementById('<?= $this->id ?>').style.display='none'"
+          class="cancel-button">Back</button>
+      </div>
+<?php } ?>
+    </form>
+  </div>
 
 <?php
 
@@ -89,72 +88,77 @@
 	    $handler_function = 'handler_'.bin2hex($this->id);
 ?>
 
+	
+	<script>
+	
+	    function <?= $handler_function ?>(event){
+			event.preventDefault();
 
-<script>
-	function <?= $handler_function ?> (event) {
-		event.preventDefault();
 
+			let form = document.querySelector('#<?= $this->id ?> form');
 
-		let form = document.querySelector('#<?= $this->id ?> form');
+			let correctDiv = form.children[1];
+			let body = {};
+			for(let i = 0; i<correctDiv.children.length; i++){
 
-		let correctDiv = form.children[1];
-		let body = {};
-		for (let i = 0; i < correctDiv.children.length; i++) {
+				let child = correctDiv.children[i];
 
-			let child = correctDiv.children[i];
+				if(child.name == "")
+					continue;
 
-			if (child.name == "")
-				continue;
-
-			switch (child.nodeName.toLowerCase()) {
-				case 'input':
-					if (child.type == "checkbox")
-						body[child.name] = child.checked;
-					else
+				switch(child.nodeName.toLowerCase()){
+					case 'input':
+						if(child.type == "checkbox")
+							body[child.name] = child.checked;
+						else
+							body[child.name] = child.value;
+						break;
+					case 'label':
+						break;
+					case 'br':
+						break;
+					case 'select':
 						body[child.name] = child.value;
-					break;
-				case 'label':
-					break;
-				case 'br':
-					break;
-				case 'select':
-					body[child.name] = child.value;
-					break;
-				default:
-					console.log('need to implement ' + child.nodeName);
-					break;
+						break;
+					default:
+						console.log('need to implement ' + child.nodeName);
+						break;
+				}
+
 			}
 
+			let errorzone = document.getElementById('<?= $this->id ?>-errors');
+			errorzone.innerHTML = '';
+
+
+			fetch('<?= $this->action ?>', {
+				method:'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+				},
+					body: JSON.stringify(body)
+			}).then((text) => {
+				return text.json();
+				
+			}).then( (json) => {
+
+				if('errors' in json){
+					errorzone.innerHTML = json['errors'];
+					return;
+				}
+
+				location.reload();
+
+				
+			});
 		}
-
-		let errorzone = document.getElementById('<?= $this->id ?>-errors');
-		errorzone.innerHTML = '';
-
-
-		fetch('<?= $this->action ?>', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(body)
-		}).then((text) => {
-			return text.json();
-
-		}).then((json) => {
-
-			if ('errors' in json) {
-				errorzone.innerHTML = json['errors'];
-				return;
-			}
-
-			location.reload();
+	    document.getElementById('<?=$this->id ?>').children[0].addEventListener('submit',  <?= $handler_function ?>);
+		
 
 
-		});
-	}
-	document.getElementById('<?=$this->id ?>').children[0].addEventListener('submit', <?= $handler_function ?> );
-</script>
+
+	</script>
 
 <?php
     }
@@ -198,22 +202,21 @@
 	    if($this->type !== "checkbox"){
 
 ?>
-<label for="<?= $item_id ?>"><b><?= $this->label ?></b></label>
-<?php } ?>
-<input id="<?= $item_id ?>" type="<?= $this->type ?>" placeholder="<?= $this->placeholder ?>" name="<?= $this->name ?>"
-	<?php echo (!is_null($this->value) ? 'value="'.$this->value.'" ' : ''); ?>
-	<?php echo ($this->required ? 'required' : ''); ?>>
+	<label for="<?= $item_id ?>"><b><?= $this->label ?></b></label>
+	<?php } ?>
+	<input id="<?= $item_id ?>" type="<?= $this->type ?>" placeholder="<?= $this->placeholder ?>" name="<?= $this->name ?>" 
+	<?php echo (!is_null($this->value) ? 'value="'.$this->value.'" ' : ''); ?> <?php echo ($this->required ? 'required' : ''); ?> >
 
-<?php
+	<?php
 	
 	    if($this->type == "file"){
 		    echo '<br><br>';
 	    }
 	    else if($this->type == "checkbox"){
 ?>
-<label for="<?= $item_id ?>"><b><?= $this->label ?></b></label>
+		<label for="<?= $item_id ?>"><b><?= $this->label ?></b></label>
 
-<?php
+		<?php
 	    }
 
 
@@ -243,20 +246,19 @@
 
 
 ?>
-
-<label for="<?=$item_id?>"><?= $this->label ?></label>
-<select id="<?=$item_id?>" name="<?= $this->name ?>">
-	<?php
+		
+		<label for="<?=$item_id?>"><?= $this->label ?></label>
+		<select id="<?=$item_id?>" name="<?= $this->name ?>" >
+<?php
 
 		foreach($this->options as $key => $value){
 ?>
-	<option value="<?= $key ?>" <?= ( (!is_null($this->selected) && $key == $this->selected)  ? 'selected' : '')?>>
-		<?= $value ?> </option>
+			<option value="<?= $key ?>"  <?= ( (!is_null($this->selected) && $key == $this->selected)  ? 'selected' : '')?> > <?= $value ?> </option>
 
-	<?php
+<?php
 		}
 ?>
-</select><br><br>
+		</select><br><br>
 <?php
 	}
 

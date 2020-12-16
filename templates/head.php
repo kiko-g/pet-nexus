@@ -19,16 +19,16 @@ function default_head($title) { ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
+  <!-- Scripts -->
+  <script src="../js/login.js"></script>
+  <script src="../js/topnav.js"></script>
+  <script src="../js/buttons.js"></script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../style/fonts.css">
   <link rel="stylesheet" href="../style/general.css">
   <link rel="stylesheet" href="../style/layout.css">
   <link rel="stylesheet" href="../style/navbar.css">
-
-  <!-- Scripts -->
-  <script src="../js/login.js"></script>
-  <script src="../js/topnav.js"></script>
-  <script src="../js/buttons.js"></script>
 </head>
 
 <?php } ?>

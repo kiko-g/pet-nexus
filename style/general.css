@@ -93,43 +93,35 @@ input {
 input[type=search] {
   box-sizing: content-box;
   font-family: inherit;
-  font-size: 100%;
 }
 
 
 
 input[type=search] {
-  background: #ededed url(../assets/img/icon/search-icon.png) no-repeat 9px center;
-  background-size: 12%;
-  border: solid 1px #ccc;
-  padding: 0.5em 2em;
-  margin: 2em 2em 0 0;
-  width: 120px;
-  float: right;
-
-  border-radius: 10px;
-
   transition: all .5s;
-  border: 1px solid rgb(102, 125, 167);
+  background: whitesmoke url(../assets/img/icon/search-icon.png) no-repeat 9px center;
+  background-size: 10%;
+
+  width: 120px;
+  display: block;
+  font-size: 100%;
+  padding: 0.5em 2em;
+  margin: 0 0 2em 0;
+
+  border-radius: 15px;
+  border: 1px solid teal;
+}
+
+input[type=search]::-webkit-input-placeholder {
+  color: #bbb;
 }
 
 input[type=search]:focus {
   background: #ededed;
   padding: 0.5em;
-  width: 300px;
+  width: 350px;
   color: white;
-  background-color: rgb(102, 125, 167);
-}
-
-label {
-  display: block;
-  margin-top: 0.5em;
-}
-
-select {
-  appearance: none;
-  padding: 0.3em 1em;
-  border-radius: 10px;
+  background-color: teal;
 }
 
 
@@ -155,7 +147,6 @@ button {
 button:hover {
   opacity: 90%;
   transition: 0.2s ease-out;
-  transform: scale(1);
 }
 
 button:focus {
@@ -187,10 +178,6 @@ button.right {
   font-size: x-large;
   text-align: center;
   text-decoration: none;
-}
-
-.button-heart:active {
-  transform: scale(0.9);
 }
 
 .button-heart:hover {
@@ -264,6 +251,52 @@ button.right {
 
 
 /* Filters section */
+label {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: -0.5em;
+
+  color: #555;
+  font-weight: 100;
+  font-size: medium;
+  font-family: 'Bungee', sans-serif;
+}
+
+select {
+  width: 80%;
+  padding: 0.5em;
+  border-radius: 7px;
+
+  cursor: pointer;
+  font-size: large;
+  /* -moz-appearance: none; */
+  border: 1px solid #008877;
+  text-overflow: '';
+  font-family: 'Raleway';
+}
+
+option {
+  cursor: inherit;
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+
+  color: whitesmoke;
+  background-color: teal;
+}
+
+.dropdownAny {
+  background-color: crimson;
+}
+
+option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
+}
+
+option:disabled {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
 .colorsFilter {
   padding: 0em;
 }
@@ -316,7 +349,7 @@ footer {
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  padding: 1em;
+  padding: 1em 2em;
 }
 
 footer .footer-website-name {
