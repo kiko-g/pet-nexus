@@ -26,7 +26,7 @@
       <p><h2><?= $dog_data['listing_name'] ?></h2></p>
 	<?php
 
-		if($_SESSION['id'] == $dog_data['user_id']){
+		if(isset($_SESSION['id']) && $_SESSION['id'] == $dog_data['user_id']){
 	?>
 			<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
 					<i class="fas fa-edit" aria-hidden="true"></i>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	<?php
-		if($_SESSION['id'] == $dog_data['user_id']){
+		if(isset($_SESSION['id']) && $_SESSION['id'] == $dog_data['user_id']){
 	?>
 		<a href="../pages/picture_change.php?id=<?=$dog_data['id']?>">Change Picture</a>
 	<?php

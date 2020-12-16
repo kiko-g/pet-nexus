@@ -81,6 +81,7 @@ if (!isset($_SESSION['id']))
 ?>
 
 			picture.src = images[<?= $_GET['id']?>];
+			select.value = <?= $_GET['id']?>;
 <?php
 		}
 		else{
