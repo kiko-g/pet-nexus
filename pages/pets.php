@@ -63,21 +63,25 @@
       <div class="grid-gallery">
         <h2>Pets for adoption</h2>
         <form>
-          <input type="search" placeholder="Search">
+          <input type="search" placeholder="Search" name="q">
         </form>
         <div class="posts">      
           <?php
             require_once("../database/db_class.php");
             $dbc = Database::instance()->db();
 
-            $stmt = $dbc->prepare("SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ?");
-            $stmt->execute(array($_SESSION['id']));
+            $stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ? WHERE dogs.listing_name LIKE ?');
+	    $var = $_GET['q'];
+	    error_log($var);
+            $stmt->execute(array($_SESSION['id'], "%$var%"));
             $pets = $stmt->fetchAll();
             $i = 0;
             foreach ($pets as $index => $entry) { 
               $i++;
+	
           ?>
             
+		
             <div class="posts-item">
               <div class="posts-container">
                 <div class="posts-inside-container">
