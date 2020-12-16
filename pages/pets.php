@@ -45,16 +45,6 @@
           <option value="medium">Non-binary</option>
         </select>
       </div>
-      <div class="sizeFilter">
-        <label class="block" for="dog_size">Size</label>
-        <select id="dog_size" name="Dog Size">
-          <option selected="true" value="any" class="dropdownAny" > Any </option>
-          <option value="tiny">Tiny</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="big">Big</option>
-        </select>
-      </div>
       <div class="ageFilter">
         <label class="block" for="dog_age">Age</label>
         <select id="dog_age" name="Dog Age">
@@ -66,7 +56,22 @@
           <option value="huge">Huge</option>
         </select>
       </div>
+	<button id="applyFilters">Apply filters</button>
+	
+	<script>
+		document.getElementById('applyFilters').onclick = (event) => {
+			let urlParams = new URLSearchParams(window.location.search);
+			let cleanUrl = window.location.toString().replace(window.location.search, "")
+			let q = urlParams.get('q');
+			console.log(window.location.search);
+			console.log(cleanUrl);
 
+			if(q == undefined)
+				console.log('nao existe');
+			else
+				console.log('existe');
+		}
+	</script>
     </div>
 
     <div class="right80">      
