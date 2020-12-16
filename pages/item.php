@@ -77,12 +77,20 @@
 	<div class="container">
 
 	<?php
-		$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
-		
-		$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
-		$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
 
-		$comments->inline();
+		$is_author = false;
+		if ($dog_data['user_id'] === $_SESSION['id']) $is_author = true;
+
+		if (isset($_SESSION['id']) && !$is_author ){
+		
+			$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
+			
+			$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
+			$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+
+			$comments->inline();
+		}
+		
 	?>
 
 	<?php 
@@ -97,28 +105,45 @@
 
 		<br><br>
 
-		<strong><?=$num?> Comments:</strong>
+		<strong><?=$num?> Comment<?php if ($num !== 1) echo 's'; ?>:</strong>
 
 	<?php
 		$i = 0;
 		foreach ($comments as $index => $entry) { 
 			$i++;
-	?>
+				?>
 
-	<br><br>
-	<strong>Question:</strong>
-	<?=$entry['question']?>
-	<?php $stmt = $dbc->prepare("SELECT * FROM users WHERE id = ?");
-		  $stmt->execute(array($entry['user_id']));
-		  $user_comment = $stmt->fetch();
-    ?>
-	<br> <?=$user_comment['username']?>
+			<br><br>
+			<strong>Question:</strong>
+			<?=$entry['question']?>
+			<?php $stmt = $dbc->prepare("SELECT * FROM users WHERE id = ?");
+				$stmt->execute(array($entry['user_id']));
+				$user_comment = $stmt->fetch();
+			?>
+			<br> <?=$user_comment['username']?>
+			<br>
 
-	<br>
-	<strong>Answer:</strong>
-	<?=$entry['answer']?>
+			<?php
+			
+				if ($entry['answer'] === NULL) {
 
-	<?php } ?>
+					$add_answer = new FormCreator('answer', '../actions/action_write_a_answer.php', false, false, false);
+			
+					$add_answer->add_input('answer_content', 'Answer', 'text', 'Write a answer for this question', true);
+					$add_answer->add_input("comment_id", "", "hidden", "", true, $entry['id']);
+					$add_answer->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+
+					$add_answer->inline();
+
+				}
+				else { ?>
+
+					<strong>Answer:</strong>
+					<?=$entry['answer']?>
+				<?php	
+				}
+
+		} ?>
 
 	</div>
 	

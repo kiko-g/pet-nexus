@@ -177,5 +177,15 @@
 		catch(PDOException $e){}
    }
 
+   function answer_question($form) {
+
+		$dbc = Database::instance()->db();
+		$stmt = $dbc->prepare('UPDATE comments SET answer = ? WHERE id = ?');
+		try {
+			$stmt->execute(array($form['answer_content'], $form['comment_id']));
+		}
+		catch(PDOException $e){}
+   }
+
 ?>
   
