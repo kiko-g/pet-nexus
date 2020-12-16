@@ -345,7 +345,7 @@
   }
 }
 
-/* Media Query */
+
 @media screen and (max-width: 35em) {
   .profile {
     display: flex;

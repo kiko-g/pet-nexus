@@ -129,7 +129,6 @@
 		</div>
 	
 		<div class="right15">
-			<p>direita</p>
 		</div>
 
 	</section>

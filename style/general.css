@@ -261,8 +261,7 @@ button.right {
 
 /* Filters section */
 label {
-  margin-top: 0.5em;
-
+  margin-top: 1em;
   color: #555;
   font-weight: 900;
   font-size: large;
@@ -308,49 +307,122 @@ option:disabled {
   cursor: pointer;
 }
 
+
+
+
+/* COLORS CHECKBOXES */
 .colorsFilter {
   padding: 0em;
 }
 
-.colorButton {
+.colorCheckbox {
   padding: 1em;
   margin: 0 0.2em 1em 0;
   border: 1px solid #333;
   border-radius: 10px;
 }
 
-.colorButton:hover {
+/* Checkbox dummy parent element */
+.checkboxDummy {
+  display: inline;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkboxDummy input {
+  /* Hide the browser's default checkbox */
+  cursor: pointer;
+  opacity: 0;
+
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  border: 1px solid #777;
+}
+
+.checkmark:hover {
   opacity: 70%;
-  border: 1px solid #ccc;
 }
 
-.colorButton.red {
-  background-color: red;
-}
-
-.colorButton.green {
-  background-color: green;
-}
-
-.colorButton.brown {
-  background-color: brown;
-}
-
-.colorButton.gray {
-  background-color: gray;
-}
-
-.colorButton.cream {
-  background-color: wheat;
-}
-
-.colorButton.black {
+.checkmark.black {
   background-color: black;
 }
 
-.colorButton.white {
+.checkmark.brown {
+  background-color: brown;
+}
+
+.checkmark.gray {
+  background-color: gray;
+}
+
+.checkmark.cream {
+  background-color: wheat;
+}
+
+.checkmark.white {
   background-color: white;
 }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* On mouse-over, add a grey background color */
+.checkboxDummy:hover input~.checkmark {
+  opacity: 70%;
+}
+
+/* Show the checkmark when checked */
+.checkboxDummy input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxDummy .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkboxDummy .checkmark.white:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 
 
 

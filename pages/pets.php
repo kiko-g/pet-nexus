@@ -8,11 +8,21 @@
     <div class="left20">
       <div class="colorsFilter">
         <label class="block">Colors</label>
-        <button class="colorButton black"></button>
-        <button class="colorButton white"></button>
-        <button class="colorButton brown"></button>
-        <button class="colorButton gray"></button>
-        <button class="colorButton cream"></button>
+          <label class="checkboxDummy">
+            <input type="checkbox" name="black" value="Black"> <span class="checkmark black"></span>
+          </label>
+          <label class="checkboxDummy">
+            <input type="checkbox" name="white" value="White"> <span class="checkmark white"></span>
+          </label>
+          <label class="checkboxDummy">
+            <input type="checkbox" name="brown" value="Brown"> <span class="checkmark brown"></span>
+          </label>
+          <label class="checkboxDummy">
+            <input type="checkbox" name="gray" value="Gray"> <span class="checkmark gray"></span>
+          </label>
+          <label class="checkboxDummy">
+            <input type="checkbox" name="cream" value="Cream"> <span class="checkmark cream"></span>
+          </label>
       </div>
       <div class="breedFilter">
         <label class="block" for="dog_breed">Breed</label>
@@ -24,6 +34,7 @@
           <option value="big">Big</option>
           <option value="huge">Huge</option>
         </select>
+        
       </div>
       <div class="genderFilter">
         <label class="block" for="dog_gender">Gender</label>
