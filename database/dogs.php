@@ -167,6 +167,15 @@
 
   }
 
+   function comment_question($form){
+
+	   $dbc = Database::instance()->db();
+	   $stmt = $dbc->prepare('INSERT INTO comments(user_id, dog_id, question) VALUES (?, ?, ?)');
+	   try{
+			$stmt->execute(array($_SESSION['id'], $form['dog_id'], $form['question_content']));
+	    }
+		catch(PDOException $e){}
+   }
 
 ?>
   

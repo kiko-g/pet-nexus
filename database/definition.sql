@@ -60,6 +60,15 @@ CREATE TABLE favorites (
 	UNIQUE(user_id, dog_id)
 );
 
+DROP TABLE IF EXISTS comments;
+CREATE TABLE comments (
+	id INTEGER NOT NULL PRIMARY KEY,
+	user_id INTEGER NOT NULL REFERENCES users(id),
+	dog_id INTEGER NOT NULL REFERENCES dogs(id),
+	question TEXT NOT NULL,
+	answer TEXT
+);
+
 INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');
 INSERT INTO dog_breeds(breed_name) VALUES ('Pug');
 

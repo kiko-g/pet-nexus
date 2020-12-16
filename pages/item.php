@@ -24,10 +24,10 @@
 		<div class="main70">
       <div class="container">
       <p><h2><?= $dog_data['listing_name'] ?></h2></p>
-	<?php
+		<?php
 
 		if(isset($_SESSION['id']) && $_SESSION['id'] == $dog_data['user_id']){
-	?>
+		?>
 			<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
 					<i class="fas fa-edit" aria-hidden="true"></i>
 			</button>	
@@ -71,6 +71,58 @@
 		<strong>Gender: </strong> <?= $dog_data['gender_name'] ?><br>
 	</p>
       </div>
+
+	
+	  <br><br><br>
+	<div class="container">
+
+	<?php
+		$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
+		
+		$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
+		$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+
+		$comments->inline();
+	?>
+
+	<?php 
+		require_once("../database/db_class.php");
+		$dbc = Database::instance()->db();
+
+		$stmt = $dbc->prepare("SELECT * FROM comments WHERE dog_id = ?");
+		$stmt->execute(array($dog_data['id']));
+		$comments = $stmt->fetchAll();
+
+		$num = count($comments); ?>
+
+		<br><br>
+
+		<strong><?=$num?> Comments:</strong>
+
+	<?php
+		$i = 0;
+		foreach ($comments as $index => $entry) { 
+			$i++;
+	?>
+
+	<br><br>
+	<strong>Question:</strong>
+	<?=$entry['question']?>
+	<?php $stmt = $dbc->prepare("SELECT * FROM users WHERE id = ?");
+		  $stmt->execute(array($entry['user_id']));
+		  $user_comment = $stmt->fetch();
+    ?>
+	<br> <?=$user_comment['username']?>
+
+	<br>
+	<strong>Answer:</strong>
+	<?=$entry['answer']?>
+
+	<?php } ?>
+
+	</div>
+	
+	
 			<div class="display-topleft display-hover">
 				<button class="button-heart"><i class="fa fa-heart"></i></button>
 			</div>
@@ -79,7 +131,9 @@
 		<div class="right15">
 			<p>direita</p>
 		</div>
+
 	</section>
+
 	<?php require '../templates/footer.html'; ?>
 
 </body>
