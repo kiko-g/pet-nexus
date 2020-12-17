@@ -60,30 +60,27 @@ $username = $stmt->fetch()['username'];
 			require_once("../database/db_class.php");
 			$dbc = Database::instance()->db();
 
-			$stmt = $dbc->prepare("SELECT * FROM proposals WHERE seller_id = ?");
+			$stmt = $dbc->prepare("SELECT proposals.id, proposal_text, buyer_id, users.username as buyer_username, listing_picture, listing_name, dog_id
+				FROM proposals 
+				JOIN users 
+				ON buyer_id = users.id
+				JOIN dogs
+				ON dog_id = dogs.id
+				WHERE seller_id = ?");
 			$stmt->execute(array($_SESSION['id']));
 			$proposals = $stmt->fetchAll(); 
 
 			foreach($proposals as $index => $entry) {
-
-				$stmt = $dbc->prepare("SELECT * FROM users WHERE id = ?");
-				$stmt->execute(array($entry['buyer_id']));
-				$temp = $stmt->fetch(); 
-				$buyer = $temp['username'];
-
-				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE id = ?");
-				$stmt->execute(array($entry['dog_id']));
-				$dog = $stmt->fetch(); 
 		?>
 
 				<div class="proposal-item">
-					<img src="<?=$dog['listing_picture']?>" alt="">
-					<a href="item.php?id=1"><?=$dog['listing_name']?></a>
+					<img src="<?=$entry['listing_picture']?>" alt="">
+					<a href="item.php?id=<?= $dog_id ?>"><?=$entry['listing_name']?></a>
 					<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
 
 					<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
 				
-				From <?=$buyer?><br>
+				From: <?=$entry['buyer_username'];?><br>
 				Proposal: <?=$entry['proposal_text']?>
 				</div>
 
@@ -97,7 +94,8 @@ $username = $stmt->fetch()['username'];
 			}
 
 			function deny_proposal(proposal_id) {
-				window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id
+				window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
+
 			}
 
 		</script>
