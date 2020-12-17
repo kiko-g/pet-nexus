@@ -83,10 +83,15 @@ INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');
 INSERT INTO dog_breeds(breed_name) VALUES ('Pug');
 
 INSERT INTO dog_colors(color_name) VALUES ('White');
+INSERT INTO dog_colors(color_name) VALUES ('Gray');
 INSERT INTO dog_colors(color_name) VALUES ('Black');
+INSERT INTO dog_colors(color_name) VALUES ('Brown');
+INSERT INTO dog_colors(color_name) VALUES ('Cream');
 
+INSERT INTO dog_ages(age_name) VALUES ('Newborn');
 INSERT INTO dog_ages(age_name) VALUES ('Puppy');
-INSERT INTO dog_ages(age_name) VALUES ('Teen');
+INSERT INTO dog_ages(age_name) VALUES ('Adult');
+INSERT INTO dog_ages(age_name) VALUES ('Senior');
 
 INSERT INTO dog_genders(gender_name) VALUES ('Male');
 INSERT INTO dog_genders(gender_name) VALUES ('Female');

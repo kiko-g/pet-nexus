@@ -121,7 +121,8 @@
             $dbc = Database::instance()->db();
 
 	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ?';
-	    $execute_arr = array($_SESSION['id']);
+			$id = isset($_SESSION['id']) ? $_SESSION['id'] : "";
+			$execute_arr = array($id);
 
 
 	    $where_exists = false;

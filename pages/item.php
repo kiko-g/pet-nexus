@@ -82,8 +82,8 @@
 								<th class="table-left">Owner ID</th>
 								<td class="table-right">
 									<a class="" href="profile.php?id=<?=$dog_data['user_id']?>"><?=$dog_data['username']?></a>
-							</td>
-							</tr>							
+								</td>
+							</tr>
 						</table>
 						</div>
 				</div>
@@ -101,7 +101,7 @@
 							$edit_listing->inline();
 						} 
 				
-						else if ($is_logged_in && !$is_author) {
+						if ($is_logged_in && !$is_author) {
 							$proposal_form = new FormCreator('proposal-popup', '../actions/action_create_proposal.php', true, false);
 							$proposal_form->add_input("proposal_content", "Proposal", "text", "Write a proposal to the person!", true);
 							$proposal_form->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);

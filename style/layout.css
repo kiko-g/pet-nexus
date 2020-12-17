@@ -127,18 +127,19 @@
 .overlayLogin {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 6;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+  padding-top: 10em;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .overlayLogin-content {
   background-color: whitesmoke;
-  margin: 5% auto 15% auto;
+  margin: 15% auto 15% auto;
   width: 50%;
   border: none;
   border-radius: 5px;
@@ -248,44 +249,60 @@
   width: 80%;
   display: flex;
   margin: auto;
+  flex-direction: column;
 }
 
 .proposal-item {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   align-content: space-between;
   padding: 1em;
   border: 1px solid #ccc;
+  margin-bottom: 1em;
 }
 
-.proposal-item>img {
+.proposal-main {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.proposal-main>img {
   width: 30%;
   padding: 0;
   display: flex;
 }
 
-.proposal-item>a {
-  display: flex;
-  padding: 0 1em;
-  margin: auto auto 0 0;
-  font-size: large;
-  align-self: flex-start;
-}
-
-.proposal-item>button {
+.proposal-main>button {
   width: 80px;
-  padding: 2em 0;
+  height: 60px;
   align-self: center;
 }
 
-.proposal-item>button.yes {
+.proposal-main>div {
+  /* dummy div */
+  width: 80%;
+}
+
+.proposal-main>button.yes {
   background-color: rgb(82, 163, 82);
 }
 
-.proposal-item>button.no {
+.proposal-main>button.no {
   background-color: #f44336;
 }
+
+.proposal-description {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em;
+}
+
+.proposal-description>p {
+  margin: 0;
+}
+
+
 
 
 

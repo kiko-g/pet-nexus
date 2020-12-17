@@ -74,32 +74,35 @@ $username = $stmt->fetch()['username'];
 		?>
 
 				<div class="proposal-item">
-					<img src="<?=$entry['listing_picture']?>" alt="">
-					<a href="item.php?id=<?= $dog_id ?>"><?=$entry['listing_name']?></a>
-					<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
-
-					<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
-				
-				From: <?=$entry['buyer_username'];?><br>
-				Proposal: <?=$entry['proposal_text']?>
+					<div class="proposal-main">
+						<img src="<?=$entry['listing_picture']?>" alt="">
+						<div></div>
+						<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
+						<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
+					</div>
+					<div class="proposal-description">
+						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $dog_id ?>"><?=$entry['listing_name']?></a></p>
+						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
+						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
+					</div>
 				</div>
 
 		<?php } ?>
-		<script> 
-			let csrf_token = document.getElementById('csrf_token').innerHTML;
+				<script> 
+					let csrf_token = document.getElementById('csrf_token').innerHTML;
 
-			function accept_proposal(proposal_id) {
-				
-				window.location.href = '../actions/action_accept_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
-			}
+					function accept_proposal(proposal_id) {
+						
+						window.location.href = '../actions/action_accept_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
+					}
 
-			function deny_proposal(proposal_id) {
-				window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
+					function deny_proposal(proposal_id) {
+						window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
 
-			}
+					}
 
-		</script>
-      	</div>
+				</script>
+			</div>
     </div>
 
     <div class="right15"></div>
