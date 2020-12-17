@@ -218,6 +218,9 @@
 
 			if ($answer === 1) {
 				$dog_id = $proposal['dog_id'];
+
+				$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 2 WHERE dog_id = ?');
+				
 			}
 			
 
