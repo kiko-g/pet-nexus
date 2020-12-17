@@ -183,13 +183,18 @@
 	        $where_exists = true;
 	    }
 
+
+	    $page = isset($_GET['page']) ? intval($_GET['page']) : 0;
+	    $elements_per_page = 3;
+
+	    $paginate = new Paginate($page, $elements_per_page);
 	    $qry_str .= ' ORDER BY dogs.id DESC';
 
-	    $qry_str = paginate_query($qry_str, 0, 4);
-	    error_log($qry_str);
+	    $qry_str = $paginate->paginate_query($qry_str);
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_arr);
-            $pets = $stmt->fetchAll();
+            $pets = $paginate->paginate_results($stmt);
+
 	    error_log(count($pets));
 
             $i = 0;
@@ -226,7 +231,7 @@
 
 	  <div>
 		<?php
-			generate_pagination_bottom(4, 10, 40);
+			$paginate->generate_pagination_bottom();
 
 		?>
 	  </div>
