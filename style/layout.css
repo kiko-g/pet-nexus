@@ -353,7 +353,7 @@
 .item-more {
   width: 100%;
   padding: 1em;
-  margin: auto;
+  margin: auto auto auto 0;
   display: flex;
   flex-direction: column;
 
@@ -362,8 +362,42 @@
   background-color: #ddeeee;
 }
 
-.question-box {
-  background-color: red;
+.qna {
+  color: whitesmoke;
+  display: inline-block;
+}
+
+.qna-header {
+  margin: 0;
+  padding: 0 0.2em;
+  display: inline;
+  background-color: darkslategray;
+}
+
+.qna-text {
+  font-size: smaller;
+  background-color: transparent;
+  color: #333;
+  display: inline;
+}
+
+.qna-user {
+  font-style: italic;
+  font-size: x-small;
+  color: teal;
+  display: inline;
+}
+
+.comments-header {
+  margin: 0 0 0.5em 0;
+  padding: 0 1em;
+  width: 250px;
+
+  color: whitesmoke;
+  background-color: teal;
+
+  font-family: var(--third-font);
+  font-size: x-large;
 }
 
 /* Profile Section */
