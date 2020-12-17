@@ -173,6 +173,21 @@
 	        $where_exists = true;
 	    }
 
+	    if(isset($_GET['colors'])){
+
+		if($where_exists == true)
+			$qry_str .= ' AND ';
+		else
+			$qry_str .= ' WHERE ';
+
+		$qry_str .= 'dogs.color_id IN (';
+		$qry_str .= str_repeat('?,', count($selected_colors) - 1) . '?)';
+
+		foreach($selected_colors as $color)
+			array_push($execute_arr, $color);
+	        $where_exists = true;
+	    }
+
 	    error_log($qry_str);
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_arr);
