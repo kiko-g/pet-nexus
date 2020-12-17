@@ -115,7 +115,8 @@
 						require_once("../database/db_class.php");
 						$dbc = Database::instance()->db();
 				
-						$stmt = $dbc->prepare("SELECT * FROM comments WHERE dog_id = ?");
+						$stmt = $dbc->prepare("SELECT comments.*, users.username FROM comments JOIN users ON
+							user_id = users.id WHERE dog_id = ?");
 						$stmt->execute(array($dog_data['id']));
 						$comments = $stmt->fetchAll();
 				
@@ -128,17 +129,13 @@
 					<?php
 						$i = 0;
 						foreach ($comments as $index => $entry) { 
-							$i++;
-							$stmt = $dbc->prepare("SELECT * FROM users WHERE id = ?");
-							$stmt->execute(array($entry['user_id']));
-							$user_comment = $stmt->fetch();
 					?>
 	
 					<!-- Question -->
 					<div class="qna">
 						<p class="qna-header q">Question</p>
 						<p class="qna-text"><?=$entry['question']?> -</p>
-						<p class="qna-user"><?=$user_comment['username']?></p>
+						<p class="qna-user"><?=$entry['username']?></p>
 					</div>
 		
 					<?php
