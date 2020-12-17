@@ -210,10 +210,11 @@
 
 	try{
 
-		$stmt = NULL;
-
 		$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = ? WHERE id = ?');
 		$stmt->execute(array($answer, $proposal_id));
+
+		$stmt = $dbc->prepare('SELECT * FROM proposals WHERE id = ?');
+		$stmt->execute(array($proposal_id));
 		$proposal = $stmt->fetch();
 
 		if ($answer === 1) {
@@ -221,6 +222,9 @@
 
 			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 2 WHERE dog_id = ? AND id != ?');
 			$stmt->execute(array($dog_id, $proposal_id));
+
+			$stmt = $dbc->prepare('UPDATE dogs SET is_adopted = 1 WHERE id = ?');
+			$stmt->execute(array($dog_id));
 		}
 
 
@@ -231,7 +235,8 @@
 	catch(PDOexception $e){
 		$dbc->rollback();
 		return;
-	}	
+	}
+
 }
 
 ?>

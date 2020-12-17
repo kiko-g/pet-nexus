@@ -66,7 +66,7 @@ $username = $stmt->fetch()['username'];
 				ON buyer_id = users.id
 				JOIN dogs
 				ON dog_id = dogs.id
-				WHERE seller_id = ?");
+				WHERE seller_id = ? AND proposal_status = 0");
 			$stmt->execute(array($_SESSION['id']));
 			$proposals = $stmt->fetchAll(); 
 
@@ -78,7 +78,7 @@ $username = $stmt->fetch()['username'];
 						<img src="<?=$entry['listing_picture']?>" alt="">
 						<div></div>
 						<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
-						<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
+						<button class="no" onclick="deny_proposal(<?=$entry['id']?>)">No <i class="fas fa-times" aria-hidden="true"></i></button>
 					</div>
 					<div class="proposal-description">
 						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $dog_id ?>"><?=$entry['listing_name']?></a></p>
