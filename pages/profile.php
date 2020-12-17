@@ -29,7 +29,7 @@ $username = $stmt->fetch()['username'];
 
 				<div class="profile-header">
 					<code class="profile-user-name"> <?=$username?> </code>
-					<button onclick="document.getElementById('change-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
+					<button onclick="document.getElementById('change-popup').style.display='block'" class="edit-button">
 						<i class="fas fa-edit" aria-hidden="true"></i>
 					</button>
 					<p class="profile-real-name">Pet Nexus Admin</p>
@@ -50,7 +50,7 @@ $username = $stmt->fetch()['username'];
 	</header>
 
 	<article class="grid-gallery">
-		<h2>My Listed Pets</h2>
+		<h2 class="center">My Listed Pets</h2>
 		<div class="posts">
 			<?php
 				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");

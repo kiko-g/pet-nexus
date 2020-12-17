@@ -8,7 +8,7 @@
     <div class="left15"></div>
     <div class="main70 nopad">
       <div class="grid-gallery">
-        <h2>Popular pets</h2>
+        <h2 class="center">Popular pets</h2>
         <div class="posts centered">
           <?php
             require_once("../database/db_class.php");

@@ -10,12 +10,12 @@ if (!isset($_SESSION['id']))
   <?php require '../templates/navbar.php'; ?>
   <div class="row">
     <section class="page">
-      <h2>I have a pet for adoption</h2>
+      <h2 class="center">I have a pet for adoption</h2>
     </section>
   </div>
 
 	<?php if(isset($_SESSION['errors'])){ ?>
-	<div class="container" style="background-color:red">
+	<div class="error-div">
 		
 		<?php foreach($_SESSION['errors'] as $error){ ?>
 		<?= $error ?>

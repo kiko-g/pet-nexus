@@ -29,7 +29,7 @@ $username = $stmt->fetch()['username'];
 
 				<div class="profile-header">
 					<code class="profile-user-name"> <?=$username?> </code>
-					<button onclick="document.getElementById('change-popup').style.display='block'" class="profile-settings-button" aria-label="profile settings">
+					<button onclick="document.getElementById('change-popup').style.display='block'" class="edit-button" aria-label="profile settings">
 						<i class="fas fa-edit" aria-hidden="true"></i>
 					</button>
 					<p class="profile-real-name">Pet Nexus Admin</p>
@@ -53,7 +53,7 @@ $username = $stmt->fetch()['username'];
     <div class="left15"></div>
     
     <div class="main70 lesspad">
-      <h2>My Proposals</h2>
+      <h2 class="center">My Proposals</h2>
       <div class="proposals">
 
 		<?php 

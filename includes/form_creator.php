@@ -42,7 +42,7 @@
 	<?php
 		if($this->error_zone) {
 	?>
-	<div id="<?= $this->id ?>-errors" style="background-color:red">
+	<div id="<?= $this->id ?>-errors" class="error-div">
         </div>
 	<?php } ?>
 
@@ -50,7 +50,7 @@
 
 	if($this->popup){
 ?>
-        <span onclick="document.getElementById('<?= $this->id ?>').style.display='none'" class="close"
+        <span onclick="document.getElementById('<?= $this->id ?>').style.display='none'; hideErrorDiv(this)" class="close"
           title="close overlayLogin">&#10006;</span>
 <?php } ?>
       </div>
@@ -67,7 +67,7 @@
 
 	?>
 	<input name="csrf" type="hidden" style="display:none" value="<?= $_SESSION['csrf'] ?>">
-        <button style="background-color:teal" type="submit" class="login">Submit</button>
+        <button type="submit" class="login">Submit</button>
       </div>
 
 <?php

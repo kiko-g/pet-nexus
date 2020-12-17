@@ -15,3 +15,7 @@ function displayLoginPopup() {
 function displayRegisterPopup() {
   document.getElementById('register-popup').style.display = 'block';
 }
+
+function hideErrorDiv(node) {
+  // node.parentNode.childNodes[1].className = "error-div hide";
+}

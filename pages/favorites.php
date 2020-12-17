@@ -6,7 +6,7 @@
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<section class="grid-gallery">
-		<h2 class="pink">Favorites</h2>
+		<h2 class="center pink">Favorites</h2>
 		<div class="posts">      
 			<?php
 				require_once("../database/db_class.php");

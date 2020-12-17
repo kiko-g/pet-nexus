@@ -2,14 +2,14 @@
 .left15 {
   flex: 15%;
   -ms-flex: 15%;
-  background-color: #ddd;
+  background-color: #eee;
   padding: 20px;
 }
 
 .right15 {
   flex: 15%;
   -ms-flex: 15%;
-  background-color: #ddd;
+  background-color: #eee;
   padding: 20px;
 }
 
@@ -160,16 +160,11 @@
 
 /* Gallery */
 .grid-gallery {
-  padding: 1em;
   max-width: auto;
   margin: 0 auto;
   padding: 0 2em;
   background-color: #eee;
-}
-
-.posts.row-padding>h2.pink,
-.grid-gallery>h2.pink {
-  color: #ffaaaa;
+  /* background-color: #eeffff; */
 }
 
 .posts {
@@ -283,6 +278,88 @@
 
 
 
+/* Item */
+.item-view {
+  width: 100%;
+  margin: auto;
+  display: flex;
+}
+
+.item-general {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+
+  padding: 1em;
+  border-radius: 5px 5px 0 0;
+  border: 1px dotted #888;
+  background-color: #ddeedd;
+  position: relative;
+  flex: 1 0 50%;
+}
+
+.item-pic {
+  width: 70%;
+  margin: 5px;
+  padding: 5px;
+  margin: auto auto auto 0;
+  flex-direction: column;
+}
+
+.item-pic>img {
+  width: 100%;
+}
+
+.item-pic>p {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-self: center;
+  font-size: small;
+}
+
+.item-pic>a {
+  display: flex;
+  padding: 0;
+  font-size: large;
+}
+
+.status {
+  width: 30%;
+  margin: 5px;
+  padding: 5px;
+  margin: 0 auto auto auto;
+  flex-direction: column;
+  width: 30vw;
+}
+
+.status>table {
+  width: 10%;
+  margin: 5px;
+  padding: 5px;
+  margin: 0 0 auto auto;
+  flex-direction: column;
+  background-color: palegoldenrod;
+}
+
+.item-more {
+  width: 100%;
+  padding: 1em;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px dotted #999;
+  border-radius: 0px 0px 5px 5px;
+  background-color: #ddeeee;
+}
+
+
+
+
+
+
 /* Profile Section */
 .profile {
   padding: 1em 0;
@@ -315,16 +392,17 @@
   font-size: 3.2em;
   font-weight: 300;
   margin: 0;
+  padding: 0;
 }
 
-.profile-settings-button {
+.edit-button {
   border-radius: 10%;
   width: auto;
 
   display: inline;
   cursor: pointer;
   font-size: 2em;
-  margin: 0;
+  margin: auto;
   padding: 0.1em 0.3em;
   color: teal;
   background-color: transparent;
@@ -380,7 +458,7 @@
 @supports (display: grid) {
   .profile {
     display: grid;
-    grid-template-columns: 1fr 8fr;
+    grid-template-columns: 1fr 10fr;
     grid-template-rows: repeat(3, auto);
     grid-column-gap: 3em;
     align-items: center;
@@ -433,7 +511,7 @@
       margin: 0;
     }
 
-    .profile-settings-button {
+    .edit-button {
       width: auto;
       padding: 1em;
       text-align: center;
@@ -507,4 +585,15 @@
   right: 20%;
   bottom: 20%;
   z-index: 3;
+}
+
+.error-div {
+  display: block;
+  background-color: #f44336;
+  color: #eee;
+  border-radius: 0 0 5px 5px;
+}
+
+.error-div.hide {
+  display: none;
 }

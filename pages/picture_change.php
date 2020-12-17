@@ -27,7 +27,7 @@ if (!isset($_SESSION['id']))
 	if(isset($_SESSION['errors'])){
 ?>
 
-<div class="container" style="background-color:red">
+<div class="error-div">
 	
 <?php
 	foreach($_SESSION['errors'] as $error){
