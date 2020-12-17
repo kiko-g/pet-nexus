@@ -213,11 +213,14 @@
 
 			$stmt = NULL;
 
-			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 1 WHERE id = ?');
-			$stmt->execute(array($proposal_id));
+			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = ? WHERE id = ?');
+			$stmt->execute(array($answer, $proposal_id));
 			$proposal = $stmt->fetch();
 
-			$dog_id = $proposal['dog_id'];
+			if ($answer === 1) {
+				$dog_id = $proposal['dog_id'];
+			}
+			
 
 
 			$dbc->commit();
