@@ -17,7 +17,7 @@
 
 		$dog_data = get_dog($_GET['id']);
 		$is_logged_in = isset($_SESSION['id']);
-		$is_author = $dog_data['user_id'] === $_SESSION['id'];
+		$is_author = $is_logged_in && $dog_data['user_id'] === $_SESSION['id'];
 	?>
 
 
@@ -78,6 +78,12 @@
 								<th class="table-left">Age</th>
 								<td class="table-right"><?= $dog_data['age_name'] ?></td>
 							</tr>
+							<tr>
+								<th class="table-left">Owner ID</th>
+								<td class="table-right">
+									<a class="" href="profile.php?id=<?=$dog_data['user_id']?>"><?=$dog_data['username']?></a>
+							</td>
+							</tr>							
 						</table>
 						</div>
 				</div>
@@ -102,10 +108,10 @@
 							$proposal_form->add_input("buyer_id", "", "hidden", "", true, $_SESSION['id']);
 			
 							$proposal_form->inline();
-						
-						
-							$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
-							
+						}
+
+						if ($is_logged_in) {
+							$comments = new FormCreator('comments_section', '../actions/action_make_a_question.php', false, false, false);
 							$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
 							$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
 			
@@ -127,7 +133,6 @@
 					<h2 class="comments-header"><?=$num?> Comment<?php if ($num !== 1) echo 's'; ?></h2>
 	
 					<?php
-						$i = 0;
 						foreach ($comments as $index => $entry) { 
 					?>
 	
@@ -135,7 +140,7 @@
 					<div class="qna">
 						<p class="qna-header q">Question</p>
 						<p class="qna-text"><?=$entry['question']?> -</p>
-						<p class="qna-user"><?=$entry['username']?></p>
+						<a class="qna-user" href="profile.php?id=<?=$entry['user_id']?>"><?=$entry['username']?></a>
 					</div>
 		
 					<?php

@@ -38,7 +38,7 @@ if (!isset($_SESSION['id']))
 				$pictures = db_res_id_to_array($dogs, 'listing_picture');
 				?>
 
-			<h2>Change picture of <e id="dog_name"></e></h2>
+			<h2>Change picture of <slot id="dog_name"></slot></h2>
 			<div class="item">
 				<div class="item-general">
 					<div class="item-pic">
