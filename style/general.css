@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-size: large;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--main-font);
 }
 
 h1,
@@ -14,7 +14,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
@@ -117,7 +116,7 @@ tbody {
 
 th.table-title {
   width: 100%;
-  padding: 0.5em 0;
+  padding: 0.5em;
   color: whitesmoke;
   background-color: teal;
 }
@@ -310,7 +309,6 @@ label {
   color: #555;
   font-weight: 900;
   font-size: large;
-  font-family: 'Open Sans', sans-serif;
 }
 
 label.block {
@@ -333,7 +331,7 @@ select {
 option {
   cursor: inherit;
   font-size: x-large;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--main-font);
 
   color: whitesmoke;
   background-color: teal;
@@ -483,7 +481,6 @@ footer {
 footer .footer-website-name {
   color: #fff;
   font-size: smaller;
-  font-family: 'Open Sans';
   margin-top: 1%;
   margin-bottom: 1%;
 }
@@ -491,7 +488,6 @@ footer .footer-website-name {
 footer .footer-icons a {
   cursor: pointer;
   display: inline-block;
-  font-family: 'Open Sans';
 
   opacity: 90%;
   color: #ffffff;

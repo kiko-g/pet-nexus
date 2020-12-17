@@ -279,10 +279,8 @@
 
 
 /* Item */
-.item-view {
-  width: 100%;
-  margin: auto;
-  display: flex;
+.item {
+  padding: 0em;
 }
 
 .item-general {
@@ -326,21 +324,30 @@
 }
 
 .status {
-  width: 30%;
   margin: 5px;
   padding: 5px;
   margin: 0 auto auto auto;
   flex-direction: column;
-  width: 30vw;
+  width: 50%;
 }
 
 .status>table {
-  width: 10%;
+  width: 50%;
   margin: 5px;
   padding: 5px;
   margin: 0 0 auto auto;
   flex-direction: column;
-  background-color: palegoldenrod;
+  background-color: transparent;
+}
+
+
+.table-left {
+  text-align: left;
+  padding-right: 1em;
+}
+
+.table-right {
+  text-align: left;
 }
 
 .item-more {
@@ -355,10 +362,9 @@
   background-color: #ddeeee;
 }
 
-
-
-
-
+.question-box {
+  background-color: red;
+}
 
 /* Profile Section */
 .profile {
