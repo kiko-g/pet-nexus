@@ -205,35 +205,34 @@
 
    function answer_proposal($proposal_id, $answer) {
 	   
-		$dbc = Database::instance()->db();
-		$dbc->beginTransaction();
+	$dbc = Database::instance()->db();
+	$dbc->beginTransaction();
 
-		try{
+	try{
 
-			$stmt = NULL;
+		$stmt = NULL;
 
-			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = ? WHERE id = ?');
-			$stmt->execute(array($answer, $proposal_id));
-			$proposal = $stmt->fetch();
+		$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = ? WHERE id = ?');
+		$stmt->execute(array($answer, $proposal_id));
+		$proposal = $stmt->fetch();
 
-			if ($answer === 1) {
-				$dog_id = $proposal['dog_id'];
+		if ($answer === 1) {
+			$dog_id = $proposal['dog_id'];
 
-				$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 2 WHERE dog_id = ?');
-				
-			}
-			
-
-
-			$dbc->commit();
-
-
+			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 2 WHERE dog_id = ? AND id != ?');
+			$stmt->execute(array($dog_id, $proposal_id));
 		}
-		catch(PDOexception $e){
-			$dbc->rollback();
-			return;
-		}	
-    }
+
+
+		$dbc->commit();
+
+
+	}
+	catch(PDOexception $e){
+		$dbc->rollback();
+		return;
+	}	
+}
 
 ?>
   
