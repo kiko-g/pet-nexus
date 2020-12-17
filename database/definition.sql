@@ -75,7 +75,8 @@ CREATE TABLE proposals (
 	seller_id INTEGER NOT NULL REFERENCES users(id),
 	buyer_id INTEGER NOT NULL REFERENCES users(id),
 	dog_id INTEGER NOT NULL REFERENCES dogs(id),
-	proposal_text TEXT NOT NULL
+	proposal_text TEXT NOT NULL,
+	proposal_status INTEGER NOT NULL DEFAULT 0 CHECK (proposal_status = 0 OR proposal_status = 1 OR proposal_status = 2)
 );
 
 INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');

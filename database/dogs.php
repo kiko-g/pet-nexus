@@ -204,5 +204,31 @@
 
    }
 
+   function answer_proposal($proposal_id, $answer) {
+	   
+		$dbc = Database::instance()->db();
+		$dbc->beginTransaction();
+
+		try{
+
+			$stmt = NULL;
+
+			$stmt = $dbc->prepare('UPDATE proposals SET proposal_status = 1 WHERE id = ?');
+			$stmt->execute(array($proposal_id));
+			$proposal = $stmt->fetch();
+
+			$dog_id = $proposal['dog_id'];
+
+
+			$dbc->commit();
+
+
+		}
+		catch(PDOexception $e){
+			$dbc->rollback();
+			return;
+		}	
+    }
+
 ?>
   

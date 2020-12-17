@@ -49,7 +49,6 @@ function heart(button, id) {
 
 }
 
-
 function displayProposalPopup() {
   document.getElementById('proposal-popup').style.display = 'block';
 }
