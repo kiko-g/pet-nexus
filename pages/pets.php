@@ -5,6 +5,7 @@
   <?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php' ?>
   <?php require '../database/dogs.php' ?>
+  <?php require '../includes/pagination.php' ?>
   <article class="row"> <!-- row-padding -->
     <div class="left20">
       <div class="colorsFilter">
@@ -75,13 +76,6 @@
 			let selectedBreed = document.getElementById('dog_breed').value;
 			let selectedGender = document.getElementById('dog_gender').value;
 			let selectedAge = document.getElementById('dog_age').value;
-
-
-
-			console.log(tickedColors);
-			console.log(selectedBreed);
-			console.log(selectedGender);
-			console.log(selectedAge);
 
 			let urlParams = new URLSearchParams(window.location.search);
 			let cleanUrl = window.location.toString().replace(window.location.search, "")
@@ -188,17 +182,20 @@
 	        $where_exists = true;
 	    }
 
+	    $qry_str .= ' ORDER BY dogs.id DESC';
+
+	    $qry_str = paginate_query($qry_str, 0, 4);
 	    error_log($qry_str);
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_arr);
-
             $pets = $stmt->fetchAll();
+	    error_log(count($pets));
+
             $i = 0;
             foreach ($pets as $index => $entry) { 
               $i++;
 	
           ?>
-            
 		
             <div class="posts-item">
               <div class="posts-container">
@@ -222,8 +219,16 @@
                 </a>
               </div>
             </div>
-          <?php }  ?>
+	  <?php } ?>
+	
         </div>
+
+	  <div>
+		<?php
+			generate_pagination_bottom(4, 10, 40);
+
+		?>
+	  </div>
       </div>
     </div>
   </article>

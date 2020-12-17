@@ -90,8 +90,7 @@
 	    JOIN dog_breeds ON breed_id=dog_breeds.id 
 	    JOIN dog_ages ON age_id=dog_ages.id 
 	    JOIN dog_genders ON gender_id=dog_genders.id 
-			JOIN users ON dogs.user_id=users.id
-
+	    JOIN users ON dogs.user_id=users.id 
 		WHERE dogs.id = ?');
     $stmt->execute(array($id));
     return $stmt->fetch();
