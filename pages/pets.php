@@ -4,72 +4,112 @@
 <body>
   <?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php' ?>
+  <?php require '../database/dogs.php' ?>
   <article class="row"> <!-- row-padding -->
     <div class="left20">
       <div class="colorsFilter">
+	<?php
+		$colors = get_colors();
+		$breeds = get_breeds();
+		$genders = get_genders();
+		$ages = get_ages();
+
+		$selected_colors = isset($_GET['colors']) ? explode(',', $_GET['colors']) : array();
+		$selected_breed = isset($_GET['breed']) ? $_GET['breed'] : '';
+		$selected_gender = isset($_GET['gender']) ? $_GET['gender'] : '';
+	?>
         <label class="block">Colors</label>
-          <label class="checkboxDummy">
-            <input type="checkbox" name="black" value="Black"> <span class="checkmark black"></span>
-          </label>
-          <label class="checkboxDummy">
-            <input type="checkbox" name="white" value="White"> <span class="checkmark white"></span>
-          </label>
-          <label class="checkboxDummy">
-            <input type="checkbox" name="brown" value="Brown"> <span class="checkmark brown"></span>
-          </label>
-          <label class="checkboxDummy">
-            <input type="checkbox" name="gray" value="Gray"> <span class="checkmark gray"></span>
-          </label>
-          <label class="checkboxDummy">
-            <input type="checkbox" name="cream" value="Cream"> <span class="checkmark cream"></span>
-          </label>
+	  <?php
+		foreach($colors as $key => $value){
+	  ?>
+		  <label class="checkboxDummy">
+		  <input type="checkbox" <?= in_array($key, $selected_colors) ? 'checked' : ''; ?> name="<?=$key?>" value="<?=$value?>"> <span class="checkmark <?= strtolower($value)?>"></span>
+		  </label>
+	  <?php
+		}
+	  ?>
       </div>
       <div class="breedFilter">
         <label class="block" for="dog_breed">Breed</label>
         <select id="dog_breed" name="Dog Breed">
-          <option selected="true" value="any" class="dropdownAny" > Any </option>
-          <option value="newborn">Newborn</option>
-          <option value="puppy">Puppy</option>
-          <option value="medium">Medium</option>
-          <option value="big">Big</option>
-          <option value="huge">Huge</option>
+	<option <?= empty($selected_breed) ? 'selected' : ''; ?> value="any" class="dropdownAny" > Any </option>
+	  <?php
+		foreach($breeds as $key => $value){
+	  ?>
+		  <option <?= $selected_breed == $key ? 'selected' : ''; ?> value="<?= $key ?>"><?= $value ?></option>
+	  <?php } ?>
         </select>
         
       </div>
       <div class="genderFilter">
         <label class="block" for="dog_gender">Gender</label>
         <select id="dog_gender" name="Dog Gender">
-          <option selected="true" value="any" class="dropdownAny" > Any </option>
-          <option value="newborn">Male</option>
-          <option value="puppy">Female</option>
-          <option value="medium">Non-binary</option>
+          <option <?= empty($selected_gender) ? 'selected' : ''; ?> value="any" class="dropdownAny" > Any </option>
+	  <?php
+		foreach($genders as $key => $value){
+	  ?>
+		  <option <?= $selected_gender == $key ? 'selected' : ''; ?> value="<?= $key ?>"><?= $value ?></option>
+	  <?php } ?>
         </select>
       </div>
       <div class="ageFilter">
         <label class="block" for="dog_age">Age</label>
         <select id="dog_age" name="Dog Age">
-          <option selected="true" value="any" class="dropdownAny" > Any </option>
-          <option value="newborn">Newborn</option>
-          <option value="puppy">Puppy</option>
-          <option value="medium">Medium</option>
-          <option value="big">Big</option>
-          <option value="huge">Huge</option>
+          <option <?= empty($selected_gender) ? 'selected' : ''; ?>  value="any" class="dropdownAny" > Any </option>
+	  <?php
+		foreach($ages as $key => $value){
+	  ?>
+		  <option <?= $selected_gender == $key ? 'selected' : ''; ?> value="<?= $key ?>"><?= $value ?></option>
+	  <?php } ?>
         </select>
       </div>
 	<button id="applyFilters">Apply filters</button>
 	
 	<script>
 		document.getElementById('applyFilters').onclick = (event) => {
+			let colorNodes = [...document.querySelectorAll('body > article > div.left20 > div.colorsFilter input[type=checkbox]')];
+
+			let tickedColors = colorNodes.filter((node) => { return node.checked; }).map((node) => {return node.name;}).join(',');
+
+			let selectedBreed = document.getElementById('dog_breed').value;
+			let selectedGender = document.getElementById('dog_gender').value;
+			let selectedAge = document.getElementById('dog_age').value;
+
+
+
+			console.log(tickedColors);
+			console.log(selectedBreed);
+			console.log(selectedGender);
+			console.log(selectedAge);
+
 			let urlParams = new URLSearchParams(window.location.search);
 			let cleanUrl = window.location.toString().replace(window.location.search, "")
 			let q = urlParams.get('q');
-			console.log(window.location.search);
-			console.log(cleanUrl);
 
-			if(q == undefined)
-				console.log('nao existe');
-			else
-				console.log('existe');
+			let queryObj = {};
+
+			if(tickedColors !== ''){
+				queryObj['colors'] = tickedColors;
+			}
+
+			if(selectedBreed !== 'any'){
+				queryObj['breed'] = selectedBreed;
+			}
+
+			if(selectedGender !== 'any'){
+				queryObj['gender'] = selectedGender;
+			}
+
+			if(selectedAge !== 'any'){
+				queryObj['age'] = selectedAge;
+			}
+
+			if(q !== undefined){
+				queryObj['q'] = q;
+			}
+
+			let newQuery = new URLSearchParams(queryObj);
+			window.location.replace(cleanUrl+'?'+newQuery);
 		}
 	</script>
     </div>
