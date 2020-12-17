@@ -1,5 +1,12 @@
 <!-- if not logged in show login popup using require 'login.html' -->
-<?php require_once '../includes/session.php'; ?>
+<?php require_once '../includes/session.php'; 
+
+		if(!isset($_GET['id'])) {
+			header('Location: ../index.php');
+			return;
+		}
+
+?>
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
 <body>
@@ -7,10 +14,6 @@
 		require '../templates/header.html';
 		require '../templates/navbar.php';
 		require '../database/dogs.php';
-		if(!isset($_GET['id'])) {
-			header('Location: ../index.php');
-			return;
-		}
 
 		$dog_data = get_dog($_GET['id']);
 		$is_logged_in = isset($_SESSION['id']);
