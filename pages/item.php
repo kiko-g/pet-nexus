@@ -120,7 +120,7 @@
 					?>
 	
 					<!-- Comments header -->
-					<h2 class="comments-header"><?=$num?> Comment<?php if ($num !== 1) echo 's'; ?>:</h2>
+					<h2 class="comments-header"><?=$num?> Comment<?php if ($num !== 1) echo 's'; ?></h2>
 	
 					<?php
 						$i = 0;
@@ -133,13 +133,10 @@
 	
 					<!-- Question -->
 					<div class="qna">
-						<p class="qna-header">Question</p>
+						<p class="qna-header q">Question</p>
 						<p class="qna-text"><?=$entry['question']?> -</p>
 						<p class="qna-user"><?=$user_comment['username']?></p>
 					</div>
-
-
-					<!-- Username -->
 		
 					<?php
 						if ($entry['answer'] === NULL && $is_author) {
@@ -155,9 +152,9 @@
 						}
 						else { ?>
 						<!-- Answer -->
-						<div class="qna">
-							<p class="qna-header">Answer</p> 
-							<p class="qna-text">: <?=$entry['answer']?></p>
+						<div class="qna margin">
+							<p class="qna-header a">Answer</p> 
+							<p class="qna-text"><?=$entry['answer']?></p>
 						</div>
 					<?php
 						}

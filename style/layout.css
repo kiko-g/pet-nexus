@@ -365,17 +365,33 @@
 .qna {
   color: whitesmoke;
   display: inline-block;
+  font-family: var(--main-font);
+  font-size: medium;
+}
+
+.qna.margin {
+  margin-bottom: 1em;
 }
 
 .qna-header {
   margin: 0;
-  padding: 0 0.2em;
-  display: inline;
-  background-color: darkslategray;
+  padding: 0 0 0 0.2em;
+  display: inline-block;
+  width: 80px;
+  background-color: greenyellow;
+  text-align: left;
+}
+
+.qna-header.q {
+  background-color: #4477bbbb;
+}
+
+.qna-header.a {
+  background-color: #cc4444bb;
+
 }
 
 .qna-text {
-  font-size: smaller;
   background-color: transparent;
   color: #333;
   display: inline;
@@ -391,7 +407,7 @@
 .comments-header {
   margin: 0 0 0.5em 0;
   padding: 0 1em;
-  width: 250px;
+  width: 220px;
 
   color: whitesmoke;
   background-color: teal;
@@ -632,6 +648,7 @@
   background-color: #f44336;
   color: #eee;
   border-radius: 0 0 5px 5px;
+  margin-bottom: 1em;
 }
 
 .error-div.hide {

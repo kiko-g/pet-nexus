@@ -15,93 +15,87 @@ if (!isset($_SESSION['id']))
 
 <body>
 	<?php require '../templates/header.html' ?>
-  <?php require '../templates/navbar.php'; ?>
-  <article class="row">
-    <section class="page">
-      <h1>I want to change picture of listing!</h1>
-    </section>
-  </article>
-
-
-<?php
-	if(isset($_SESSION['errors'])){
-?>
-
-<div class="error-div">
+	<?php require '../templates/navbar.php'; ?>
 	
-<?php
-	foreach($_SESSION['errors'] as $error){
-?>
-	<?= $error ?><br>
-<?php
-	}
-	unset($_SESSION['errors']);
-
-	}
-?>
-
-
-</div>
-
-
-<div>
-	<?php
-		require_once '../database/dogs.php';
-		$dogs = get_dogs_of_user();
-		$pictures = db_res_id_to_array($dogs, 'listing_picture');
-	?>
-		<div class="container">
-			<img id="picture-showcase" style="display:none" src="" class="display-pet" alt="">
+	<section class="row">
+		<div class="left15">
 		</div>
-	<?php
-		$submit = new FormCreator('picture-change', '../actions/action_update_picture.php', true, false, false,'multipart/form-data');
-		$submit->add_select('listing_id', 'Listings', db_res_id_to_array($dogs, 'listing_name'), read_session_or_null('listing_id'));
-		$submit->add_input('listing_picture', 'Pet\'s New Photo', 'file', NULL, true, NULL, NULL);
-		$submit->inline();
 
-		unset($_SESSION['listing_id']);
+		<div class="main70">
+			<?php 
+				if(isset($_SESSION['errors'])) { ?>
+					<div class="error-div">
+					<?php 
+					foreach($_SESSION['errors'] as $error) {
+						echo $error;
+					}
+						
+					unset($_SESSION['errors']);
+				}
 
-	?>
-	<script>
-		let picture = document.getElementById('picture-showcase');
-		let select = document.getElementsByName('listing_id')[0];
+				require_once '../database/dogs.php';
+				$dogs = get_dogs_of_user();
+				$pictures = db_res_id_to_array($dogs, 'listing_picture');
+				?>
 
+			<h2>Change picture of <e id="dog_name"></e></h2>
+			<div class="item">
+				<div class="item-general">
+					<div class="item-pic">
+						<img id="picture-showcase" style="display:none" src="" alt="">
+					</div>
+					<?php
+						$submit = new FormCreator('picture-change', '../actions/action_update_picture.php', true, false, false,'multipart/form-data');
+						$submit->add_select('listing_id', 'Listings', db_res_id_to_array($dogs, 'listing_name'), read_session_or_null('listing_id'));
+						$submit->add_input('listing_picture', 'Pet\'s New Photo', 'file', NULL, true, NULL, NULL);
+						$submit->inline();
+				
+						unset($_SESSION['listing_id']);
+					?>
+						<script>
+							let picture = document.getElementById('picture-showcase');
+							let select = document.getElementsByName('listing_id')[0];
+							let dogName = document.getElementById('dog_name');
+							console.log(dogName);
 
-		let images = {
-			<?php
-				foreach($pictures as $key => $value)
-					echo '\''.$key . '\' : \'' . $value . '\', ';
-			?>
-		}; 
-		// erro?
+							let images = {
+								<?php
+									foreach($pictures as $key => $value)
+										echo '\''.$key . '\' : \'' . $value . '\', ';
+								?>
+							};
 
-<?php
+							<?php 
+								if(isset($_GET['id'])) { ?>
+									picture.src = images[<?= $_GET['id']?>];
+									select.value = <?= $_GET['id']?>;
+									dogName.innerHTML = select.options[select.selectedIndex].text;
+							<?php
+								}
+								else { ?>  
+									let lastKey = Object.keys(images)[Object.keys(images).length-1];
+									picture.src = images[lastKey];
+									select.value  = lastKey;
+									dogName.innerHTML = select.options[select.selectedIndex].text;
+							<?php } ?>
+							
+								picture.style.display = 'block';
+								select.onchange = (event) => {
+									dogName.innerHTML = select.options[select.selectedIndex].text;
+									picture.src = images[event.target.value];
+								};
+						</script>
+					</div>
 
-		if(isset($_GET['id'])){
-?>
+					<div class="status">
+					</div>
+				</div>
+			</div> <!-- End item  -->
+		</div> <!-- End main70 -->
 
-			picture.src = images[<?= $_GET['id']?>];
-			select.value = <?= $_GET['id']?>;
-<?php
-		}
-		else{
-?>
-			let lastKey = Object.keys(images)[Object.keys(images).length-1];
-			picture.src = images[lastKey];
-			select.value  = lastKey;
-
-<?php
-		}
-?>
-		picture.style.display = 'block';
-
-		select.onchange = (event) => {
-			picture.src = images[event.target.value];
-		};
-	</script>
-</div>
-
-
+		<div class="right15">
+		</div>
+	</section>
   <?php require '../templates/footer.html'; ?>
 </body>
 </html>
