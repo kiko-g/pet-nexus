@@ -28,7 +28,7 @@
 
 		<div class="main70">
 			<h2><?= $dog_data['listing_name'] ?></h2>
-			<?php if ($is_logged_in) { ?>
+			<?php if ($is_author) { ?>
 				<button onclick="document.getElementById('edit-listing-popup').style.display='block'" class="edit-button">
 					<i class="fas fa-edit" aria-hidden="true"></i>
 				</button>

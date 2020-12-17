@@ -205,9 +205,12 @@
                 <div class="posts-inside-container">
                   <img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
                   <div class="fav-button">
+		<?php if(isset($_SESSION['id'])){
+		?>
 		  <button id="fav-<?= $entry['id'] ?>" class="button-heart" onclick="fill(this)">
-		  <i class="fa <?= (is_null($entry['favorite_id']) ? 'fa-heart-o' : 'fa-heart')?> pink big" aria-hidden="true"></i>
+			  <i class="fa <?= (is_null($entry['favorite_id']) ? 'fa-heart-o' : 'fa-heart')?> pink big" aria-hidden="true"></i>
                     </button>
+		<?php } ?>
                   </div>
                   <div class="photo-stats">
                     <i class="fa fa-heart pink" aria-hidden="true"></i> 32
