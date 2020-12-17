@@ -53,8 +53,8 @@ $username = $stmt->fetch()['username'];
 		<h2 class="center">My Listed Pets</h2>
 		<div class="posts">
 			<?php
-				$stmt = $dbc->prepare("SELECT * FROM dogs WHERE user_id = ?");
-				$stmt->execute(array($_SESSION['id']));
+				$stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND dogs.user_id = ? AND favorites.user_id = ?');
+				$stmt->execute(array($_SESSION['id'], $_SESSION['id']));
 				$pets = $stmt->fetchAll();
 				$i = 0;
 				foreach ($pets as $index => $entry) { 
@@ -66,9 +66,12 @@ $username = $stmt->fetch()['username'];
 					<div class="posts-inside-container">
 						<img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
 						<div class="fav-button">
-							<button id="fav<?= $i ?>" class="button-heart" onclick="fill(<?= $i ?>)">
-								<i class="fa fa-heart-o pink big" aria-hidden="true"></i>
-							</button>
+		<?php if(isset($_SESSION['id'])){
+		?>
+		  <button id="fav-<?= $entry['id'] ?>" class="button-heart" onclick="fill(this)">
+			  <i class="fa <?= (is_null($entry['favorite_id']) ? 'fa-heart-o' : 'fa-heart')?> pink big" aria-hidden="true"></i>
+                    </button>
+		<?php } ?>
 						</div>
 						<div class="photo-stats">
 							<i class="fa fa-heart pink" aria-hidden="true"></i> <?=12*$i ?>

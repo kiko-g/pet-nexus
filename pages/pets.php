@@ -105,7 +105,7 @@
 				queryObj['age'] = selectedAge;
 			}
 
-			if(q !== undefined){
+			if(q !== null && q !== undefined){
 				queryObj['q'] = q;
 			}
 
