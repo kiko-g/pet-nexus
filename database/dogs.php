@@ -187,5 +187,21 @@
 		catch(PDOException $e){}
    }
 
+   function create_proposal($form) {
+
+		$dbc = Database::instance()->db();
+		$stmt = $dbc->prepare('SELECT * FROM dogs WHERE id = ?');
+		try {
+			$stmt->execute(array($form['dog_id']));
+		}
+		catch(PDOException $e){}
+		$dog = $stmt->fetch();
+		$seller_id = $dog['user_id'];
+
+		$stmt2 = $dbc->prepare('INSERT INTO proposals(seller_id, buyer_id, dog_id, proposal_text) VALUES (?, ?, ?, ?)');
+		$stmt2->execute(array($seller_id, $form['buyer_id'], $form['dog_id'], $form['proposal_content']));
+
+   }
+
 ?>
   

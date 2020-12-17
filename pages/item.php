@@ -81,14 +81,26 @@
 		$is_author = false;
 		if ($dog_data['user_id'] === $_SESSION['id']) $is_author = true;
 
-		if (isset($_SESSION['id']) && !$is_author ){
-		
-			$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
-			
-			$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
-			$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+		if (isset($_SESSION['id']) && !$is_author ){ ?>
 
-			$comments->inline();
+			<button onclick="displayProposalPopup()"> I want to adopt it!
+			</button>
+			
+			<?php
+				$proposal_form = new FormCreator('proposal-popup', '../actions/action_create_proposal.php', true, false);
+				$proposal_form->add_input("proposal_content", "Proposal", "text", "Write a proposal to the person!", true);
+				$proposal_form->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+				$proposal_form->add_input("buyer_id", "", "hidden", "", true, $_SESSION['id']);
+
+				$proposal_form->inline();
+			
+			
+				$comments = new FormCreator('comments_session', '../actions/action_make_a_question.php', false, false, false);
+				
+				$comments->add_input('question_content', 'Question', 'text', 'Write here your question', true);
+				$comments->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
+
+				$comments->inline();
 		}
 		
 	?>
@@ -125,7 +137,7 @@
 
 			<?php
 			
-				if ($entry['answer'] === NULL) {
+				if ($entry['answer'] === NULL && $is_author) {
 
 					$add_answer = new FormCreator('answer', '../actions/action_write_a_answer.php', false, false, false);
 			

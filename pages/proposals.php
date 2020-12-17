@@ -55,13 +55,30 @@ $username = $stmt->fetch()['username'];
     <div class="main70 lesspad">
       <h2>My Proposals</h2>
       <div class="proposals">
+
+		<?php 
+			require_once("../database/db_class.php");
+			$dbc = Database::instance()->db();
+
+			$stmt = $dbc->prepare("SELECT * FROM proposals WHERE seller_id = ?");
+			$stmt->execute(array($_SESSION['id']));
+			$proposals = $stmt->fetchAll(); 
+
+			foreach($proposals as $index => $entry) {
+		?>
+
 				<div class="proposal-item">
 					<img src="../assets/img/dog2.jpg" alt="">
 					<a href="item.php?id=1">Doggo1</a>
 					<button class="yes">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
 					<button class="no">No <i class="fas fa-times" aria-hidden="true"></i></button>
-        </div>
-      </div>
+				
+		
+				Proposal: <?=$entry['proposal_text']?>
+				</div>
+
+		<?php } ?>
+      	</div>
     </div>
 
     <div class="right15"></div>

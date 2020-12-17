@@ -69,6 +69,15 @@ CREATE TABLE comments (
 	answer TEXT
 );
 
+DROP TABLE IF EXISTS proposals;
+CREATE TABLE proposals (
+	id INTEGER NOT NULL PRIMARY KEY,
+	seller_id INTEGER NOT NULL REFERENCES users(id),
+	buyer_id INTEGER NOT NULL REFERENCES users(id),
+	dog_id INTEGER NOT NULL REFERENCES dogs(id),
+	proposal_text TEXT NOT NULL
+);
+
 INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');
 INSERT INTO dog_breeds(breed_name) VALUES ('Pug');
 
