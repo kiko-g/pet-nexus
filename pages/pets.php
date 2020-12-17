@@ -17,6 +17,7 @@
 		$selected_colors = isset($_GET['colors']) ? explode(',', $_GET['colors']) : array();
 		$selected_breed = isset($_GET['breed']) ? $_GET['breed'] : '';
 		$selected_gender = isset($_GET['gender']) ? $_GET['gender'] : '';
+		$selected_age = isset($_GET['age']) ? $_GET['age'] : '';
 	?>
         <label class="block">Colors</label>
 	  <?php
@@ -55,11 +56,11 @@
       <div class="ageFilter">
         <label class="block" for="dog_age">Age</label>
         <select id="dog_age" name="Dog Age">
-          <option <?= empty($selected_gender) ? 'selected' : ''; ?>  value="any" class="dropdownAny" > Any </option>
+          <option <?= empty($selected_age) ? 'selected' : ''; ?>  value="any" class="dropdownAny" > Any </option>
 	  <?php
 		foreach($ages as $key => $value){
 	  ?>
-		  <option <?= $selected_gender == $key ? 'selected' : ''; ?> value="<?= $key ?>"><?= $value ?></option>
+		  <option <?= $selected_age == $key ? 'selected' : ''; ?> value="<?= $key ?>"><?= $value ?></option>
 	  <?php } ?>
         </select>
       </div>
@@ -125,9 +126,57 @@
             require_once("../database/db_class.php");
             $dbc = Database::instance()->db();
 
-            $stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ? WHERE dogs.listing_name LIKE ?');
-	    $var = isset($_GET['q']) ? $_GET['q'] : '';
-            $stmt->execute(array($_SESSION['id'], "%$var%"));
+	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ?';
+	    $execute_arr = array($_SESSION['id']);
+
+
+	    $where_exists = false;
+	    if(isset($_GET['q'])){
+		$qry_str .= ' WHERE dogs.listing_name LIKE ?';
+		$var = $_GET['q'];
+		array_push($execute_arr, '%'.$var.'%');
+		$where_exists = true;
+	    }
+
+	    if(isset($_GET['breed'])){
+
+		if($where_exists == true)
+			$qry_str .= ' AND ';
+		else
+			$qry_str .= ' WHERE ';
+
+		$qry_str .= 'dogs.breed_id = ?';
+		array_push($execute_arr, $_GET['breed']);
+	        $where_exists = true;
+	    }
+
+	    if(isset($_GET['gender'])){
+
+		if($where_exists == true)
+			$qry_str .= ' AND ';
+		else
+			$qry_str .= ' WHERE ';
+		$qry_str .= 'dogs.gender_id = ?';
+		array_push($execute_arr, $_GET['gender']);
+	        $where_exists = true;
+	    }
+
+
+	    if(isset($_GET['age'])){
+
+		if($where_exists == true)
+			$qry_str .= ' AND ';
+		else
+			$qry_str .= ' WHERE ';
+		$qry_str .= 'dogs.age_id = ?';
+		array_push($execute_arr, $_GET['age']);
+	        $where_exists = true;
+	    }
+
+	    error_log($qry_str);
+            $stmt = $dbc->prepare($qry_str);
+            $stmt->execute($execute_arr);
+
             $pets = $stmt->fetchAll();
             $i = 0;
             foreach ($pets as $index => $entry) { 
