@@ -15,10 +15,21 @@
 			LEFT JOIN favorites ON dogs.id=favorites.dog_id
 			LEFT JOIN comments ON dogs.id=comments.dog_id
 			WHERE dogs.id IN (';
-		$qry_str .= str_repeat('?,', count($ids) - 1) . '?)';
+		if($count($ids) == 0){
+			$qry_str .= ')';
+		}
+		else{
+			$qry_str .= str_repeat('?,', count($ids) - 1) . '?)';
+		}
+
 		$qry_str .= 'GROUP BY dogs.id';
 		$stmt = $dbc->prepare($qry_str);
-		$stmt->execute($ids);
+		if($count($ids) == 0){
+			$stmt->execute();
+		}
+		else{
+			$stmt->execute($ids);
+		}
 
 		$pre_res = $stmt->fetchAll();
 
