@@ -99,6 +99,15 @@
   function update_dog($data){
 
 		header('Content-Type: application/json');
+		$guarantee = guarantee_and_escape($data, ['listing_name', 'listing_description', 'breed_id', 'color_id', 'age_id', 'gender_id', 'dog_id', 'csrf'], true);
+		if($guarantee == false){
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], true)){
+			return;
+		}
+
 		$dbc = Database::instance()->db();
 		$stmt = $dbc->prepare('UPDATE dogs SET 
 			listing_name = ?,
@@ -110,13 +119,13 @@
 		       	WHERE id = ? AND user_id = ?');
 		try{
 			$stmt->execute(array(
-				$data['listing_name'],
-				$data['listing_description'],
-				$data['breed_id'],
-				$data['color_id'],
-				$data['age_id'],
-				$data['gender_id'],
-				$data['dog_id'],
+				$guarantee['listing_name'],
+				$guarantee['listing_description'],
+				$guarantee['breed_id'],
+				$guarantee['color_id'],
+				$guarantee['age_id'],
+				$guarantee['gender_id'],
+				$guarantee['dog_id'],
 				$_SESSION['id']
 			)
 			);

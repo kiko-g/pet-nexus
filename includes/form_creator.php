@@ -35,7 +35,7 @@
 ?>
 
 	<div id="<?= $this->id ?>" class="<?= $form_class ?>">
-	<form class="overlayLogin-content nopad" action="<?= $this->action ?>" method="post" <?= (is_null($this->enctype) ? '' : 'enctype="'.$this->enctype.'"');?>>
+	<form class="overlayLogin-content animate nopad" action="<?= $this->action ?>" method="post" <?= (is_null($this->enctype) ? '' : 'enctype="'.$this->enctype.'"');?>>
 
 
       <div class="container top round">
