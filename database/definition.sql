@@ -79,8 +79,14 @@ CREATE TABLE proposals (
 	proposal_status INTEGER NOT NULL DEFAULT 0 CHECK (proposal_status = 0 OR proposal_status = 1 OR proposal_status = 2)
 );
 
-INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');
 INSERT INTO dog_breeds(breed_name) VALUES ('Pug');
+INSERT INTO dog_breeds(breed_name) VALUES ('Beagle');
+INSERT INTO dog_breeds(breed_name) VALUES ('Labdrador');
+INSERT INTO dog_breeds(breed_name) VALUES ('German Shepherd');
+INSERT INTO dog_breeds(breed_name) VALUES ('Australian Shepherd');
+INSERT INTO dog_breeds(breed_name) VALUES ('Golden Retriever');
+INSERT INTO dog_breeds(breed_name) VALUES ('Husky');
+INSERT INTO dog_breeds(breed_name) VALUES ('Labrador Retriever');
 
 INSERT INTO dog_colors(color_name) VALUES ('White');
 INSERT INTO dog_colors(color_name) VALUES ('Gray');

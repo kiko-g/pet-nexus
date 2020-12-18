@@ -159,14 +159,15 @@
 							$add_answer->inline();
 		
 						}
-						else { ?>
+						else if ($entry['answer'] !== NULL) { ?>
 						<!-- Answer -->
 						<div class="qna margin">
 							<p class="qna-header a">Answer</p> 
-							<p class="qna-text"><?=$entry['answer']?></p>
+							<p class="qna-text"><?=$entry['answer']?> -</p>
+							<a class="qna-user" href="profile.php?id=<?=$entry['user_id']?>"><?=$entry['username']?></a>
 						</div>
 					<?php
-						}
+						} 
 					}
 					?>
 

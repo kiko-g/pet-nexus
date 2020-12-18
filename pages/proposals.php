@@ -3,7 +3,7 @@
 
 // Verify if user is logged in
 if (!isset($_SESSION['id'])){
-	die(header('Location: login.php'));
+	die(header('Location: main.php'));
 }
 
 
@@ -32,7 +32,6 @@ $username = $stmt->fetch()['username'];
 					<button onclick="document.getElementById('change-popup').style.display='block'" class="edit-button" aria-label="profile settings">
 						<i class="fas fa-edit" aria-hidden="true"></i>
 					</button>
-					<p class="profile-real-name">Pet Nexus Admin</p>
 				</div>
 				
 				<?php

@@ -2,7 +2,7 @@
 <?php require '../templates/head.php'; default_head('Pet Nexus - Found Pets');
 
 if (!isset($_SESSION['id']))
-  die(header('Location: login.php'));
+  die(header('Location: main.php'));
 ?>
 
 <body>

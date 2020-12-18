@@ -1,6 +1,7 @@
 <?php
 
 	function get_dogs_socials($dogs){
+		// error_log($dogs);
 
 		$ids = array();
 		foreach($dogs as $dog){
@@ -10,7 +11,7 @@
 
 		$dbc = Database::instance()->db();
 
-		$qry_str = 'SELECT dogs.id as dog_id, COUNT(UNIQUE favorites.id) as num_favorites, COUNT(UNIQUE comments.id) as num_comments
+		$qry_str = 'SELECT dogs.id as dog_id, COUNT(DISTINCT favorites.id) as num_favorites, COUNT(DISTINCT comments.id) as num_comments
 			FROM dogs 
 			LEFT JOIN favorites ON dogs.id=favorites.dog_id
 			LEFT JOIN comments ON dogs.id=comments.dog_id
