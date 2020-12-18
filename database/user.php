@@ -61,9 +61,8 @@
 	function login_user($data){
 
 
-		$guarantee = guarantee_and_escape($data, ['username', 'password', 'remember', 'csrf']);
+		$guarantee = guarantee_and_escape($data, ['username', 'password', 'remember', 'csrf'], true);
 		if($guarantee == false){
-			echo json_encode(['errors' => 'Missing fields']);
 			return;
 		}
 
@@ -165,6 +164,18 @@
 	function change_user_creds($data){
 
 		header('Content-Type: application/json');
+
+		$guarantee = guarantee_and_escape($data, ['username', 'old_password', 'new_password', 'csrf'], true);
+		if($guarantee == false){
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], true)){
+			return;
+		}
+
+
+
 		if ( !preg_match ("/^[a-zA-Z0-9]+$/", $data['username'])) {
 			echo json_encode(['errors' => 'Username is using invalid characters']);
 			return;

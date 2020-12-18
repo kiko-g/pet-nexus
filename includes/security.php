@@ -1,11 +1,18 @@
 <?php
 
-	function guarantee_and_escape($data, $guarantee){
+	function guarantee_and_escape($data, $guarantee, $ajax=false){
 
 		$res = array();
 		foreach($guarantee as $guaranteed){
 
 			if(!isset($data[$guaranteed])){
+
+				if($ajax){
+					echo json_encode(['errors' => 'Missing fields ' . $guaranteed]);
+				}
+				else{
+					$_SESSION['errors'] = array('Missing fields ' . $guaranteed);
+				}
 				return false;
 			}
 
@@ -24,8 +31,6 @@
 				echo json_encode(['errors' => 'Invalid CSRF']);
 			}
 			else{
-				error_log($_SESSION['csrf']);
-				error_log($csrf);
 				$_SESSION['errors'] = array('Invalid CSRF');
 			}
 		}
