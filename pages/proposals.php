@@ -49,28 +49,75 @@ $username = $stmt->fetch()['username'];
 	</header>
 
 	<article class="row">
-    <div class="left15"></div>
-    
-    <div class="main70 lesspad">
-      <h2 class="center">My Proposals</h2>
-      <div class="proposals">
+		<div class="left15"></div>
 
-		<?php 
-			require_once("../database/db_class.php");
-			$dbc = Database::instance()->db();
+		<div class="main70 lesspad">
+			<style>
+				#outgoing-proposals,
+				#previous-proposals {
+					display: none;
+				}
 
-			$stmt = $dbc->prepare("SELECT proposals.id, proposal_text, buyer_id, users.username as buyer_username, listing_picture, listing_name, dog_id
-				FROM proposals 
-				JOIN users 
-				ON buyer_id = users.id
-				JOIN dogs
-				ON dog_id = dogs.id
-				WHERE seller_id = ? AND proposal_status = 0");
-			$stmt->execute(array($_SESSION['id']));
-			$proposals = $stmt->fetchAll(); 
+				#incoming-proposals {
+					display: block;
+				}
+			</style>
+			<script> 
+				let csrf_token = document.getElementById('csrf_token').innerHTML;
 
-			foreach($proposals as $index => $entry) {
-		?>
+				function accept_proposal(proposal_id) {
+					window.location.href = '../actions/action_accept_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
+				}
+
+				function deny_proposal(proposal_id) {
+					window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
+				}
+
+				function proposals(divName) {
+					let incoming = document.getElementById('incoming-proposals');
+					let outgoing = document.getElementById('outgoing-proposals');
+					let previous = document.getElementById('previous-proposals');
+					
+					if(divName == 'incoming') {
+						incoming.style.display = "block";
+						outgoing.style.display = "none";
+						previous.style.display = "none";
+					}
+
+					else if(divName == 'outgoing') {
+						incoming.style.display = "none";
+						outgoing.style.display = "block";
+						previous.style.display = "none";
+					}
+
+					else if(divName == 'previous') {
+						incoming.style.display = "none";
+						outgoing.style.display = "none";
+						previous.style.display = "block";
+					}					
+				}
+			</script>			
+			<button onclick="proposals('incoming')">Incoming</button>
+			<button onclick="proposals('outgoing')">Outgoing</button>
+			<button onclick="proposals('previous')">Previous</button>
+
+			<div id="incoming-proposals" class="proposals">
+				<h2 class="center">Incoming Proposals</h2>
+				<?php 
+					require_once("../database/db_class.php");
+					$dbc = Database::instance()->db();
+					$stmt = $dbc->prepare("SELECT proposals.id, proposal_text, buyer_id, users.username as buyer_username, listing_picture, listing_name, dog_id
+						FROM proposals 
+						JOIN users 
+						ON buyer_id = users.id
+						JOIN dogs
+						ON dog_id = dogs.id
+						WHERE seller_id = ? AND proposal_status = 0");
+					$stmt->execute(array($_SESSION['id']));
+					$proposals = $stmt->fetchAll();
+
+					foreach($proposals as $index => $entry) {
+				?>
 
 				<div class="proposal-item">
 					<div class="proposal-main">
@@ -86,23 +133,80 @@ $username = $stmt->fetch()['username'];
 					</div>
 				</div>
 
-		<?php } ?>
-				<script> 
-					let csrf_token = document.getElementById('csrf_token').innerHTML;
-
-					function accept_proposal(proposal_id) {
-						
-						window.location.href = '../actions/action_accept_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
-					}
-
-					function deny_proposal(proposal_id) {
-						window.location.href = '../actions/action_deny_proposal.php?id=' + proposal_id + "&csrf=" + csrf_token
-
-					}
-
-				</script>
+				<?php } ?>
 			</div>
-    </div>
+
+			<div id="outgoing-proposals" class="proposals">
+				<h2 class="center">Outgoing Proposals</h2>
+				<?php 
+					require_once("../database/db_class.php");
+					$dbc = Database::instance()->db();
+					$stmt = $dbc->prepare("SELECT proposals.id, proposal_text, buyer_id, users.username as buyer_username, listing_picture, listing_name, dog_id
+						FROM proposals 
+						JOIN users 
+						ON buyer_id = users.id
+						JOIN dogs
+						ON dog_id = dogs.id
+						WHERE seller_id = ? AND proposal_status = 0");
+					$stmt->execute(array($_SESSION['id']));
+					$proposals = $stmt->fetchAll(); 
+
+					foreach($proposals as $index => $entry) {
+				?>
+
+				<div class="proposal-item">
+					<div class="proposal-main">
+						<img src="<?=$entry['listing_picture']?>" alt="">
+						<div></div>
+						<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
+						<button class="no" onclick="deny_proposal(<?=$entry['id']?>)">No <i class="fas fa-times" aria-hidden="true"></i></button>
+					</div>
+					<div class="proposal-description">
+						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $entry['dog_id'] ?>"><?=$entry['listing_name']?></a></p>
+						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
+						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
+					</div>
+				</div>
+
+				<?php } ?>
+			</div>
+
+			<div id="previous-proposals" class="proposals">
+				<h2 class="center">Previous Proposals</h2>
+				<?php 
+					require_once("../database/db_class.php");
+					$dbc = Database::instance()->db();
+					$stmt = $dbc->prepare("SELECT proposals.id, proposal_text, buyer_id, users.username as buyer_username, listing_picture, listing_name, dog_id
+						FROM proposals 
+						JOIN users 
+						ON buyer_id = users.id
+						JOIN dogs
+						ON dog_id = dogs.id
+						WHERE seller_id = ? AND proposal_status = 0");
+					$stmt->execute(array($_SESSION['id']));
+					$proposals = $stmt->fetchAll(); 
+
+					foreach($proposals as $index => $entry) {
+				?>
+
+				<div class="proposal-item">
+					<div class="proposal-main">
+						<img src="<?=$entry['listing_picture']?>" alt="">
+						<div></div>
+						<button class="yes" onclick="accept_proposal(<?=$entry['id']?>)">Yes <i class="fas fa-check" aria-hidden="true"></i></button>
+						<button class="no" onclick="deny_proposal(<?=$entry['id']?>)">No <i class="fas fa-times" aria-hidden="true"></i></button>
+					</div>
+					<div class="proposal-description">
+						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $entry['dog_id'] ?>"><?=$entry['listing_name']?></a></p>
+						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
+						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
+					</div>
+				</div>
+
+				<?php } ?>
+			</div>			
+		</div>
+		
 
     <div class="right15"></div>
 	</article>

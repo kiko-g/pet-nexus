@@ -63,6 +63,7 @@
 .topnav .navbar.orange {
   background-color: #ff7600;
 }
+
 .topnav .navbar.orange:hover {
   opacity: 100%;
   padding: 8px 12px;
