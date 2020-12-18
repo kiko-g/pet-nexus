@@ -164,7 +164,7 @@
 						<div class="qna margin">
 							<p class="qna-header a">Answer</p> 
 							<p class="qna-text"><?=$entry['answer']?> -</p>
-							<a class="qna-user" href="profile.php?id=<?=$entry['user_id']?>"><?=$entry['username']?></a>
+							<a class="qna-user" href="profile.php?id=<?=$dog_data['user_id']?>"><?=$dog_data['username']?></a>
 						</div>
 					<?php
 						} 
