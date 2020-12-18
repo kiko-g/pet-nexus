@@ -10,12 +10,12 @@
 
 		$dbc = Database::instance()->db();
 
-		$qry_str = 'SELECT dogs.id as dog_id, COUNT(favorites.id) as num_favorites, COUNT(comments.id) as num_comments
+		$qry_str = 'SELECT dogs.id as dog_id, COUNT(UNIQUE favorites.id) as num_favorites, COUNT(UNIQUE comments.id) as num_comments
 			FROM dogs 
 			LEFT JOIN favorites ON dogs.id=favorites.dog_id
 			LEFT JOIN comments ON dogs.id=comments.dog_id
 			WHERE dogs.id IN (';
-		if($count($ids) == 0){
+		if(count($ids) == 0){
 			$qry_str .= ')';
 		}
 		else{
@@ -24,7 +24,7 @@
 
 		$qry_str .= 'GROUP BY dogs.id';
 		$stmt = $dbc->prepare($qry_str);
-		if($count($ids) == 0){
+		if(count($ids) == 0){
 			$stmt->execute();
 		}
 		else{
