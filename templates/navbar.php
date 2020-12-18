@@ -42,7 +42,7 @@
 
   <?php } 
   else { ?>
-	  <button onclick="fetch('../actions/action_logout.php').then((e)=> { location.reload();});" class="navbar right">
+	  <button onclick="fetch('../actions/action_logout.php?csrf=<?=$_SESSION['csrf']?>').then((e)=> { location.reload();});" class="navbar right">
 	    <i class="fa fa-users-slash"></i> Logout
 	  </button>
 	  <a href="../pages/favorites.php" class="navbar favorites right"> <i class="fa fa-heart"> </i> Favorites </a>
