@@ -237,7 +237,19 @@
 		return;
 	}
 
-}
+	}
+
+	function already_made_proposal($dog_id) {
+
+		$dbc = Database::instance()->db();
+		
+		$stmt = $dbc->prepare("SELECT count(*) AS num FROM proposals WHERE dog_id = ? AND buyer_id = ?");
+		$stmt->execute(array($dog_id, $_SESSION['id']));
+		$num = $stmt->fetch()['num'];
+
+		error_log($num);
+		return $num != 0;
+	}
 
 ?>
   

@@ -48,7 +48,9 @@
 									<a href="../pages/picture_change.php?id=<?=$dog_data['id']?>">Change Picture</a>
 						<?php 
 								}
-								else {
+								else if( !already_made_proposal($dog_data['id']) ) {
+									
+						
 						?>
 									<button onclick="displayProposalPopup()"> I want to adopt it! </button>
 						<?php
