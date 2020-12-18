@@ -126,7 +126,7 @@
 			$execute_arr = array($id);
 
 
-	    $where_exists = false;
+	    $where_exists = true;
 	    if(isset($_GET['q'])){
 		$qry_str .= ' WHERE dogs.listing_name LIKE ?';
 		$var = $_GET['q'];

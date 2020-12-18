@@ -22,6 +22,9 @@
 		    $qry_str .= ' AND favorites.user_id = ?';
 		    array_push($execute_array, $_SESSION['id']);
 	    }
+	    else{
+		    $qry_str .= ' AND favorites.user_id IS NULL';
+	    }
 
             $qry_str .= 'WHERE is_adopted = 0 ORDER BY id DESC LIMIT 5';
             $stmt = $dbc->prepare($qry_str);
