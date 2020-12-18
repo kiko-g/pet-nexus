@@ -17,6 +17,7 @@ else {
 require '../templates/head.php'; default_head('Pet Nexus - Found Pets');
 
 require_once("../database/db_class.php");
+require_once("../includes/social.php");
 $dbc = Database::instance()->db();
 $stmt = $dbc->prepare('SELECT username FROM users WHERE id = ?');
 $stmt->execute(array($id));
@@ -66,34 +67,12 @@ $username = $stmt->fetch()['username'];
 				$stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id WHERE dogs.user_id = ? AND (favorites.user_id = dogs.user_id OR favorites.user_id IS NULL)');
 				$stmt->execute(array($id));
 				$pets = $stmt->fetchAll();
+				$dog_socials = get_dogs_socials($pets);
 				$i = 0;
 				foreach ($pets as $index => $entry) { 
 					$i++;
-			?>
-
-			<div class="posts-item hover">
-				<div class="posts-container">
-					<div class="posts-inside-container">
-						<img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
-						<div class="fav-button">
-		<?php if(isset($id)){
-		?>
-		  <button id="fav-<?= $entry['id'] ?>" class="button-heart" onclick="fill(this)">
-			  <i class="fa <?= (is_null($entry['favorite_id']) ? 'fa-heart-o' : 'fa-heart')?> pink big" aria-hidden="true"></i>
-                    </button>
-		<?php } ?>
-						</div>
-						<div class="photo-stats">
-							<i class="fa fa-heart pink" aria-hidden="true"></i> <?=12*$i ?>
-							<i class="fa fa-question-circle blue" aria-hidden="true"></i> <?=1+$i ?>
-						</div>
-					</div>
-				</div>
-				<a class="post-caption" href="item.php?id=<?= $entry['id'] ?>">
-					<p><?= $entry['listing_name']?></p>
-				</a>
-			</div>
-			<?php } ?>
+					draw_pet_card($entry, $dog_socials, $i);
+			} ?>
 		</div>
 	</article>
 	<?php require '../templates/footer.html'; ?>

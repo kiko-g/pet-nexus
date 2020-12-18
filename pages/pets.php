@@ -6,6 +6,7 @@
   <?php require '../templates/navbar.php' ?>
   <?php require '../database/dogs.php' ?>
   <?php require '../includes/pagination.php' ?>
+  <?php require '../includes/social.php' ?>
   <article class="row"> <!-- row-padding -->
     <div class="left20">
       <div class="colorsFilter">
@@ -120,7 +121,7 @@
             require_once("../database/db_class.php");
             $dbc = Database::instance()->db();
 
-	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ?';
+	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND favorites.user_id = ? WHERE dogs.is_adopted = 0';
 			$id = isset($_SESSION['id']) ? $_SESSION['id'] : "";
 			$execute_arr = array($id);
 
@@ -195,37 +196,14 @@
             $stmt->execute($execute_arr);
             $pets = $paginate->paginate_results($stmt);
 
-	    error_log(count($pets));
+
 
             $i = 0;
+	    $dog_socials = get_dogs_socials($pets);
             foreach ($pets as $index => $entry) { 
               $i++;
-	
-          ?>
-		
-            <div class="posts-item">
-              <div class="posts-container">
-                <div class="posts-inside-container">
-                  <img src="<?= $entry['listing_picture']?>" class="posts-image" alt="pet<?= $i ?>">
-                  <div class="fav-button">
-		<?php if(isset($_SESSION['id'])){
-		?>
-		  <button id="fav-<?= $entry['id'] ?>" class="button-heart" onclick="fill(this)">
-			  <i class="fa <?= (is_null($entry['favorite_id']) ? 'fa-heart-o' : 'fa-heart')?> pink big" aria-hidden="true"></i>
-                    </button>
-		<?php } ?>
-                  </div>
-                  <div class="photo-stats">
-                    <i class="fa fa-heart pink" aria-hidden="true"></i> 32
-                    <i class="fa fa-question-circle blue" aria-hidden="true"></i> 3
-                  </div>
-                </div>
-                <a href="item.php?id=<?= $entry['id'] ?>">
-                  <p><?= $entry['listing_name']?></p>
-                </a>
-              </div>
-            </div>
-	  <?php } ?>
+	      draw_pet_card($entry, $dog_socials, $i);
+	  } ?>
 	
         </div>
 
