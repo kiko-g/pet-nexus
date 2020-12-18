@@ -188,10 +188,19 @@
 
    function comment_question($form){
 
+		$guarantee = guarantee_and_escape($form, ['question_content', 'dog_id', 'csrf']);
+		if($guarantee == false){
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'])){
+			return;
+		}
+
 	   $dbc = Database::instance()->db();
 	   $stmt = $dbc->prepare('INSERT INTO comments(user_id, dog_id, question) VALUES (?, ?, ?)');
 	   try{
-			$stmt->execute(array($_SESSION['id'], $form['dog_id'], $form['question_content']));
+			$stmt->execute(array($_SESSION['id'], $guarantee['dog_id'], $guarantee['question_content']));
 	    }
 		catch(PDOException $e){}
    }

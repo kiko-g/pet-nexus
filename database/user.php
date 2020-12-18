@@ -21,7 +21,22 @@
 		return $selector . ':' . $validator;
 	}
 
-	function create_user($username, $password){
+	function create_user($data){
+
+
+		$guarantee = guarantee_and_escape($data, ['username', 'password', 'csrf'], true);
+		if($guarantee == false){
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], true)){
+			return;
+		}
+
+
+		$username = $guarantee['username'];
+		$password = $guarantee['password'];
+
 
 		$dbc = Database::instance()->db();
 		clear_expired_tokens();

@@ -7,6 +7,6 @@
 	$json = file_get_contents('php://input');
 	$data = json_decode($json, true);
 
-	create_user($data['username'], $data['password']);
+	create_user($data);
 
 ?>
