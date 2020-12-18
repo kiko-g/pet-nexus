@@ -161,9 +161,21 @@
 
   function update_picture($data, $file_name){
 	
+
+	$guarantee = guarantee_and_escape($data, ['listing_id', 'csrf']);
+	if($guarantee == false){
+		header('Location: ../pages/item.php');
+		return;
+	}
+
+	if(!test_csrf($guarantee['csrf'])){
+		header('Location: ../pages/item.php');
+		return;
+	}
+
 	$dbc = Database::instance()->db();
 	$stmt = $dbc->prepare('UPDATE dogs SET listing_picture = ? WHERE id = ? AND user_id = ?');
-	$stmt->execute(array($file_name, $data['listing_id'], $_SESSION['id']));
+	$stmt->execute(array($file_name, $guarantee['listing_id'], $_SESSION['id']));
   }
 
   function heart_pet($data){

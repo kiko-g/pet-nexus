@@ -31,12 +31,16 @@ if (!isset($_SESSION['id']))
 					}
 						
 					unset($_SESSION['errors']);
+?>
+					</div>
+<?php
 				}
 
 				require_once '../database/dogs.php';
 				$dogs = get_dogs_of_user();
 				$pictures = db_res_id_to_array($dogs, 'listing_picture');
 				?>
+			
 
 			<h2>Change picture of <slot id="dog_name"></slot></h2>
 			<div class="item">
