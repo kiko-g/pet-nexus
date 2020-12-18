@@ -26,7 +26,7 @@
 		foreach($colors as $key => $value){
 	  ?>
 		  <label class="checkboxDummy">
-		  <input type="checkbox" <?= in_array($key, $selected_colors) ? 'checked' : ''; ?> name="<?=$key?>" value="<?=$value?>"> <span class="checkmark <?= strtolower($value)?>"></span>
+		  <input type="checkbox" <?= in_array($key, $selected_colors) ? 'checked' : ''; ?> name="<?=$key?>" value="<?=$value?>"> <span style="background-color: <?= strtolower($value)?>" class="checkmark"></span>
 		  </label>
 	  <?php
 		}
@@ -128,7 +128,7 @@
 
 	    $where_exists = true;
 	    if(isset($_GET['q'])){
-		$qry_str .= ' WHERE dogs.listing_name LIKE ?';
+		$qry_str .= ' AND dogs.listing_name LIKE ?';
 		$var = $_GET['q'];
 		array_push($execute_arr, '%'.$var.'%');
 		$where_exists = true;
@@ -191,8 +191,8 @@
 	    $paginate = new Paginate($page, $elements_per_page);
 	    $qry_str .= ' ORDER BY dogs.id DESC';
 
-			$qry_str = $paginate->paginate_query($qry_str);
-			error_log($qry_str);
+		$qry_str = $paginate->paginate_query($qry_str);
+		error_log($qry_str);
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_arr);
             $pets = $paginate->paginate_results($stmt);
