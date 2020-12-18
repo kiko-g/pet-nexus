@@ -9,7 +9,7 @@
     <div class="left15"></div>
     <div class="main70 nopad">
       <div class="grid-gallery">
-        <h2 class="center">Popular pets</h2>
+        <h2 class="center">Latest pets</h2>
         <div class="posts centered">
           <?php
             require_once("../database/db_class.php");
@@ -23,6 +23,7 @@
 		    array_push($execute_array, $_SESSION['id']);
 	    }
 
+            $qry_str .= 'ORDER BY id DESC';
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_array);
             $pets = $stmt->fetchAll();

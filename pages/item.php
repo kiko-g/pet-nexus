@@ -54,6 +54,8 @@
 						?>
 									<button onclick="displayProposalPopup()"> I want to adopt it! </button>
 						<?php
+								} else {
+									?> <p> You've already sent a proposal to adopt this dog! </p> <?php
 								}
 							}
 						?>
