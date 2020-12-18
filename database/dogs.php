@@ -28,6 +28,19 @@
    */
   function insert_pet($form, $file_name) {
     
+	error_log('cona');
+	$guarantee = guarantee_and_escape($form, ['listing_name', 'listing_description', 'breed_id', 'color_id', 'age_id', 'gender_id', 'csrf']);
+	if($guarantee == false){
+		header('Location: ../pages/foundpet.php');
+		return;
+	}
+	error_log('pila');
+
+	if(!test_csrf($guarantee['csrf'])){
+		header('Location: ../pages/foundpet.php');
+		return;
+	}
+	error_log('sexo');
     $dbc = Database::instance()->db();
 
     $stmt1 = $dbc->prepare('INSERT INTO dogs(user_id, listing_name, listing_description, listing_picture, breed_id, color_id, age_id, gender_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');

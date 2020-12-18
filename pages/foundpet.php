@@ -24,6 +24,7 @@ if (!isset($_SESSION['id']))
 			unset($_SESSION['errors']);
 		}
 	?>
+	</div>
 
 	<?php
 		require_once '../database/dogs.php';
@@ -40,7 +41,7 @@ if (!isset($_SESSION['id']))
 		$submit->inline();
 
 		foreach($_SESSION as $key => $value){
-			if($key !== 'id')
+			if(!in_array($key, ['csrf', 'id']))
 				unset($_SESSION[$key]);
 
 		}
