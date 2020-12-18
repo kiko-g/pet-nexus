@@ -24,7 +24,7 @@ function unheart(button, id) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ pet_id: id })
+	  body: JSON.stringify({ pet_id: id, 'csrf': document.getElementById('csrf_token').innerHTML })
   }
   ).then((text) => {
     button.childNodes[1].className = "fa fa-heart-o pink big";
@@ -41,7 +41,7 @@ function heart(button, id) {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ pet_id: id })
+    body: JSON.stringify({ pet_id: id, 'csrf': document.getElementById('csrf_token').innerHTML })
   }
   ).then((text) => {
     button.childNodes[1].className = "fa fa-heart pink big";

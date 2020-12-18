@@ -179,15 +179,33 @@
   }
 
   function heart_pet($data){
+	$guarantee = guarantee_and_escape($data, ['pet_id', 'csrf'], true);
+	if($guarantee == false){
+		return;
+	}
+
+	if(!test_csrf($guarantee['csrf'], true)){
+		return;
+	}
+
 	  $dbc = Database::instance()->db();
 	  $stmt = $dbc->prepare('INSERT INTO favorites(user_id, dog_id) VALUES (?, ?)'); 
 	  try{
-		  $stmt->execute(array($_SESSION['id'], $data['pet_id']));
+		  $stmt->execute(array($_SESSION['id'], $guarantee['pet_id']));
 	  }
 	  catch(PDOException $e){}
   }
 
   function unheart_pet($data){
+
+	$guarantee = guarantee_and_escape($data, ['pet_id', 'csrf'], true);
+	if($guarantee == false){
+		return;
+	}
+
+	if(!test_csrf($guarantee['csrf'], true)){
+		return;
+	}
 
 	  $dbc = Database::instance()->db();
 	  $stmt = $dbc->prepare('DELETE FROM favorites WHERE user_id = ? AND dog_id = ?'); 

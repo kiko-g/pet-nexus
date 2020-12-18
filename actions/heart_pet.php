@@ -8,6 +8,5 @@
 	$json = file_get_contents('php://input');
 	$data = json_decode($json, true);
 
-	error_log(print_r($data, true));
 	heart_pet($data);
 ?>
