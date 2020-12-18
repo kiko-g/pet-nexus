@@ -422,6 +422,18 @@ option:disabled {
   background-color: white;
 }
 
+.checkmark.green {
+  background-color: green;
+}
+
+.checkmark.green {
+  background-color: green;
+}
+
+.checkmark.purple {
+  background-color: purple;
+}
+
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
