@@ -14,7 +14,7 @@
   <?php if (isset($_SESSION['id'])) { ?>
   <a href="../pages/foundpet.php" class="navbar"> <i class="fas fa-child"></i> Found a pet! </a>
   <?php } ?>
-  <div style="display:none" id="csrf_token"> <?= $_SESSION['csrf'] ?> </div>
+  <div style="display:none" id="csrf_token"><?= $_SESSION['csrf'] ?></div>
 
   <?php if(!isset($_SESSION['id'])){ ?>
   <!-- REGISTER -->

@@ -203,7 +203,20 @@
 
    }
 
-   function answer_proposal($proposal_id, $answer) {
+   function answer_proposal($data, $answer) {
+
+
+		$guarantee = guarantee_and_escape($data, ['id', 'csrf']);
+		if($guarantee == false){
+			echo $_SESSION['errors'] = array(['errors' => 'Missing fields']);
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], false)){
+			return;
+		}
+
+		$proposal_id = $data['id'];
 	   
 	$dbc = Database::instance()->db();
 	$dbc->beginTransaction();

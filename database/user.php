@@ -58,7 +58,22 @@
 		}
 	}
 
-	function login_user($username, $password, $remember){
+	function login_user($data){
+
+
+		$guarantee = guarantee_and_escape($data, ['username', 'password', 'remember', 'csrf']);
+		if($guarantee == false){
+			echo json_encode(['errors' => 'Missing fields']);
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], true)){
+			return;
+		}
+
+		$username = $guarantee['username'];
+		$password = $guarantee['password'];
+		$remember = $guarantee['remember'];
 
 		$dbc = Database::instance()->db();
 

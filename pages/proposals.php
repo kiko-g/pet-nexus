@@ -80,7 +80,7 @@ $username = $stmt->fetch()['username'];
 						<button class="no" onclick="deny_proposal(<?=$entry['id']?>)">No <i class="fas fa-times" aria-hidden="true"></i></button>
 					</div>
 					<div class="proposal-description">
-						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $dog_id ?>"><?=$entry['listing_name']?></a></p>
+						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $entry['dog_id'] ?>"><?=$entry['listing_name']?></a></p>
 						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
 						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
 					</div>

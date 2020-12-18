@@ -1,4 +1,5 @@
 <?php
+  require_once('../includes/security.php');
   /**
    * A singleton representing the app connection 
    * to the database. Use Database::instance() to 
