@@ -15,7 +15,7 @@
             require_once("../database/db_class.php");
             $dbc = Database::instance()->db();
   
-	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id';
+	    $qry_str = 'SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id ';
 	    $execute_array = array();
 
 	    if(isset($_SESSION['id'])){
@@ -23,7 +23,7 @@
 		    array_push($execute_array, $_SESSION['id']);
 	    }
 
-            $qry_str .= 'ORDER BY id DESC';
+            $qry_str .= 'WHERE is_adopted = 0 ORDER BY id DESC LIMIT 5';
             $stmt = $dbc->prepare($qry_str);
             $stmt->execute($execute_array);
             $pets = $stmt->fetchAll();

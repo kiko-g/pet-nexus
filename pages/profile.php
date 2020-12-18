@@ -64,7 +64,7 @@ $username = $stmt->fetch()['username'];
 		<h2 class="center"><slot><?=$username?>'s</slot> Listed Pets</h2>
 		<div class="posts">
 			<?php
-				$stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id WHERE dogs.user_id = ? AND (favorites.user_id = dogs.user_id OR favorites.user_id IS NULL) ORDER BY id DESC');
+				$stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id FROM dogs LEFT JOIN favorites ON dogs.id=dog_id WHERE dogs.user_id = ? AND (favorites.user_id = dogs.user_id OR favorites.user_id IS NULL) AND is_adopted = 0 ORDER BY id DESC');
 				$stmt->execute(array($id));
 				$pets = $stmt->fetchAll();
 				$dog_socials = get_dogs_socials($pets);
