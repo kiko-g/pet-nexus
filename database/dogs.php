@@ -189,17 +189,27 @@
 
    function create_proposal($form) {
 
+
+		$guarantee = guarantee_and_escape($form, ['proposal_content', 'dog_id', 'csrf'], false);
+		if($guarantee == false){
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'], false)){
+			return;
+		}
+
 		$dbc = Database::instance()->db();
 		$stmt = $dbc->prepare('SELECT * FROM dogs WHERE id = ?');
 		try {
-			$stmt->execute(array($form['dog_id']));
+			$stmt->execute(array($guarantee['dog_id']));
 		}
 		catch(PDOException $e){}
 		$dog = $stmt->fetch();
 		$seller_id = $dog['user_id'];
 
 		$stmt2 = $dbc->prepare('INSERT INTO proposals(seller_id, buyer_id, dog_id, proposal_text) VALUES (?, ?, ?, ?)');
-		$stmt2->execute(array($seller_id, $form['buyer_id'], $form['dog_id'], $form['proposal_content']));
+		$stmt2->execute(array($seller_id, $_SESSION['id'], $guarantee['dog_id'], $guarantee['proposal_content']));
 
    }
 

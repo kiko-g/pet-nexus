@@ -109,7 +109,6 @@
 							$proposal_form = new FormCreator('proposal-popup', '../actions/action_create_proposal.php', true, false);
 							$proposal_form->add_input("proposal_content", "Proposal", "text", "Write a proposal to the person!", true);
 							$proposal_form->add_input("dog_id", "", "hidden", "", true, $dog_data['id']);
-							$proposal_form->add_input("buyer_id", "", "hidden", "", true, $_SESSION['id']);
 			
 							$proposal_form->inline();
 						}

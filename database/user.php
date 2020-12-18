@@ -176,12 +176,12 @@
 
 
 
-		if ( !preg_match ("/^[a-zA-Z0-9]+$/", $data['username'])) {
+		if ( !preg_match ("/^[a-zA-Z0-9]+$/", $guarantee['username'])) {
 			echo json_encode(['errors' => 'Username is using invalid characters']);
 			return;
 		}
 
-		$new_password_len = strlen($data['new_password']);
+		$new_password_len = strlen($guarantee['new_password']);
 		if($new_password_len > 0 && $new_password_len < 8){
 			echo json_encode(['errors' => 'Password must have at least 8 chars']);
 			return;
@@ -192,7 +192,7 @@
 		$stmt->execute(array($_SESSION['id']));
 		$user = $stmt->fetch();
 
-		if($user !== false && password_verify($data['old_password'], $user['password'])){
+		if($user !== false && password_verify($guarantee['old_password'], $user['password'])){
 
 			$dbc->beginTransaction();
 
@@ -203,11 +203,11 @@
 
 				if($new_password_len == 0){
 					$stmt = $dbc->prepare('UPDATE users SET username = ? WHERE id = ?');
-					$stmt->execute(array($data['username'], $_SESSION['id']));
+					$stmt->execute(array($guarantee['username'], $_SESSION['id']));
 				}
 				else{
 					$stmt = $dbc->prepare('UPDATE users SET username = ? , password = ? WHERE id = ?');
-					$stmt->execute(array($data['username'], password_hash($data['new_password'], PASSWORD_DEFAULT, ['cost' => 12]), $_SESSION['id']));
+					$stmt->execute(array($guarantee['username'], password_hash($guarantee['new_password'], PASSWORD_DEFAULT, ['cost' => 12]), $_SESSION['id']));
 				}
 
 
