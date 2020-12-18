@@ -219,10 +219,24 @@
 
    function answer_question($form) {
 
+
+		$guarantee = guarantee_and_escape($form, ['answer_content', 'comment_id', 'csrf']);
+		if($guarantee == false){
+			header('Location: ../pages/item.php');
+			return;
+		}
+
+		if(!test_csrf($guarantee['csrf'])){
+			header('Location: ../pages/item.php');
+			return;
+		}
+
+
+
 		$dbc = Database::instance()->db();
 		$stmt = $dbc->prepare('UPDATE comments SET answer = ? WHERE id = ?');
 		try {
-			$stmt->execute(array($form['answer_content'], $form['comment_id']));
+			$stmt->execute(array($guarantee['answer_content'], $guarantee['comment_id']));
 		}
 		catch(PDOException $e){}
    }
