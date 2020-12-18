@@ -1,9 +1,14 @@
 <?php include_once('../includes/form_creator.php'); ?>
 <nav class="topnav" id="topnavbar">
   <a href="../index.php" class="navbar no-border"> <i class="fas fa-home"></i> Home </a>
-  <?php if (isset($_SESSION['id'])) { ?>
+  <?php if (isset($_SESSION['id'])) { 
+
+
+		require_once('../database/user.php');
+		$num_prop = get_number_receiving_proposals();	
+	?>
   <a href="../pages/profile.php" class="navbar"> <i class="fas fa-user"></i> Profile </a>
-  <a href="../pages/proposals.php" class="navbar"> <i class="fa fa-paper-plane"></i></i> Proposals </a>
+  <a href="../pages/proposals.php" class="navbar <?= ($num_prop > 0) ? 'orange' : '' ?>"> <i class="fa fa-paper-plane"></i></i> Proposals <?= ($num_prop > 0) ? '('.$num_prop.')' : '' ?></a>
   <?php } ?>
   <a href="../pages/pets.php" class="navbar"> <i class="fas fa-dog"></i> Pets </a>
   <?php if (isset($_SESSION['id'])) { ?>

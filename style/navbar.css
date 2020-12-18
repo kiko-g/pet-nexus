@@ -59,6 +59,16 @@
   background-color: #6ea79b;
 }
 
+
+.topnav .navbar.orange {
+  background-color: #ff7600;
+}
+.topnav .navbar.orange:hover {
+  opacity: 100%;
+  padding: 8px 12px;
+  background-color: #6ea79b;
+}
+
 .topnav button:hover,
 .topnav a:hover {
   transition: 0.2s ease-out;

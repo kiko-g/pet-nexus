@@ -206,4 +206,13 @@
 
 	}
 
+
+	function get_number_receiving_proposals(){
+
+		$dbc = Database::instance()->db();
+		$stmt = $dbc->prepare('SELECT COUNT(id) as num_proposals FROM proposals WHERE seller_id = ? AND proposal_status = 0 GROUP BY seller_id, proposal_status');
+		$stmt->execute(array($_SESSION['id']));
+		return $stmt->fetch()['num_proposals'];
+	}
+
 ?>
