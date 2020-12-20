@@ -23,8 +23,8 @@
   </button>
   <?php
     $register_form = new FormCreator('register-popup', '../actions/action_register.php', true);
-    $register_form->add_input("username", "Username", "text", "Enter username", true);
-    $register_form->add_input("password", "Password", "password", "Enter password", true);
+    $register_form->add_input("username", "Username", "text", "Enter username", true, NULL, '^[a-zA-Z0-9]+$');
+    $register_form->add_input("password", "Password", "password", "Enter password", true, NULL, '^[a-zA-Z0-9]+$');
 
     $register_form->inline();
   ?>
@@ -34,8 +34,8 @@
   </button>
 	<?php
     $login_form = new FormCreator('login-popup', '../actions/action_login.php', true);
-    $login_form->add_input("username", "Username", "text", "Enter username", true);
-    $login_form->add_input("password", "Password", "password", "Enter password", true);
+    $login_form->add_input("username", "Username", "text", "Enter username", true, NULL, '^[a-zA-Z0-9]+$');
+    $login_form->add_input("password", "Password", "password", "Enter password", true, NULL, '^[a-zA-Z0-9]+$');
     $login_form->add_input("remember", "Remember Me", "checkbox", NULL, false);
     $login_form->inline();
 	?>

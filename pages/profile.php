@@ -46,7 +46,7 @@ $username = $stmt->fetch()['username'];
 						</button>
 					<?php
 							$change_form = new FormCreator('change-popup', '../actions/action_change_creds.php', true);
-							$change_form->add_input("username", "Username", "text", "Enter username", true, $username);
+							$change_form->add_input("username", "Username", "text", "Enter username", true, $username, '^[a-zA-Z0-9]+$');
 							$change_form->add_input("old_password", "Old password", "password", "Enter old password", true);
 							$change_form->add_input("new_password", "New password", "password", "Enter new password", false);
 							$change_form->inline();

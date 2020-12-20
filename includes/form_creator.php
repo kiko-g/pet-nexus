@@ -227,7 +227,7 @@
 	<label for="<?= $item_id ?>"><b><?= $this->label ?></b></label>
 	<?php } ?>
 	<input id="<?= $item_id ?>" type="<?= $this->type ?>" placeholder="<?= $this->placeholder ?>" name="<?= $this->name ?>" 
-	<?php echo (!is_null($this->value) ? 'value="'.$this->value.'" ' : ''); ?> <?php echo ($this->required ? 'required' : ''); ?> >
+	<?php echo (!is_null($this->value) ? 'value="'.$this->value.'" ' : ''); ?> <?php echo ($this->required ? 'required' : ''); ?> <?php echo (!is_null($this->pattern) ? 'pattern="'.$this->pattern.'"': '');?> >
 
 	<?php
 	
