@@ -174,7 +174,6 @@
 						$qry_str .= ' ORDER BY dogs.id DESC';
 
 						$qry_str = $paginate->paginate_query($qry_str);
-						error_log($qry_str);
 						$stmt = $dbc->prepare($qry_str);
 						$stmt->execute($execute_arr);
 						$pets = $paginate->paginate_results($stmt);

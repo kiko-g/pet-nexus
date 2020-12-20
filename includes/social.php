@@ -1,7 +1,6 @@
 <?php
 
 	function get_dogs_socials($dogs){
-		// error_log($dogs);
 
 		$ids = array();
 		foreach($dogs as $dog){

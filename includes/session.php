@@ -9,7 +9,6 @@
 
 	if (!isset($_SESSION['csrf'])) {
 		$_SESSION['csrf'] = generate_random_token();
-		error_log('new _csrf');
 	}
 
 

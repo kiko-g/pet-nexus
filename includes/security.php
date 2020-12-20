@@ -25,8 +25,6 @@
 	function test_csrf($csrf, $ajax=false) {
 
 		$res = $_SESSION['csrf'] == $csrf;
-		error_log($_SESSION['csrf']);
-		error_log($csrf);
 
 		if($res == false){
 			if($ajax){
