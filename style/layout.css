@@ -346,6 +346,16 @@
   font-size: small;
 }
 
+.item-pic>p.warning {
+  color: whitesmoke;
+  background-color: #b3482d;
+
+  width: 320px;
+  margin-top: 1em;
+  padding: 0.3em 1em;
+  border-radius: 5px;
+}
+
 .item-pic>a {
   display: flex;
   padding: 0;
