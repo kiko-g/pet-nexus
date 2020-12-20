@@ -33,25 +33,21 @@ $username = $stmt->fetch()['username'];
 						<i class="fas fa-edit" aria-hidden="true"></i>
 					</button>
 				</div>
-				
 				<?php
-					
 				   $change_form = new FormCreator('change-popup', '../actions/action_change_creds.php', true);
 				   $change_form->add_input("username", "Username", "text", "Enter username", true, $username);
 				   $change_form->add_input("old_password", "Old password", "password", "Enter old password", true);
 				   $change_form->add_input("new_password", "New password", "password", "Enter new password", false);
 				   $change_form->inline();
 				?>
-			
-
 			</div>
 		</div>
 	</header>
 
-	<article class="row">
-		<div class="left15"></div>
+	<main class="row">
+		<aside class="left15"></aside>
 
-		<div class="main70 lesspad">
+		<section class="main70 lesspad">
 			<style>
 				#outgoing-proposals,
 				#previous-proposals {
@@ -101,7 +97,7 @@ $username = $stmt->fetch()['username'];
 			<button onclick="proposals('outgoing')">Outgoing</button>
 			<button onclick="proposals('previous')">Previous</button>
 
-			<div id="incoming-proposals" class="proposals">
+			<article id="incoming-proposals" class="proposals">
 				<h2 class="center">Incoming Proposals</h2>
 				<?php 
 					require_once("../database/db_class.php");
@@ -119,7 +115,7 @@ $username = $stmt->fetch()['username'];
 					foreach($proposals as $index => $entry) {
 				?>
 
-				<div class="proposal-item">
+				<figure class="proposal-item">
 					<div class="proposal-main">
 						<img src="<?=$entry['listing_picture']?>" alt="">
 						<div></div>
@@ -131,12 +127,12 @@ $username = $stmt->fetch()['username'];
 						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
 						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
 					</div>
-				</div>
+				</figure>
 
 				<?php } ?>
-			</div>
+			</article>
 
-			<div id="outgoing-proposals" class="proposals">
+			<article id="outgoing-proposals" class="proposals">
 				<h2 class="center">Outgoing Proposals</h2>
 				<?php 
 					require_once("../database/db_class.php");
@@ -154,7 +150,7 @@ $username = $stmt->fetch()['username'];
 					foreach($proposals as $index => $entry) {
 				?>
 
-				<div class="proposal-item">
+				<figure class="proposal-item">
 					<div class="proposal-main">
 						<img src="<?=$entry['listing_picture']?>" alt="">
 						<div></div>
@@ -166,12 +162,12 @@ $username = $stmt->fetch()['username'];
 						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
 						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
 					</div>
-				</div>
+				</figure>
 
 				<?php } ?>
-			</div>
+			</article>
 
-			<div id="previous-proposals" class="proposals">
+			<article id="previous-proposals" class="proposals">
 				<h2 class="center">Previous Proposals</h2>
 				<?php 
 					require_once("../database/db_class.php");
@@ -189,7 +185,7 @@ $username = $stmt->fetch()['username'];
 					foreach($proposals as $index => $entry) {
 				?>
 
-				<div class="proposal-item">
+				<figure class="proposal-item">
 					<div class="proposal-main">
 						<img src="<?=$entry['listing_picture']?>" alt="">
 						<div></div>
@@ -201,15 +197,15 @@ $username = $stmt->fetch()['username'];
 						<p><strong>Proposal from</strong>: <a href="profile.php?id=<?=$entry['buyer_id']?>"><?=$entry['buyer_username'];?></a></p>
 						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
 					</div>
-				</div>
+				</figure>
 
 				<?php } ?>
-			</div>			
-		</div>
+			</article>			
+		</section>
 		
 
-    <div class="right15"></div>
-	</article>
+    <aside class="right15"></aside>
+	</main>
 	<?php require '../templates/footer.html'; ?>
 
 </body>

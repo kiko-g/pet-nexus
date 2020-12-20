@@ -1,18 +1,14 @@
 <?php require '../includes/session.php'; ?>
-<?php require '../templates/head.php'; default_head('Pet Nexus');
-  
-
-?>
+<?php require '../templates/head.php'; default_head('Pet Nexus'); ?>
 
 <body>
   <?php require '../templates/header.html' ?>
   <?php require '../templates/navbar.php'; ?>
 
-  <section class="row">
+  <main class="row">
     <section class="main">
     </section>
-  </section>
-
+  </main>
 
   <?php require '../templates/footer.html'; ?>
 </body>

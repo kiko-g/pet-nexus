@@ -1,5 +1,4 @@
-<?php
-function default_head($title) { ?>
+<?php function default_head($title) { ?>
 
 <!DOCTYPE html>
 <html lang="en-US">

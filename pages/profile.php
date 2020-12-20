@@ -34,7 +34,7 @@ $username = $stmt->fetch()['username'];
 				<div class="profile-image">
 					<img src="../assets/img/logo.png" alt="profile-img">
 				</div>
-
+				
 				<div class="profile-header">
 					<code class="profile-user-name"> <?=$username?> </code>
 					<?php 
@@ -53,16 +53,13 @@ $username = $stmt->fetch()['username'];
 						}
 					?>
 				</div>
-				
-			
-
 			</div>
 		</div>
 	</header>
 
-	<article class="grid-gallery">
+	<main class="grid-gallery">
 		<h2 class="center"><slot><?=$username?>'s</slot> Listed Pets</h2>
-		<div class="posts">
+		<article class="posts">
 			<?php
 				$stmt = $dbc->prepare('SELECT dogs.*, favorites.id as favorite_id 
 					FROM dogs LEFT JOIN favorites ON dogs.id=dog_id AND (favorites.user_id = dogs.user_id OR favorites.user_id IS NULL) 
@@ -75,8 +72,8 @@ $username = $stmt->fetch()['username'];
 					$i++;
 					draw_pet_card($entry, $dog_socials, $i);
 			} ?>
-		</div>
-	</article>
+		</article>
+	</main>
 	<?php require '../templates/footer.html'; ?>
 </body>
 

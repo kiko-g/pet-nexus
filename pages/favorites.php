@@ -1,4 +1,3 @@
-<!-- if not logged in show login popup using require 'login.html' -->
 <?php require_once '../includes/session.php'; ?>
 <?php require '../templates/head.php'; default_head('Pet Nexus - Pets'); ?>
 
@@ -6,25 +5,29 @@
 	<?php require '../templates/header.html' ?>
 	<?php require '../templates/navbar.php' ?>
 	<?php require '../includes/social.php' ?>
-	<section class="grid-gallery">
+	<main class="grid-gallery">
 		<h2 class="center pink">Favorites</h2>
-		<div class="posts">      
+		<article class="posts">      
 			<?php
 				require_once("../database/db_class.php");
 				$dbc = Database::instance()->db();
 
-				$stmt = $dbc->prepare("SELECT dogs.*, favorites.id as favorite_id FROM dogs JOIN favorites ON dogs.id = favorites.dog_id 
+				$stmt = $dbc->prepare("SELECT dogs.*, favorites.id as favorite_id FROM dogs 
+					JOIN favorites ON dogs.id = favorites.dog_id 
 					WHERE favorites.user_id = ?");
+
 				$stmt->execute(array($_SESSION['id']));
 				$pets = $stmt->fetchAll();
 				$i = 0;
 				$dog_socials = get_dogs_socials($pets);
+				
 				foreach ($pets as $index => $entry) { 
 					$i++;
 					draw_pet_card($entry, $dog_socials, $i);
-			}  ?>
-		</div>
-	</section>
+				}  
+			?>
+		</article>
+	</main>
 	<?php require '../templates/footer.html'; ?>
 	
 </body>
