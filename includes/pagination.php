@@ -6,17 +6,30 @@
 		private $elements_per_page;
 		private $popped = false;
 
+		/*
+		 * $page -> current page
+		 * $elements_per_page -> number of elements per page
+		 */
 		function __construct($page, $elements_per_page){
 			$this->page = $page;
 			$this->elements_per_page = $elements_per_page;
 		}
+
+		/*
+		 * Generates the paginate query with one extra element
+		 * to know whether there's one extra page
+		 */
 		function paginate_query($append){
 			$start_element = $this->page * $this->elements_per_page;
 			$end_element = $start_element + $this->elements_per_page + 1;
 			return $append . ' LIMIT ' . $start_element. ' ,  ' . $end_element;
 		}
 
-
+		/*
+		 * If the number of retrieved elements is the number of elements
+		 * equal to the page size then there's no more elements in the next
+		 * page
+		 */
 		function paginate_results($stmt){
 
 			$res = $stmt->fetchAll();

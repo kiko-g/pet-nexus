@@ -1,5 +1,12 @@
 <?php
 
+	/*
+	 *
+	 * $data -> untrusted user data
+	 * $guarantee -> fields to guarantee and escape
+	 * $ajax -> whether the request was ajax
+	 */
+
 	function guarantee_and_escape($data, $guarantee, $ajax=false){
 
 		$res = array();
@@ -22,6 +29,10 @@
 		return $res;
 	}
 
+	/*
+	 * $csrf -> received token
+	 * $ajax -> whether the request was ajax
+	 */
 	function test_csrf($csrf, $ajax=false) {
 
 		$res = $_SESSION['csrf'] == $csrf;

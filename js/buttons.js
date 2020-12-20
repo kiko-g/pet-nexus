@@ -18,7 +18,7 @@ function unheart(button, id) {
 
   console.log(button);
   console.log(id);
-  fetch('/actions/unheart_pet.php', {
+  fetch('/actions/action_unheart_pet.php', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -35,7 +35,7 @@ function unheart(button, id) {
 
 function heart(button, id) {
 
-  fetch('/actions/heart_pet.php', {
+  fetch('/actions/action_heart_pet.php', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

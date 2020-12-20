@@ -1,5 +1,9 @@
 <?php
 
+	/*
+	 * $dogs -> array of dog ids
+	 * @return associative array that maps id to like count and question count
+	 */
 	function get_dogs_socials($dogs){
 
 		$ids = array();
@@ -42,6 +46,9 @@
 	}
 
 
+	/*
+	 * Draws the $entry dog social bar
+	 */
 	function draw_social_count_bar($entry){
 ?>
                   <div class="photo-stats">
@@ -52,6 +59,9 @@
 	}
 
 
+	/*
+	 * Draws the $entry with given $dog_socials and $alt text
+	 */
 	function draw_pet_card($entry, $dog_socials, $alt){
 ?>
 
