@@ -33,6 +33,12 @@
      - Forms don't lose data on error: yes
 
 # Additional Features
+- Remember Me
+    - Based on paragonie's 2016 best recommendations: https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence#title.2
+      * Section "Proactively Secure Long-Term User Authentication"
+    - There's a `selector` that identifies the user and a `validator` that confirms the cookie is correct
+      * Cookies last 1 month
+      * If the validator is invalid the database entry is deleted
 - Form Creator
     - Easy way of generating forms with automatic CSRF included (tries to replicate what is seen in modern frameworks such as Laravel,Django,..)
     - Supports regular old forms and ajax too!
@@ -52,3 +58,13 @@
     - `test_csrf` compares the given CSRF token with the one from the current sesion
       * Automatically generates the appropriate error message
     - `guarantee_and_escape`, guarantees that the given fields exist and if they do they're escaped
+
+# Notes about Proposals
+
+- Incoming
+  * Current open incoming proposal
+- Outgoing
+  * Current open outgoing proposal
+- Previous
+  * Closed outgoing proposals
+   
