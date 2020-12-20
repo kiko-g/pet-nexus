@@ -27,7 +27,7 @@
      - Javascript: yes
      - Ajax: yes
      - REST API: no
-     - Other:
+     - Other: Remember Me cookies (ellaborated in the additional features)
   Usability:
      - Error/success messages: yes
      - Forms don't lose data on error: yes
