@@ -39,7 +39,7 @@
       * Section "Proactively Secure Long-Term User Authentication"
     - There's a `selector` that identifies the user and a `validator` that confirms the cookie is correct
       * Cookies last 1 month
-      * If the validator is invalid the database entry is deleted
+      * If the validator for a given seelctor is invalid the database entry is deleted
 - Form Creator
     - Easy way of generating forms with automatic CSRF included (tries to replicate what is seen in modern frameworks such as Laravel,Django,..)
     - Supports regular old forms and ajax too!
