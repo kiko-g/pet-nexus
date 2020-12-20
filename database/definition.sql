@@ -92,7 +92,7 @@ INSERT INTO dog_colors(color_name) VALUES ('White');
 INSERT INTO dog_colors(color_name) VALUES ('Gray');
 INSERT INTO dog_colors(color_name) VALUES ('Black');
 INSERT INTO dog_colors(color_name) VALUES ('Brown');
-INSERT INTO dog_colors(color_name) VALUES ('Cream');
+INSERT INTO dog_colors(color_name) VALUES ('Wheat');
 
 INSERT INTO dog_ages(age_name) VALUES ('Newborn');
 INSERT INTO dog_ages(age_name) VALUES ('Puppy');

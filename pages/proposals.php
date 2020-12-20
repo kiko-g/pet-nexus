@@ -189,7 +189,7 @@ $username = $stmt->fetch()['username'];
 						<p><strong>Dog name</strong>: <a href="item.php?id=<?= $entry['dog_id'] ?>"><?=$entry['listing_name']?></a></p>
 						<p><strong>Proposal description</strong>: <?=$entry['proposal_text']?></p>
 						<p><strong>Proposal to</strong>: <a href="profile.php?id=<?= $entry['seller_id'] ?>"><?=$entry['seller_username']?></a></p>
-						<p><strong>Status: </strong><?= $entry['proposal_status'] == '1' ? 'Accepted' : 'Rejected'; ?></p>
+						<p class="important"><strong>Status: </strong><?= $entry['proposal_status'] == '1' ? 'Accepted' : 'Rejected'; ?></p>
 					</div>
 				</figure>
 

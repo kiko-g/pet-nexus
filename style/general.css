@@ -568,3 +568,12 @@ footer .footer-icons i {
     margin-top: 1em;
   }
 }
+
+.important {
+  color: #008fc4;
+
+  width: 320px;
+  margin-top: 2em;
+  padding: 0.3em 1em 0.3em 0em;
+  border-radius: 5px;
+}
