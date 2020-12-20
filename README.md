@@ -60,7 +60,9 @@
       * Automatically generates the appropriate error message
     - `guarantee_and_escape`, guarantees that the given fields exist and if they do they're escaped
 
-# Notes about Proposals
+# Notes about features
+
+## Proposals
 
 - Incoming
   * Current open incoming proposal
@@ -68,4 +70,8 @@
   * Current open outgoing proposal
 - Previous
   * Closed outgoing proposals
-   
+
+## Change credentials
+
+Username and "Old Password" are the only required fields, "New Password" is only needed in case you want to change the password.
+To change the username it's just needed to modify the field.
