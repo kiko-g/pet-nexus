@@ -51,6 +51,9 @@
   }
 
 
+  /*
+   * Helper fucntion to convert the result into an associative array
+   */
   function db_res_id_to_array($db_res, $component_name){
 
 	$res = array();
@@ -285,6 +288,9 @@
 
    }
 
+   /*
+    * $data contains the dog id and the answer is the type of response 1-accept 2-reject
+    */
    function answer_proposal($data, $answer) {
 
 
@@ -334,6 +340,10 @@
 
 	}
 
+   	/*
+	 * Whether user already made a proposal
+	 * to the given $dog_id
+	 */
 	function already_made_proposal($dog_id) {
 
 		$dbc = Database::instance()->db();

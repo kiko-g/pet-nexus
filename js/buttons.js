@@ -33,6 +33,7 @@ function unheart(button, id) {
 }
 
 
+
 function heart(button, id) {
 
   fetch('/actions/action_heart_pet.php', {

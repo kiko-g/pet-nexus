@@ -8,6 +8,9 @@
 		$delete->execute();
 	}
 
+	/*
+	 * Create a selector+validator for the given user
+	 */
 	function create_user_cookie($id){
 		$conn = Database::instance()->db();
 
@@ -124,6 +127,11 @@
 	}
 
 
+	/*
+	 * $cookie -> user cookie
+	 *
+	 * If the selector is valid and the validator is wrong then it's deleted from the DB
+	 */
 	function restore_session($cookie){
 
 		clear_expired_tokens();

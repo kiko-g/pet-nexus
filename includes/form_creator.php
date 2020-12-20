@@ -10,6 +10,14 @@
     private $elements = array();
     private $enctype = NULL;
 
+	/*
+	 * $id -> id of the form
+	 * $action -> url where it will be posted to
+	 * $error_zone -> whether it has a error_zon
+	 * $ajax -> whether it is ajax
+	 * $popup -> whether it is a popup
+	 * $enctype -> enctype of requets
+	 */
     function __construct($id, $action, $error_zone = false, $ajax=true, $popup=true, $enctype=NULL) {
 	    $this->id = $id;
 	    $this->action = $action;
@@ -20,16 +28,26 @@
     }
 
 
-
+	/*
+	 * $name -> name of the input
+	 * Rest are html attributes
+	 */
     function add_input($name, $label = "Label", $type = "text", $placeholder="", $required = true, $value = NULL, $pattern = NULL){
 	    array_push($this->elements, new FormInput($name, $label, $type, $placeholder, $required, $value, $pattern));
     }
 
+	/*
+	 * $name -> name of the select
+	 * Rest are html attributes
+	 */
     function add_select($name, $label, $options, $selected=NULL){
 	    array_push($this->elements, new FormSelect($name, $label, $options, $selected));
     }
 
 
+	/*
+	 * Writes the form to html
+	 */
     function inline(){
 	    $form_class = $this->popup ? 'overlayLogin' : '';
 ?>
@@ -199,6 +217,10 @@
 
     function to_str($input){
 	    $item_id = $input . '-' . $this->name;
+
+		/*
+		 * Checkboxes need to be in the reverse order
+		 */
 	    if($this->type !== "checkbox"){
 
 ?>
