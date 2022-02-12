@@ -1,6 +1,7 @@
 # Demo
 
-![image](https://user-images.githubusercontent.com/40745490/153697433-13be4bba-fa95-4caa-9792-36b69ec1daf0.png)
+![demo-1](https://user-images.githubusercontent.com/40745490/153697433-13be4bba-fa95-4caa-9792-36b69ec1daf0.png)
+![demo-2](https://user-images.githubusercontent.com/40745490/153697459-43bfc76f-5e61-4988-89fd-f87c7c3f6fb1.png)
 
 # Elements:
  - Francisco Gonçalves (201704790) 
